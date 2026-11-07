@@ -198,7 +198,7 @@ its cited works. A progress meter, not a gate.
 
 **Measured blind spot.** `stale` compares **by day, with a strict `>`**. A work ingested the same day as the
 block's `updated` does not flag it, and **the silence is permanent**: the next day the dates are still equal, and
-it would only fire if the ficha were re-verified later. A `stale = 0` therefore does not prove the blocks are
+it would only fire if the source note were re-verified later. A `stale = 0` therefore does not prove the blocks are
 up to date. Moving to `>=` would flag every synthesised note the day its source is verified, which is the normal
 flow, so it is not changed; instead the ingest workflow tells you to list those notes by hand. Also, the newest
 `last_verified` is taken over the links of the **whole body**, not only the block's: `stale` can mean "there is a
@@ -470,9 +470,9 @@ INFO/backlog.
 **Extended to books.** The same leak reappeared through another door: PARTIAL chapter seals written by hand
 carried only `source_verification`, because they do not go through the sealing tool that writes the pair. Twenty
 sealed and corrected chapters could not re-flag the blocks citing them, and Check 15's stale stayed flat when it
-should have risen. The check only looked at `papers/`. In the same closing, many papers whose fichas had been
+should have risen. The check only looked at `papers/`. In the same closing, many papers whose source notes had been
 completed or corrected against the fulltext without moving their `last_verified` were dated: **filling in a
-ficha is also a verification**.
+source note is also a verification**.
 
 ## check-29
 
@@ -521,10 +521,10 @@ the body.
 
 **A work could be hung from a synthesis block without anyone checking it for that note.** `/wiki-synthesize` does
 not re-read the fulltext, and waves that applied the evidence check by hand were closed. The screen requires that
-every pair (note, work cited in the block) has, in the ficha, a seal that names the note. When it was first
+every pair (note, work cited in the block) has, in the source note, a seal that names the note. When it was first
 measured against a large real wiki, a wave map built for the seals of earlier waves accepted only a fraction of the
 pairs and many were left unsealed. In a pilot of 15 pairs at random, 6 had a defect and 3 were substantive, **even
-with the ficha sealed against the fulltext**: **a fulltext seal does not protect the pair.**
+with the source note sealed against the fulltext**: **a fulltext seal does not protect the pair.**
 
 **Rule.** See `docs/SEALS.md` for the seal format and `wikikit/seals.py` for the detection. Declared debt
 (`seal_debt_file`, lines `Note Work cause`) does not count as a defect and is always printed, because it does not
@@ -534,10 +534,10 @@ the same works** (only the PDF check in `wiki-synthesize` sees that).
 
 ## check-33
 
-**A ficha could reach `status: final` with no bibliographic identity.** One note lacked `title`, `authors`, `year`,
+**A source note could reach `status: final` with no bibliographic identity.** One note lacked `title`, `authors`, `year`,
 `venue` and `citekey`, and its heading was the file name; nobody saw it for months because Check 18 only looks at
 `volume` and `pages`. It surfaced while reviewing a linter warning from the sealing tool, which only inserts those
-fields after `venue:`; measuring which fichas could lose them found this one among over a thousand.
+fields after `venue:`; measuring which source notes could lose them found this one among over a thousand.
 
 **Rule.** A `papers/` note, not a stub, with an absent or empty `title` or `venue`. Only those two: `authors`,
 `year` and `citekey` are not watched.

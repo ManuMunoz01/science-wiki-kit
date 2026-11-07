@@ -5,6 +5,14 @@
 > dates and exact counts are left out; the magnitudes that matter are kept. The motive of each lint
 > check lives in `skills/wiki-lint/references/check-origins.md`; this file is about what to do and what
 > not to trust.
+>
+> **Which sections to read first**
+> - Before `wiki-ingest` or `wiki-ingest-book`: sections 1, 2, 3 and 5.
+> - Before `wiki-synthesize`: sections 1, 4 and 6.
+> - Before `wiki-lint`, or when a batch of corrections has just landed: sections 4, 5 and 7.
+>
+> Items tagged **[Windows]** apply only to that platform. Items that mention a reference manager are about
+> Zotero-style tools in general; substitute your own. "Source note" means the note of one paper or book chapter.
 
 ## 1. Ground rules (the epistemics behind everything else)
 
@@ -27,7 +35,7 @@
   artefact, not the changelog.
 - **A seal certifies only what it enumerates.** "Checked all rows of the results table" says another table
   (reliability, say) was never read. When a figure you need is missing, read WHAT the seal says it covered,
-  not just whether it says clean. And a "not found in the ficha" points at the ficha before it points at the
+  not just whether it says clean. And a "not found in the source note" points at the source note before it points at the
   note: with the grep done right, the figure was in the fulltext both times it was checked.
 - **A correct figure can still be the wrong claim.** Three families defeat every value-based check: the
   right number bound to the wrong variable, the right number from the wrong object (a result of study Y cited
@@ -75,7 +83,7 @@
   identifiers (which no numeric screen can see). When a value looks odd or contradicts the sentence next to it,
   **render the page before reasoning about it**. Prefer the publisher XML (PMC JATS, `tools/pmc_tables.py`)
   for tables when the paper has a PMCID. If you only have extracted text, do not propagate the row.
-- Write extracted text to a path the file-reading tool can open: in Git Bash on Windows, `/tmp` is not a path
+- **[Windows]** Write extracted text to a path the file-reading tool can open: in Git Bash on Windows, `/tmp` is not a path
   Windows tools can see. Use the project temp folder.
 - If the reference manager's fulltext exceeds the inline limit it is persisted to a file: read that path, do
   not re-fetch.
@@ -84,7 +92,7 @@
 
 An A-to-Z audit of a 1,300-note wiki found at least one defect in 20% of the notes (274 fixes). They are not
 random noise; they are systematic modes, each with a defence. The first seven are caught by the Source-Fidelity
-Gate (`wiki-ingest`, step 2.5); the rest survive a grep of the number.
+Rules (`docs/WIKI_SCHEMA.md`, applied by `wiki-ingest`); the rest survive a grep of the number.
 
 1. **Pre-fulltext notes: fabricated quotes AND numbers.** Ingest from an abstract or from memory produced
    "quotes" that are paraphrases and effect sizes that are not in the paper (one set was propagated to a dozen
@@ -129,7 +137,7 @@ Gate (`wiki-ingest`, step 2.5); the rest survive a grep of the number.
 14. **The right figure of the wrong object.** Covered in section 1: nothing false to grep; the study measured a
     different model than the note is about. Applies most to method notes where several models share a chapter.
 
-Related: **when the studies included in a review do not match the wiki's fichas for those studies, check the
+Related: **when the studies included in a review do not match the wiki's source notes for those studies, check the
 review's bibliography against Crossref (DOI and title) before propagating any of its figures**, with positive
 controls from your own wiki, and record what you measured without attributing a cause.
 
@@ -138,16 +146,16 @@ controls from your own wiki, and record what you measured without attributing a 
 The common root: **every file stays coherent with itself, and the contradiction exists only between files**, so
 no per-file check sees it.
 
-- **A corrected ficha does not correct the notes that cite it.** After any ficha correction, sweep the notes
+- **A corrected source note does not correct the notes that cite it.** After any source note correction, sweep the notes
   that cite it. A correction reaches more notes than the report names (a sign thought to be in one note was in
   four): count with `grep -rln` before deciding the scope, and write the number in the seal.
 - **A partial propagation is as invisible as none, and misleads more.** A seal listing the places it propagated
   to looks closed; the unlisted one kept the old value for weeks.
-- **Grep the value-and-label pair, not just the value.** When a ficha adjudicates an internal contradiction of
+- **Grep the value-and-label pair, not just the value.** When a source note adjudicates an internal contradiction of
   its source in a callout, the rejected version can live on downstream: the number was right everywhere and the
   condition glued to it was wrong. The callout that adjudicates is not propagated.
 - **A sweep navigates by value, so it only reaches defects that have one.** A false sentence, a misplaced bold
-  or a missing row has no value to grep. After correcting a ficha, also look at which notes REPLICATE its
+  or a missing row has no value to grep. After correcting a source note, also look at which notes REPLICATE its
   tables: there the failure is a row that is gone, an emphasis, or a stale summary sentence. A truncated
   replica is not itself a defect (an explicitly labelled selection is fine); an unlabelled one disables
   any audit of the arithmetic derived from it.
@@ -209,7 +217,7 @@ no per-file check sees it.
   the rule (it gives several times too many false positives); use `wiki-lint` Check 26.
 - **Run the lint from the vault root** (or pass `--vault-root`): a tool that resolves the vault relative to the
   current directory silently reports zero notes after a stray `cd`.
-- **Pipelines in Git Bash that start with PowerShell's `*>&1`**: bash expands the `*` as a glob and passes the
+- **[Windows] Pipelines in Git Bash that start with PowerShell's `*>&1`**: bash expands the `*` as a glob and passes the
   directory listing as arguments. Put the whole pipeline inside one quoted `powershell -Command "..."`.
 
 ## 6. The synthesis layer
@@ -221,26 +229,26 @@ no per-file check sees it.
   their claims in other sections. Read the note's section list before looking for a heading. Only an EMPTY
   store is an anomaly.
 - **The highest-yield item in a subagent brief is the seal, treated as a checklist.** For each cited work,
-  grep its `source_verification` for corrections and, for each one, check the note AND the ficha itself
+  grep its `source_verification` for corrections and, for each one, check the note AND the source note itself
   (section 1). When a seal says it corrected "a range", check which table row the range belongs to before
   deciding the note's version is wrong: two different rows of one table can both be right.
 - **The gate (V1) checks the NOTE, not the ENTRY.** A source cited anywhere in the body satisfies V1 for every
   entry of the block, so an entry can hang a figure from the wrong source among its own note's sources, and a
   mis-attributed figure that is also anchored passes all five checks. The PDF check is the only defence.
   Sibling pattern: soldering two independent proportions from one source into a subgroup nobody reports.
-- **Tally per ficha, not per work.** In `(N src: ...)`, N counts distinct `[[wikilinks]]`; five chapters of one
+- **Tally per source note, not per work.** In `(N src: ...)`, N counts distinct `[[wikilinks]]`; five chapters of one
   book are five sources there and ONE work for Check 15. Both are right because they answer different
   questions (how well the sentence is backed versus whether the note qualifies). A type with no number means
   "all of them". The breakdown may name only the dominant design (a subset is not a defect); naming a design the
   entry does not cite is.
 - **`last_verified` is written together with `source_verification`**, including for hand-written partial seals
-  and for any ficha filled or corrected against the fulltext: filling a ficha is a verification. Check 15's
+  and for any source note filled or corrected against the fulltext: filling a source note is a verification. Check 15's
   `stale` reads only `last_verified`; without it a corrected source never re-flags the blocks citing it.
   `synth_write.py` stamps `last_verified` on the note when it writes the block.
 - **Check 15 `stale` is blind to equal dates, permanently** (it compares by day with a strict `>`): a block
   dated the day a work was ingested is not flagged even if it does not incorporate that work. List those notes
   by hand after an ingest.
-- **With several candidate PDFs, check the one the ficha's seal names**, comparing version and page count: an
+- **With several candidate PDFs, check the one the source note's seal names**, comparing version and page count: an
   accepted manuscript can lack what the published version carries and produce false defects.
 - **Do not read a Check 13 delta, and do not quote an absolute floor of Check 14 or 25.** Only the delta is
   transferable for those, and Check 13 is a large slow-moving INFO backlog.
@@ -271,6 +279,6 @@ no per-file check sees it.
   link is not enough: look at the item's children, because a linked file and a duplicate imported attachment
   can coexist.
 - **Take dates from the system clock** (`date +%F`), never estimate them.
-- **Propose subagents before spawning them** (what they do, how many, which model) and wait for the go-ahead;
-  a subagent starts cold and re-derives context the main thread already has. Once approved, do not redo its
-  work.
+- **Delegate to subagents deliberately.** Decide what each does and how many (a subagent starts cold and
+  re-derives context the main thread already has), let the human approve the plan, and once a subagent has
+  reported, do not redo its work.

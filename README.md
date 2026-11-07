@@ -28,6 +28,24 @@ vocabularies and language are configuration, and sport science is only one worke
 
 Works on Windows, macOS and Linux. Python 3.9 or newer, no third-party dependencies.
 
+**Vocabulary used throughout**
+- **Source note**: the note of one paper or book chapter (`papers/`, `books/`), as opposed to concept and method notes.
+- **Seal**: a dated entry in a source note's `source_verification` field recording what was checked against the PDF
+  (`docs/SEALS.md`).
+- **State of Knowledge**: the block at the top of a mature concept or method note that says what is resolved,
+  contested, superseded or emerging.
+
+## Requirements
+
+- **An AI coding agent that can read files, edit files and run scripts.** The skills were written and tested with
+  [Claude Code](https://claude.com/claude-code). See *Other agents* below for everything else.
+- **Python 3.9+** for the linter and tools.
+- **A PDF text extractor**: `pdftotext` (poppler) is the default; `docling` gives better tables. Optional but
+  recommended: without fulltext the skills refuse to write quotes or numbers.
+- **Optional integrations**: a reference manager (Zotero through an MCP server is the supported adapter) and a
+  PubMed MCP server. Neither is required: you can point the agent at a local PDF or a DOI.
+- **Obsidian is optional.** The wiki is plain markdown with `[[wikilinks]]`; Obsidian only gives you a nicer reader.
+
 ## Install in five steps
 
 1. **Get the kit**: `git clone https://github.com/MinorBaek/science-wiki-kit` and `cd science-wiki-kit`.
@@ -42,8 +60,33 @@ Works on Windows, macOS and Linux. Python 3.9 or newer, no third-party dependenc
    every counter is 0. To test the kit itself: `python skills/wiki-lint/scripts/lint.py --self-test`.
 5. **Ingest a first paper**: open your agent in the wiki folder and say `/wiki-ingest <DOI, citekey or PDF>`.
 
-Other agents: the skills are plain markdown plus Python scripts, so they work wherever your agent can read a
-`SKILL.md` and run a script. The installer's linking step targets Claude Code's skills folder.
+## Other agents
+
+Only Claude Code has been tested. The skills are plain markdown plus stdlib Python, so the parts that do not depend
+on Claude Code's skill loader work anywhere:
+
+- **Scripts** (`lint.py`, `fix.py`, `seal.py`, `synth_validate.py`, `build_vocabulary.py`, ...) are ordinary command
+  line tools; run them from your wiki folder.
+- **Instructions**: each `skills/<name>/SKILL.md` (plus its `references/`) is a self-contained procedure. For an
+  agent without a skills folder, point its project instructions file (`AGENTS.md`, `GEMINI.md`, `.cursorrules`, ...)
+  at the skill you want and tell it to follow that file step by step.
+- **Skill folder elsewhere**: `CLAUDE_SKILLS_DIR=/path ./install.sh` links the skills into any folder.
+- **Slash commands** (`/wiki-ingest`) exist only where the agent loads skills; elsewhere say "follow
+  `skills/wiki-ingest/SKILL.md` for this paper".
+- The skills assume the agent reads files with its own tools. Where a step names an MCP server (Zotero, PubMed),
+  substitute whatever your agent has, or a local PDF.
+
+If you adapt it to another agent, a pull request with the notes is welcome.
+
+## Status
+
+Version 0.1. The linter is a port of an engine that ran for months on a wiki of a few thousand notes; the port was
+checked against the original on that wiki (matching results; two documented differences, a deliberately deterministic Check 13 and an explained Check 32 delta). Unit tests and a
+synthetic-fixture self-test run in CI on Windows, macOS and Linux. The skill instructions are the most battle-tested
+part; the installers and the non-Claude paths are the least. Expect rough edges and open an issue.
+
+Be aware that ingesting a paper sends its text to your AI provider. Check that your use is compatible with the
+publisher's terms and your institution's policy, and do not commit PDFs to a public repository.
 
 ## The flow
 

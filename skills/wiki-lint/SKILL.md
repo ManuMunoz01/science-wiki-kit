@@ -79,7 +79,7 @@ tests/fixtures/lint/ # synthetic mini-wiki exercising every check + expected_cou
 | 29 | Out-of-vault slug link | A wikilink to a slug in `memory_slug_prefixes`, vault-wide. **Disabled unless the list is non-empty** | `memory_slug_exempt_files` |
 | 30 | Vocabulary sync | `_VOCABULARY.md` missing a live concept/method (`missing`) or holding a row for a note that is gone (`ghost`). INFO; remedy `/vocabulary-update` | none |
 | 31 | Seal without text | A seal of at most 60 chars with no descriptive verification text in any channel. INFO | none |
-| 32 | Pair without a seal | A (note, work cited in its State-of-Knowledge block) pair whose ficha seal does not name the note. **Blocking**; declared debt in `seal_debt_file` is reported but not counted | declared debt |
+| 32 | Pair without a seal | A (note, work cited in its State-of-Knowledge block) pair whose source note seal does not name the note. **Blocking**; declared debt in `seal_debt_file` is reported but not counted | declared debt |
 | 33 | No title or venue | A paper with an empty `title` or `venue` | stub |
 
 ## Invocation

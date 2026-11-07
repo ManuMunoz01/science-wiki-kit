@@ -401,7 +401,7 @@ def check31(ctx):
 # ---------------------------------------------------------------- 32 / 33
 
 def check32(ctx):
-    """Pair (note, work cited in its `## State of Knowledge` block) whose ficha seal does not name the
+    """Pair (note, work cited in its `## State of Knowledge` block) whose source-note seal does not name the
     note. Blocking: it must read 0 before a synthesis is closed. Declared debt (`seal_debt_file`, default
     `_lint/seal_debt.txt` in the wiki; one `Note Work cause` per line) does not count as a defect, but it
     is always reported and it is NOT verification. A debt line whose pair is now sealed or gone is
@@ -417,7 +417,7 @@ def check32(ctx):
 
 
 def check33(ctx):
-    """Paper without title or venue: a ficha could reach `final` with no bibliographic identity at all,
+    """Paper without title or venue: a source note could reach `final` with no bibliographic identity at all,
     because Check 18 only looks at `volume` and `pages`. Stubs are exempt."""
     out = []
     for n in ctx.folder_notes(ctx.papers):

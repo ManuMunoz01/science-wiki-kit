@@ -14,13 +14,13 @@ Extends the one-note interactive workflow. **Same synthesis contract** (`SYNTHES
 3. **Gate and write** per returned note:
    a. Write the returned block to a temp file and run `python skills/wiki-synthesize/scripts/synth_validate.py --note concepts/<Name> --block <tmp>`.
    a2. **Evidence check (layer 2):** `SYNTHESIS-WORKFLOW.md` steps 5b and 5c on every entry of the block, with a checking subagent per sub-batch once the user has OK'd it. The drafting subagent does not check its own block. Every defect is re-read in the PDF.
-   b. If `RESULT: CLEAN`, the self-report says `escalate: no` **and the check found no defect**: **WRITE** with `synth_write.py` (insert after `## Definition`; absorb Controversies after verifying every bullet mapped), seal the fichas (`tools/seal.py`), and append `## [YYYY-MM-DD] synthesize | {Note}` to `log.md`.
+   b. If `RESULT: CLEAN`, the self-report says `escalate: no` **and the check found no defect**: **WRITE** with `synth_write.py` (insert after `## Definition`; absorb Controversies after verifying every bullet mapped), seal the source notes (`tools/seal.py`), and append `## [YYYY-MM-DD] synthesize | {Note}` to `log.md`.
    c. Otherwise **QUEUE** (do not write): record the note, the failing check (V1 to V5), the escalation trigger (T1 to T4) and/or the confirmed defects, with a one-line reason.
 4. **Post-wave verification.** Run `synth_validate.py --sweep` (the whole wiki, not only this wave's notes) and `wiki-lint`. Confirm the link checks are stable and Check 15 `missing` dropped by the written count. Spot-check one or two written blocks by reading them against their findings store.
-5. **Stale close-out (a fixed step).** Every ficha the wave re-dated (a seal, a ficha completed or corrected against the PDF) re-flags, through its `last_verified`, every block that cites it, so a wave that closes without this step leaves Check 15 `stale` growing. A block reviewed against its re-dated ficha **raises its `updated`**, because the ficha's new content comes from a more reliable extraction.
-   a. List the note-ficha pairs whose ficha was re-dated in this wave and classify each ficha by reading its WHOLE `source_verification` (a "Corrected" marker comes BEFORE the date).
-   b. Triage only the pairs whose ficha was re-dated **with a correction**. Pure fills and clean seals get their `updated` raised without reading.
-   c. For each correction, search the OLD form wiki-wide: in the citing notes, **inside the correcting ficha itself** (the old form survives most often in the very file that declares the fix), and in MOCs and indexes. **Matching the ficha is not the same as clean**: a phrase can agree with a ficha that is itself wrong.
+5. **Stale close-out (a fixed step).** Every source note the wave re-dated (a seal, a source note completed or corrected against the PDF) re-flags, through its `last_verified`, every block that cites it, so a wave that closes without this step leaves Check 15 `stale` growing. A block reviewed against its re-dated source note **raises its `updated`**, because the source note's new content comes from a more reliable extraction.
+   a. List the note-source note pairs whose source note was re-dated in this wave and classify each source note by reading its WHOLE `source_verification` (a "Corrected" marker comes BEFORE the date).
+   b. Triage only the pairs whose source note was re-dated **with a correction**. Pure fills and clean seals get their `updated` raised without reading.
+   c. For each correction, search the OLD form wiki-wide: in the citing notes, **inside the correcting source note itself** (the old form survives most often in the very file that declares the fix), and in MOCs and indexes. **Matching the source note is not the same as clean**: a phrase can agree with a source note that is itself wrong.
    d. Raise the dates (note `updated` and, for notes you read or corrected, `last_verified`; never lower a date, never add a field a note lacks).
    e. Re-measure Check 15: `stale` must close at 0.
 6. **Commit the wave** (`docs(wiki): synthesize batch, wave N (M notes)`).
@@ -28,13 +28,13 @@ Extends the one-note interactive workflow. **Same synthesis contract** (`SYNTHES
 
 ## Optional screens
 
-A wave tends to surface old debt, not subagent invention: figures already in the note body get promoted into view by the new block. **A screen hit is a reading to open, not a verdict**: a figure can be (a) false, (b) true with the ficha incomplete, or (c) true but used to say something the source does not say. Only the fulltext separates the three.
+A wave tends to surface old debt, not subagent invention: figures already in the note body get promoted into view by the new block. **A screen hit is a reading to open, not a verdict**: a figure can be (a) false, (b) true with the source note incomplete, or (c) true but used to say something the source does not say. Only the fulltext separates the three.
 
 The kit ships the gate and the seal check (`wiki-lint` Check 32). Other cross-file screens are worth adding as your wiki grows, and each one catches a class that no per-file check can see:
 
 | screen | what it catches |
 |---|---|
-| orphan figure | block figures with no backing in the cited paper's ficha |
+| orphan figure | block figures with no backing in the cited paper's source note |
 | entity | entities the block names that no cited work names |
 | corrected value | a correction propagated to some notes but not all |
 | mutable state | a state written into another note's prose (`pending ingest` on a chapter already ingested, `draft` on a note already `final`) |
@@ -61,7 +61,7 @@ The kit ships the gate and the seal check (`wiki-lint` Check 32). Other cross-fi
 > 6) SIDE-FINDINGS: anything wrong you noticed that is NOT a trigger, one line each, or `none`. **Do not fix any of it and do not escalate on it**: synthesize from the store as written and list it here. Treat each cited work's seal as a checklist, not as prose:
 >    (i) grep each cited work's `source_verification` for `corrected` / `retracted` / `refined` and, for each correction it announces, check whether **the NOTE carries the corrected version** (a seal can name the very note it wants updated and be ignored, or record having propagated a fix to ONE of the notes that cite it);
 >    (ii) **does the FICHA ITSELF carry the correction? A declared correction is not an applied one.** Check the artefact, not the changelog;
->    (iii) when a ficha says it corrected "a range", check WHICH ROW the range belongs to before calling the note's version wrong (two different rows of the same table can both be right);
+>    (iii) when a source note says it corrected "a range", check WHICH ROW the range belongs to before calling the note's version wrong (two different rows of the same table can both be right);
 >    (iv) **if the note REPLICATES a table from a cited work, compare the two tables** and report rows dropped, columns dropped and which cell each version emphasises. This class is invisible to screens, because the defect is an absence. Truncation is not itself a defect (an explicitly labelled selection is fine): report it and let the orchestrator adjudicate;
 >    (v) **report every SUPERLATIVE whose comparison set is the wiki's own collection** ("the highest ICC in the cluster", "the only trial in the wiki that..."). Nothing re-checks them when a new work is ingested, and the usual origin is scope creep: the paper's own Results say "ranged from X to Y", and the ingest widens "highest in this study" to "highest in the series". Say which set it was true of; do not fix it.
 

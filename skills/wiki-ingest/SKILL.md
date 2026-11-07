@@ -118,7 +118,7 @@ For every finding that will reach a note in `concepts/` or `methods/` (including
 ### 5c. Check the table before writing
 Read every row against its quote before any note is touched. If a subagent extracted the paper, re-read every row in the PDF, not only rows with a figure or sign. Defect classes to judge by: inference beyond the source, attribution error, wrong number, lost hedge, unsupported superlative, wrong entity, invented detail, omission.
 
-- A row whose quote does not support it is **reworded down to what the quote says, or dropped**. The ficha is not evidence: it comes from the same extraction.
+- A row whose quote does not support it is **reworded down to what the quote says, or dropped**. The source note is not evidence: it comes from the same extraction.
 - **Keep the source's hedge** ("may", "it seems", "could be due to") and its population.
 - **The wiki's own reading is labelled as the wiki's**; never write it as the source's act or conclusion.
 
@@ -141,7 +141,7 @@ Fill `concepts_touched` with the concept and method notes created or updated.
 
 **Verify-after-write**: every name in `concepts_touched` MUST resolve to an existing note in `concepts/` or `methods/`. After writing, re-check each basename. If one does not resolve, either create the missing stub now or remove the name. Dangling references become silent lint drift.
 
-### 8b. Seal the ficha
+### 8b. Seal the source note
 Record the verification in the paper note's `source_verification` (one line: reference-manager key, date, what was checked against what). Then seal each (note, work) pair that received a finding and whose rows passed 5c: write a small JSON spec and run `python tools/seal.py spec.json --dry-run`, then without `--dry-run` (format and rules in `docs/SEALS.md`). A work checked only against its abstract gets no seal. Take dates from the system clock (`date +%F`), never estimate them.
 
 ### 9. Closeout
@@ -160,7 +160,7 @@ Three edits, then the report. Use `field_titlecase_map` from `wiki.config.json` 
   ```
 - **Rename reconciliation** (only if this ingest renamed a pre-existing stub): (1) search the wiki for `[[OldName]]` (typically book chapters), change each to `[[NewName]]` and drop any "pending ingest" marker; (2) delete the orphan stub; (3) re-run `wiki-lint` and confirm broken-link and index-coverage checks are clean.
 - **Check 12 self-heal** (bidirectional `concepts_touched` and target-note backlinks): steps 6 and 7 already write the backlink, so a correct ingest is symmetric. As a safety net, run the `wiki-lint` Check 12 autofix and confirm the follow-up lint reports `Check 12: 0`. This is a workflow step, not a hook: Claude Code hooks fire on tool events, never on skill completion.
-- **Check 15 blind spot**: its `stale` test compares dates by day with a strict `>`, so a touched note whose `## State of Knowledge` carries the same date as this ficha's `last_verified` stays silent. List those notes by hand in the report as `wiki-synthesize` candidates.
+- **Check 15 blind spot**: its `stale` test compares dates by day with a strict `>`, so a touched note whose `## State of Knowledge` carries the same date as this source note's `last_verified` stays silent. List those notes by hand in the report as `wiki-synthesize` candidates.
 - **Report**: paper note (path, created or updated), concepts and methods (created versus updated), rename reconciliation (if any), evidence table (rows checked, rows reworded or dropped in 5c), seals written, and warnings (DOI not found, reference manager unavailable, borderline research line).
 
 ## Safety Rules
@@ -168,7 +168,7 @@ Three edits, then the report. Use `field_titlecase_map` from `wiki.config.json` 
 - **Never invent** titles, DOIs, authors, years or **citekeys**. If metadata is unavailable, flag it. The citekey is not derivable from author + year: copy it verbatim from the reference manager's `Citation Key:` line, and leave the field empty if the paper is not in the library. A plausible-looking invented key cannot be told from a real one later.
 - **One canonical note per paper.** Confirm existence with a content search or `test -f`, not a glob alone; if it exists, update in place.
 - **Claims need sources.** Every finding added to a concept note cites the paper note via `[[wikilink]]`.
-- **No propagation without a checked quote** (steps 5b and 5c). A fulltext seal on a ficha does not protect what another note says about that work; in a past audit of this method roughly 4 in 10 sampled note-to-ficha pairs had a defect, some substantive, and some errors sat in the ficha itself.
+- **No propagation without a checked quote** (steps 5b and 5c). A fulltext seal on a source note does not protect what another note says about that work; in a past audit of this method roughly 4 in 10 sampled note-to-source note pairs had a defect, some substantive, and some errors sat in the source note itself.
 - **No placeholder concept notes.** Create concept notes only under `references/CONCEPT-PROPAGATION.md`.
 - **Do not delete** existing findings in concept notes. Append only (or move to Controversies).
 - **Write notes in the wiki language** (`note_language` in the config, default English), whatever the language of the source. This covers prose, headings, callouts and verification seals. Deliberate exceptions: `aliases:` (the bilingual synonym bridge; `_VOCABULARY.md` is generated from it), verbatim quotes from sources in another language (copied as printed, never translated), and `log.md` (operational prose, outside lint scope). The rule binds hardest where the note stops quoting and starts judging, because that is the writer's own voice and slips into the writer's native language: relevance-gloss labels under "Relevance to My Research", self-correction asides, and code-switched extraction (an English sentence with foreign verbs spliced in). Lint Check 14 is the radar for the rest, but it cannot see words with no accent or stopword, so the rule written here is the only defence.

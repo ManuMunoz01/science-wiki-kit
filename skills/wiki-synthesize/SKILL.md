@@ -17,7 +17,7 @@ The "surgeon" of the living-synthesis layer. It reorganises a note's already-ver
 
 ## Role and boundaries
 
-**Does:** read a note's findings store, weigh by `evidence_level` plus inline measurement, draft the block, check each new or changed entry against the PDF, present for ratification, then write (insert the block and absorb `## Controversies or Gaps`), seal the fichas, run the gate, log.
+**Does:** read a note's findings store, weigh by `evidence_level` plus inline measurement, draft the block, check each new or changed entry against the PDF, present for ratification, then write (insert the block and absorb `## Controversies or Gaps`), seal the source notes, run the gate, log.
 
 **Does NOT:** invent numbers or claims, create `debates/` notes (flag candidates in the report instead), touch notes below the synthesis threshold, or write anything before the user ratifies.
 
@@ -31,12 +31,12 @@ Paths come from `wiki.config.json`. Notes: `<wiki_root>/concepts/`, `methods/`, 
 
 ## Workflow
 
-Full procedure in `references/SYNTHESIS-WORKFLOW.md`. Summary: read contracts, resolve the note (exact `test -f`/content search, never a glob alone), threshold gate, pre-fulltext guard, cluster findings into sub-questions, **check new or changed entries against the PDF**, propose the block in chat with quotes and pages, ratify, write (`scripts/synth_write.py`: insert after `## Definition`, absorb Controversies, stamp), **seal the fichas** (`tools/seal.py`), re-synthesis diff if a block already exists, then log, re-run the gate and re-run Check 15.
+Full procedure in `references/SYNTHESIS-WORKFLOW.md`. Summary: read contracts, resolve the note (exact `test -f`/content search, never a glob alone), threshold gate, pre-fulltext guard, cluster findings into sub-questions, **check new or changed entries against the PDF**, propose the block in chat with quotes and pages, ratify, write (`scripts/synth_write.py`: insert after `## Definition`, absorb Controversies, stamp), **seal the source notes** (`tools/seal.py`), re-synthesis diff if a block already exists, then log, re-run the gate and re-run Check 15.
 
 ## Safety rules
 
-- **Never invent.** Every entry traces to an existing finding; no new numbers from memory or from the ficha.
-- **Evidence check, layer 2: no new or changed entry without a PDF check.** Up to 3 distinct works, the orchestrator checks them; more, it proposes a subagent with the brief restricted to the diff and waits for the user's OK. Every defect is re-read in the PDF before anything changes, and the fichas are sealed with the note's name. A fulltext seal on a ficha does not protect what a note says about that work: in a past audit of this method, roughly 4 in 10 sampled note-to-ficha pairs had a defect.
+- **Never invent.** Every entry traces to an existing finding; no new numbers from memory or from the source note.
+- **Evidence check, layer 2: no new or changed entry without a PDF check.** Up to 3 distinct works, the orchestrator checks them; more, it proposes a subagent with the brief restricted to the diff and waits for the user's OK. Every defect is re-read in the PDF before anything changes, and the source notes are sealed with the note's name. A fulltext seal on a source note does not protect what a note says about that work: in a past audit of this method, roughly 4 in 10 sampled note-to-source note pairs had a defect.
 - **Human in the loop.** Interactive modes: propose, ratify, write (no write before the user's OK). Batch mode: `synth_validate.py` gates every write and the 4 triggers escalate; never fully autonomous.
 - **Zero information loss.** Every `## Controversies or Gaps` bullet must map to a block entry before that section is absorbed.
 - **Pre-fulltext guard.** A cited **paper** in the pre-fulltext cohort (a paper note dated before `synthesis.prefulltext_cutoff` and not fulltext-sealed, or sealed only at abstract level) lowers the affected entry's confidence and gets an inline `⚠` flag; pause the entry only if the number it hinges on is itself unverifiable. Book chapters are trusted anchors **unless their own `status:` is `draft` or `stub`**, which is the note stating it was ingested without the fulltext (a fulltext-level `source_verification` overrides the status). `synth_validate.py` V4 enforces this mechanically.

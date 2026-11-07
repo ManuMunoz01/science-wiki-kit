@@ -1,6 +1,6 @@
 # Seals
 
-A **seal** is the audit trail of "this note's claims about this work were checked against the PDF". It is one segment appended to the `source_verification` frontmatter line of the cited work's note (its *ficha*):
+A **seal** is the audit trail of "this note's claims about this work were checked against the PDF". It is one segment appended to the `source_verification` frontmatter line of the cited work's note (its *source note*):
 
 ```yaml
 source_verification: "fulltext, tables checked [2026-11-06, synth Example_Concept, Example_Concept] Checked against PDF: what the block attributes to this work holds up."
@@ -33,7 +33,7 @@ python tools/seal.py seals.json
  "seals": [["Example_Concept", "Smith_2020_SR", "what the block attributes to this work holds up."]]}
 ```
 
-The tool appends to the end of the existing value (an unquoted single-line value is quoted on the way in), sets `last_verified`, preserves the file's line endings, and **writes nothing at all** if any ficha is missing, if its `source_verification` is a block scalar or a list, or if a text contains a double quote.
+The tool appends to the end of the existing value (an unquoted single-line value is quoted on the way in), sets `last_verified`, preserves the file's line endings, and **writes nothing at all** if any source note is missing, if its `source_verification` is a block scalar or a list, or if a text contains a double quote.
 
 ## Reading seals (what the checks look for)
 
@@ -49,7 +49,7 @@ Pairs without a seal are either **declared debt** (listed in `_lint/seal_debt.tx
 
 A seal says the check was done for that pair; it does not say which entries it covered. An entry rewritten with the same works passes the pair check unchecked, so the PDF check (`wiki-synthesize`, steps 5b and 5c) is the only defence, including for manual edits.
 
-A fulltext seal on a ficha also does not protect what *another note* says about that work: checking the ficha against the PDF and checking a note's claim against the ficha are two different checks.
+A fulltext seal on a source note also does not protect what *another note* says about that work: checking the source note against the PDF and checking a note's claim against the source note are two different checks.
 
 ## Seal levels
 

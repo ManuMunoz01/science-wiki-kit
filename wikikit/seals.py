@@ -1,7 +1,7 @@
 """Seals: the audit trail of "this note's claims about this work were checked against the PDF".
 
 A seal is one segment appended to the `source_verification` frontmatter line of the cited work's
-note (its "ficha"):
+note (its source note):
 
     [2026-11-06, synth Example_Concept, Example_Concept] Checked against PDF: <text>
 
@@ -34,9 +34,9 @@ def format_segment(date, tag, note, text):
 
 
 def append_seals(wiki, cfg, seals, date, tag, dry_run=False):
-    """Append seal segments to the fichas and set their `last_verified`.
+    """Append seal segments to the source notes and set their `last_verified`.
 
-    `seals` = [(note, work, text), ...]. Aborts without writing ANYTHING when a ficha does not exist,
+    `seals` = [(note, work, text), ...]. Aborts without writing ANYTHING when a source note does not exist,
     its `source_verification` is not a double-quoted single line, or a text contains a double quote.
     Preserves each file's EOL. Returns [(path, eol, n_segments)].
     """
@@ -50,13 +50,13 @@ def append_seals(wiki, cfg, seals, date, tag, dry_run=False):
     for work, parts in segs.items():
         path = vault.find_note(wiki, [cfg["papers_folder"], cfg["books_folder"]], work)
         if path is None:
-            raise SealError("no ficha for %s" % work)
+            raise SealError("no source note for %s" % work)
         raw = read_text(path)
         eol = detect_eol(raw)
         t = to_lf(raw)
         head = re.match(r"^---\n.*?\n---\n", t, re.S)
         if not head:
-            raise SealError("no frontmatter in the ficha of %s" % work)
+            raise SealError("no frontmatter in the source note of %s" % work)
         fm = head.group(0)
         if _SV_LINE.search(fm):
             fm = _SV_LINE.sub(lambda mm: mm.group(1) + mm.group(2).rstrip() + " " + " ".join(parts) + mm.group(3),
@@ -97,8 +97,8 @@ def names_note(seal_value, note):
 
 
 def load_pairs(wiki, cfg):
-    """(notes, fichas): notes = {name: [works cited in its block]} for notes WITH a block;
-    fichas = {work: source_verification value}."""
+    """(notes, source_notes): notes = {name: [works cited in its block]} for notes WITH a block;
+    source_notes = {work: source_verification value}."""
     fichas = {}
     for folder in (cfg["papers_folder"], cfg["books_folder"]):
         d = wiki / folder
