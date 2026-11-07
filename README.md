@@ -22,6 +22,7 @@ vocabularies and language are configuration, and sport science is only one worke
 | `skills/vocabulary-update` | Regenerate the synonym vocabulary from note aliases |
 | `tools/` | `seal.py` (record that a claim was checked against a PDF), `pmc_tables.py` (read tables from PMC XML) |
 | `templates/` | paper, concept, method, book, chapter, sub-MOC and synthesis note templates |
+| `examples/worked-example/` | A wiki after one paper was ingested: the result you should expect, lint-clean |
 | `docs/WIKI_SCHEMA.md` | The contract: note types, frontmatter, evidence levels, fidelity rules, synthesis format |
 | `docs/GOTCHAS.md` | Operating lessons: the ways a wiki quietly goes wrong, and what to do about each |
 | `wikikit/` | The shared Python package (standard library only) |
@@ -140,5 +141,7 @@ change in the logic of any check shows up as drift. CI runs both on Windows, mac
 
 Code (`wikikit/`, `tools/`, `skills/**/scripts/`, `tests/`): MIT, see `LICENSE`.
 Documentation, schema, templates, examples and skill instructions: CC BY 4.0, see `LICENSE-DOCS`.
+
+Contributions: see `CONTRIBUTING.md` (how to run the tests and the rule for adding a check).
 
 If you use the kit in published work, a link to this repository is appreciated.
