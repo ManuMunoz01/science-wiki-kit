@@ -20,8 +20,14 @@ if (-not $py) { throw "Python 3.9 or newer is required" }
 if ($LASTEXITCODE -ne 0) { throw "Python 3.9 or newer is required" }
 
 Write-Host "1/3 Python package (optional: skills also work through junctions into this checkout)"
-& $py.Source -m pip install --quiet --user -e $Kit 2>$null
-if ($LASTEXITCODE -eq 0) { Write-Host "    installed wikikit in editable mode" }
+# Windows PowerShell 5.1 turns any stderr line of a native command into a terminating error under
+# "Stop"; relax it just for pip, whose failure is not fatal here.
+$prevEap = $ErrorActionPreference
+$ErrorActionPreference = "Continue"
+& $py.Source -m pip install --quiet --user -e $Kit *> $null
+$pipOk = ($LASTEXITCODE -eq 0)
+$ErrorActionPreference = $prevEap
+if ($pipOk) { Write-Host "    installed wikikit in editable mode" }
 else { Write-Host "    pip install skipped; the skills still find wikikit through the junctions" }
 
 Write-Host "2/3 Skills -> $SkillsDir"
@@ -30,7 +36,8 @@ foreach ($d in Get-ChildItem -Directory (Join-Path $Kit "skills")) {
     $dest = Join-Path $SkillsDir $d.Name
     $item = Get-Item $dest -ErrorAction SilentlyContinue
     if ($item -and $item.LinkType) {
-        Remove-Item $dest -Force
+        # Remove-Item on a junction throws in Windows PowerShell 5.1; this deletes the link only, never the target.
+        [System.IO.Directory]::Delete($dest, $false)
         New-Item -ItemType Junction -Path $dest -Target $d.FullName | Out-Null
         Write-Host "    relinked $($d.Name)"
     } elseif ($item) {
