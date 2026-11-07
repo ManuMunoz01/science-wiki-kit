@@ -14,7 +14,7 @@ Extends the one-note interactive workflow. **Same synthesis contract** (`SYNTHES
 3. **Gate and write** per returned note:
    a. Write the returned block to a temp file and run `python skills/wiki-synthesize/scripts/synth_validate.py --note concepts/<Name> --block <tmp>`.
    a2. **Evidence check (layer 2):** `SYNTHESIS-WORKFLOW.md` steps 5b and 5c on every entry of the block, with a checking subagent per sub-batch once the user has OK'd it. The drafting subagent does not check its own block. Every defect is re-read in the PDF.
-   b. If `RESULT: CLEAN`, the self-report says `escalate: no` **and the check found no defect**: **WRITE** with `synth_write.py` (insert after `## Definition`; absorb Controversies after verifying every bullet mapped), seal the source notes (`tools/seal.py`), and append `## [YYYY-MM-DD] synthesize | {Note}` to `log.md`.
+   b. If `RESULT: CLEAN`, the self-report says `escalate: no` **and the check found no defect**: **WRITE** with `synth_write.py` (insert after `## Definition`; absorb Controversies after verifying every bullet mapped), seal the source notes (`<kit>/tools/seal.py`), and append `## [YYYY-MM-DD] synthesize | {Note}` to `log.md`.
    c. Otherwise **QUEUE** (do not write): record the note, the failing check (V1 to V5), the escalation trigger (T1 to T4) and/or the confirmed defects, with a one-line reason.
 4. **Post-wave verification.** Run `synth_validate.py --sweep` (the whole wiki, not only this wave's notes) and `wiki-lint`. Confirm the link checks are stable and Check 15 `missing` dropped by the written count. Spot-check one or two written blocks by reading them against their findings store.
 5. **Stale close-out (a fixed step).** Every source note the wave re-dated (a seal, a source note completed or corrected against the PDF) re-flags, through its `last_verified`, every block that cites it, so a wave that closes without this step leaves Check 15 `stale` growing. A block reviewed against its re-dated source note **raises its `updated`**, because the source note's new content comes from a more reliable extraction.
@@ -73,7 +73,7 @@ The kit ships the gate and the seal check (`wiki-lint` Check 32). Other cross-fi
 
 ## Verify-on-escalation brief (given verbatim when a genuine T1 or T4 needs fulltext)
 
-When the user chooses "verify" for escalated entries, dispatch verification subagents (at most 5 papers each) with the papers and the EXACT claims or numbers each block entry depends on. They confirm against fulltext and report; sealing goes through `tools/seal.py`.
+When the user chooses "verify" for escalated entries, dispatch verification subagents (at most 5 papers each) with the papers and the EXACT claims or numbers each block entry depends on. They confirm against fulltext and report; sealing goes through `<kit>/tools/seal.py`.
 
 > You verify specific claims for the listed papers against their ACTUAL fulltext. Process papers ONE AT A TIME (reference-manager MCP calls can time out under parallel use). For EACH paper:
 > 1. Read `<wiki_root>/papers/<citekey>.md` for its DOI and title.
@@ -81,7 +81,7 @@ When the user chooses "verify" for escalated entries, dispatch verification suba
 > 3. Verify each target claim: ✅ CONFIRMED (verbatim or number matches) / ⚠ PARTIAL / ❌ CONTRADICTED (give the correct value).
 > RETURN: (1) ACQUISITION, per paper, the route used or FAILED; (2) VERIFICATION TABLE, per paper, each claim with its verdict and the verbatim quote or number; (3) DISCREPANCIES, every ❌ or ⚠ the orchestrator must reflect in the block (re-attribute or drop the affected clause), or "none". Do not edit any note.
 
-**Orchestrator, after verification returns:** (a) seal the confirmed pairs with `tools/seal.py`; (b) remove `⚠` and raise confidence on the now-verified entries; (c) apply every DISCREPANCY: drop or re-attribute the unsupported clause to its true source (the note body usually attributes it correctly and the block over-attributed it, as in the split-attribution pattern where one finding is credited to the wrong author of a pair).
+**Orchestrator, after verification returns:** (a) seal the confirmed pairs with `<kit>/tools/seal.py`; (b) remove `⚠` and raise confidence on the now-verified entries; (c) apply every DISCREPANCY: drop or re-attribute the unsupported clause to its true source (the note body usually attributes it correctly and the block over-attributed it, as in the split-attribution pattern where one finding is credited to the wrong author of a pair).
 
 ## What the validator checks (the write gate)
 

@@ -2,7 +2,7 @@
 tags: [book-chapter, fixture]
 date: 2024-01-15
 status: reviewed
-project: Investigacion
+project: fixture
 type: book-chapter
 title: "Chapter one"
 book: "[[Fixture_Book]]"

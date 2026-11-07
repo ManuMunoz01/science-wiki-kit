@@ -2,7 +2,7 @@
 tags: [paper, fixture]
 date: 2026-07-01
 status: stub
-project: Investigacion
+project: fixture
 type: paper
 title: "Fixture stub without venue"
 authors: [Test S]

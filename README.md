@@ -35,6 +35,9 @@ Works on Windows, macOS and Linux. Python 3.9 or newer, no third-party dependenc
 - **State of Knowledge**: the block at the top of a mature concept or method note that says what is resolved,
   contested, superseded or emerging.
 
+`<kit>` in the docs is the folder of this checkout. The installer records it as `kit_dir` in your
+`wiki.config.json`, so an agent working in your wiki can find `<kit>/tools/`.
+
 ## Requirements
 
 - **An AI coding agent that can read files, edit files and run scripts.** The skills were written and tested with

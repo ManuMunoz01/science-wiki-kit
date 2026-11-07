@@ -2,7 +2,7 @@
 tags: [methodology, fixture]
 date: 2024-01-15
 status: final
-project: Investigacion
+project: fixture
 type: metodologia
 field: "fixture"
 subfield: "fixture-sub"

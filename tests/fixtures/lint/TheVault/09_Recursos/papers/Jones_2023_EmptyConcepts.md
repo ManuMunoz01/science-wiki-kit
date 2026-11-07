@@ -2,7 +2,7 @@
 tags: [paper, fixture]
 date: 2023-06-01
 status: read
-project: Investigacion
+project: fixture
 type: paper
 title: "Paper with empty concepts_touched"
 authors: [Jones K]

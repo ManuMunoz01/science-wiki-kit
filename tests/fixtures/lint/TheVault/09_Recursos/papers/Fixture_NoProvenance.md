@@ -2,7 +2,7 @@
 tags: [paper, fixture]
 date: 2026-04-10
 status: read
-project: Investigacion
+project: fixture
 type: paper
 title: ""
 authors: [Test A]

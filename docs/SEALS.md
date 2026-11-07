@@ -24,8 +24,8 @@ There is **one segment per (note, work) pair**: the note is the concept or metho
 ## Writing seals
 
 ```bash
-python tools/seal.py seals.json --dry-run
-python tools/seal.py seals.json
+python <kit>/tools/seal.py seals.json --dry-run
+python <kit>/tools/seal.py seals.json
 ```
 
 ```json

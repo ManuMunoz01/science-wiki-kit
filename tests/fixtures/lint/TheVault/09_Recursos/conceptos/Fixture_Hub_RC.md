@@ -2,7 +2,7 @@
 tags: [concept, fixture]
 date: 2024-01-15
 status: final
-project: Investigacion
+project: fixture
 type: concepto
 field: "fixture"
 subfield: "fixture-sub"

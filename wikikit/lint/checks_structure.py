@@ -234,11 +234,13 @@ def check11(ctx):
 
         seen_sub = set()
         in_cov = False
+        has_cov = False
         for ln in _index_lines(ctx):
             t = ln.lstrip()
             h = re.match(r"^##\s+(.+)$", t)
             if h:
                 in_cov = bool(re.match(r"^Coverage by Field", h.group(1).strip(), re.I))
+                has_cov = has_cov or in_cov
                 continue
             if not in_cov or not t.startswith("|"):
                 continue
@@ -267,7 +269,9 @@ def check11(ctx):
                     fs = by_sub[folder].get(sub_slug, 0)
                     if int(decl) != fs:
                         out.append("-> %s|%s|declared=%s|fs=%d" % (shown, col, decl, fs))
-        for s in sorted(set(by_sub[ctx.concepts]) | set(by_sub[ctx.methods])):
+        # An index with no `## Coverage by Field` section declares nothing to drift from: a fresh wiki
+        # must not be told every subfield is a missing row.
+        for s in sorted(set(by_sub[ctx.concepts]) | set(by_sub[ctx.methods])) if has_cov else []:
             if s in seen_sub:
                 continue
             out.append("MISSING-ROW|%s|fs_concepts=%d|fs_methods=%d" % (

@@ -31,7 +31,7 @@ Paths come from `wiki.config.json`. Notes: `<wiki_root>/concepts/`, `methods/`, 
 
 ## Workflow
 
-Full procedure in `references/SYNTHESIS-WORKFLOW.md`. Summary: read contracts, resolve the note (exact `test -f`/content search, never a glob alone), threshold gate, pre-fulltext guard, cluster findings into sub-questions, **check new or changed entries against the PDF**, propose the block in chat with quotes and pages, ratify, write (`scripts/synth_write.py`: insert after `## Definition`, absorb Controversies, stamp), **seal the source notes** (`tools/seal.py`), re-synthesis diff if a block already exists, then log, re-run the gate and re-run Check 15.
+Full procedure in `references/SYNTHESIS-WORKFLOW.md`. Summary: read contracts, resolve the note (exact `test -f`/content search, never a glob alone), threshold gate, pre-fulltext guard, cluster findings into sub-questions, **check new or changed entries against the PDF**, propose the block in chat with quotes and pages, ratify, write (`scripts/synth_write.py`: insert after `## Definition`, absorb Controversies, stamp), **seal the source notes** (`<kit>/tools/seal.py`), re-synthesis diff if a block already exists, then log, re-run the gate and re-run Check 15.
 
 ## Safety rules
 
@@ -52,4 +52,4 @@ Full procedure in `references/SYNTHESIS-WORKFLOW.md`. Summary: read contracts, r
 
 - `references/SYNTHESIS-WORKFLOW.md`: the detailed procedure, the block template, guard logic, re-synthesis handling.
 - `references/BATCH-WORKFLOW.md`: batch mode, the orchestrator loop, the subagent brief, the V1-V5 write gate, the escalation triggers.
-- `scripts/synth_validate.py`: the write gate and a whole-wiki sweep. `scripts/synth_write.py`: block insertion. `tools/seal.py`: sealing.
+- `scripts/synth_validate.py`: the write gate and a whole-wiki sweep. `scripts/synth_write.py`: block insertion. `<kit>/tools/seal.py`: sealing.

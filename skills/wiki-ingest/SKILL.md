@@ -34,6 +34,8 @@ Paths come from `wiki.config.json` (vault root, wiki root, folder names, languag
   templates/              # paper.md, concept.md, method.md, book.md, chapter.md, submoc.md, synthesis.md
 ```
 
+`<kit>` below means the science-wiki-kit checkout that holds `tools/` (`seal.py`, `pmc_tables.py`). Its path is the `kit_dir` key of `wiki.config.json`, written by the installer; if it is missing, it is two folders above this skill's directory when the skill is linked from the checkout.
+
 **Always read `WIKI_SCHEMA.md` before starting.** It defines the frontmatter contracts, naming rules and the field taxonomy of this wiki.
 
 ## Related skills
@@ -70,7 +72,7 @@ Read `WIKI_SCHEMA.md`.
 Try in order, using whatever your environment provides:
 
 - **Reference manager** (Zotero MCP is the supported adapter): search, then metadata, then fulltext. Sequence and search gotchas in `references/INGEST-WORKFLOW.md`.
-- **Publisher XML tables** (open-access in PMC): if the DOI has a PMCID, tables can be pulled cell by cell from Europe PMC JATS, independent of the PDF text layer: `python tools/pmc_tables.py <DOI> --out _temp/<stem>_pmc.md --body` (exit 2 means no PMCID). Check table numbers against the JATS before opening the page image; on a JATS-versus-PDF discrepancy the printed PDF wins and the discrepancy is noted. No PMCID: use the PDF.
+- **Publisher XML tables** (open-access in PMC): if the DOI has a PMCID, tables can be pulled cell by cell from Europe PMC JATS, independent of the PDF text layer: `python <kit>/tools/pmc_tables.py <DOI> --out _temp/<stem>_pmc.md --body` (exit 2 means no PMCID). Check table numbers against the JATS before opening the page image; on a JATS-versus-PDF discrepancy the printed PDF wins and the discrepancy is noted. No PMCID: use the PDF.
 - **PubMed MCP** (paper not in the reference manager): search by keywords, then fetch by **PMID** (a DOI can return an empty `full_text`). Store the PMID in the paper note `notes:` field. Use only for biomedical papers and after the user confirms it is not in their library.
 - **DOI only**: note it; do not fabricate metadata.
 - **Web article** (open-access HTML/URL): convert to clean markdown first with a web-to-markdown tool (for example the `defuddle` skill), then treat the output as abstract and body. Use the URL as citation source when there is no DOI.
@@ -142,12 +144,12 @@ Fill `concepts_touched` with the concept and method notes created or updated.
 **Verify-after-write**: every name in `concepts_touched` MUST resolve to an existing note in `concepts/` or `methods/`. After writing, re-check each basename. If one does not resolve, either create the missing stub now or remove the name. Dangling references become silent lint drift.
 
 ### 8b. Seal the source note
-Record the verification in the paper note's `source_verification` (one line: reference-manager key, date, what was checked against what). Then seal each (note, work) pair that received a finding and whose rows passed 5c: write a small JSON spec and run `python tools/seal.py spec.json --dry-run`, then without `--dry-run` (format and rules in `docs/SEALS.md`). A work checked only against its abstract gets no seal. Take dates from the system clock (`date +%F`), never estimate them.
+Record the verification in the paper note's `source_verification` (one line: reference-manager key, date, what was checked against what). Then seal each (note, work) pair that received a finding and whose rows passed 5c: write a small JSON spec and run `python <kit>/tools/seal.py spec.json --dry-run`, then without `--dry-run` (format and rules in `docs/SEALS.md`). A work checked only against its abstract gets no seal. Take dates from the system clock (`date +%F`), never estimate them.
 
 ### 9. Closeout
 Three edits, then the report. Use `field_titlecase_map` from `wiki.config.json` to find the correct subsection for each new concept or method; never append to a dated catch-all block at the end of a section.
 
-- **`index.md`**: if the index embeds Obsidian Bases views (`index_mode: bases` in the config), do NOT maintain per-note lists; only bump the curated `## Quick Stats` counts and the relevant `## Coverage by Field` row, then re-read the tables. In `manual` mode, add the note to the right alphabetical slot. Never touch a frozen legacy index.
+- **`index.md`**: if the index embeds Obsidian Bases views (`index_mode: bases` in the config), do NOT maintain per-note lists; only bump the curated `## Quick Stats` counts and the relevant `## Coverage by Field` row, then re-read the tables (a fresh wiki has neither section: skip this, nothing drifts until you add them). In `manual` mode, add the note to the right alphabetical slot. Never touch a frozen legacy index.
 - **Sub-MOC routing** (see `WIKI_SCHEMA.md`, Sub-MOC Architecture): resolve the note's `field` + `subfield`, compute `fields/{field-slug}/MOC_{Title_Case_Underscore(subfield)}.md` (kebab-case to Title_Case, deterministic, no map needed). If it does not exist, create it from `templates/submoc.md` and add a row to the field MOC's Sub-MOCs index. Add the note under the right section of the sub-MOC (Concept Notes, Method Notes, Papers, Books), never in the field MOC. Entries are **append-ordered**: add at the END of the section.
 - **`log.md`**: append
   ```
@@ -171,7 +173,7 @@ Three edits, then the report. Use `field_titlecase_map` from `wiki.config.json` 
 - **No propagation without a checked quote** (steps 5b and 5c). A fulltext seal on a source note does not protect what another note says about that work; in a past audit of this method roughly 4 in 10 sampled note-to-source note pairs had a defect, some substantive, and some errors sat in the source note itself.
 - **No placeholder concept notes.** Create concept notes only under `references/CONCEPT-PROPAGATION.md`.
 - **Do not delete** existing findings in concept notes. Append only (or move to Controversies).
-- **Write notes in the wiki language** (`note_language` in the config, default English), whatever the language of the source. This covers prose, headings, callouts and verification seals. Deliberate exceptions: `aliases:` (the bilingual synonym bridge; `_VOCABULARY.md` is generated from it), verbatim quotes from sources in another language (copied as printed, never translated), and `log.md` (operational prose, outside lint scope). The rule binds hardest where the note stops quoting and starts judging, because that is the writer's own voice and slips into the writer's native language: relevance-gloss labels under "Relevance to My Research", self-correction asides, and code-switched extraction (an English sentence with foreign verbs spliced in). Lint Check 14 is the radar for the rest, but it cannot see words with no accent or stopword, so the rule written here is the only defence.
+- **Write notes in the wiki language** (`note_language` in the config, default English), whatever the language of the source. This covers prose, headings, callouts and verification seals. Deliberate exceptions: `aliases:` (the bilingual synonym bridge; `_VOCABULARY.md` is generated from it), verbatim quotes from sources in another language (copied as printed, never translated), and `log.md` (operational prose, outside lint scope). The rule binds hardest where the note stops quoting and starts judging, because that is the writer's own voice and slips into the writer's native language: relevance-gloss labels under "Relevance", self-correction asides, and code-switched extraction (an English sentence with foreign verbs spliced in). Lint Check 14 is the radar for the rest, but it cannot see words with no accent or stopword, so the rule written here is the only defence.
 
 ## References
 

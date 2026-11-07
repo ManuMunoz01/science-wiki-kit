@@ -2,7 +2,7 @@
 tags: [paper, fixture]
 date: 2026-07-01
 status: read
-project: Investigacion
+project: fixture
 type: paper
 title: "Fixture abstract seal (Check 17 v2)"
 authors: [Test G]

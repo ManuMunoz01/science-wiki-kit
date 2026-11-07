@@ -57,7 +57,11 @@ if (-not $Target) {
     }
     New-Item -ItemType Directory -Force -Path (Join-Path $Target "templates") | Out-Null
     function Copy-IfMissing($src, $dst) { if (-not (Test-Path $dst)) { Copy-Item $src $dst } }
-    Copy-IfMissing (Join-Path $Kit "examples\minimal\wiki.config.json") (Join-Path $Target "wiki.config.json")
+    $cfgPath = Join-Path $Target "wiki.config.json"
+    if (-not (Test-Path $cfgPath)) {
+        Copy-Item (Join-Path $Kit "examples\minimal\wiki.config.json") $cfgPath
+        & $py.Source (Join-Path $Kit "tools\set_kit_dir.py") $cfgPath $Kit | Out-Null
+    }
     Copy-IfMissing (Join-Path $Kit "docs\WIKI_SCHEMA.md") (Join-Path $Target "wiki\WIKI_SCHEMA.md")
     foreach ($t in Get-ChildItem (Join-Path $Kit "templates") -Filter *.md) {
         Copy-IfMissing $t.FullName (Join-Path $Target "templates\$($t.Name)")

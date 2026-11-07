@@ -2,7 +2,7 @@
 tags: [book, fixture]
 date: 2024-01-15
 status: reviewed
-project: Investigacion
+project: fixture
 type: book
 title: "Fixture book"
 authors: [Brown L]

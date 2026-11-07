@@ -81,7 +81,7 @@
   minus sign eaten into a digit (`-5.2%` extracted as `25.2%`, a plausible false figure that was copied into
   several notes), a whole row shifted so every value hangs from its neighbour's label, and swapped gene or primer
   identifiers (which no numeric screen can see). When a value looks odd or contradicts the sentence next to it,
-  **render the page before reasoning about it**. Prefer the publisher XML (PMC JATS, `tools/pmc_tables.py`)
+  **render the page before reasoning about it**. Prefer the publisher XML (PMC JATS, `<kit>/tools/pmc_tables.py`)
   for tables when the paper has a PMCID. If you only have extracted text, do not propagate the row.
 - **[Windows]** Write extracted text to a path the file-reading tool can open: in Git Bash on Windows, `/tmp` is not a path
   Windows tools can see. Use the project temp folder.

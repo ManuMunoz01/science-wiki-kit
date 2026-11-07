@@ -2,7 +2,7 @@
 tags: [methodology, fixture]
 date: 2026-06-01
 status: draft
-project: Investigacion
+project: fixture
 type: metodologia
 field: "research-methods"
 subfield: "statistical-analysis"

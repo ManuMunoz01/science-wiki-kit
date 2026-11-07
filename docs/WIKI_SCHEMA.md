@@ -51,7 +51,7 @@ Templates for each type are in `templates/`.
 
 All notes carry the conventions above plus the type-specific fields below. Full examples are the templates.
 
-**Paper**: `title`, `authors`, `year`, `venue`, `doi`, `citekey`, `evidence_level`, `source_verification`,
+**Paper**: `title`, `authors`, `year`, `venue`, `volume`, `issue`, `pages`, `doi`, `citekey`, `evidence_level`, `source_verification`,
 `research_lines`, `concepts_touched`.
 
 **Concept**: `field`, `subfield`, `aliases`, `related_concepts`. **Method**: `field`, `subfield`, `aliases`.
@@ -252,6 +252,17 @@ allowed in `field:` and `subfield:`, and the keys of `field_titlecase_map` in `w
 (twelve fields) is in `examples/sport-science/taxonomy.md`. Keep a short list of **routing rulings** next to it for
 near-duplicate constructs that must not be merged (route by the function measured, not by surface name; see
 `examples/sport-science/routing-disambiguations.md`).
+
+### Research lines (ADAPT)
+
+`research_lines` in a paper note is a list of the active lines of work the paper serves (kebab-case slugs, for
+example `hamstring-injury`, `strength-testing`). Keep the list here, one `slug: label` per line, and add a new one
+here before using it. A line is a purpose ("what I am working on"); a field is a place in the discipline ("where
+the knowledge lives"). They overlap often but are not the same axis.
+
+```
+strength-and-conditioning: Strength and conditioning
+```
 
 ## Adapting this schema
 

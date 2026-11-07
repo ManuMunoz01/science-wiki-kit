@@ -8,6 +8,9 @@ title: "{{title}}"
 authors: [{{authors}}]
 year: {{year}}
 venue: "{{journal}}"
+volume: ""
+issue: ""
+pages: ""
 doi: "{{doi}}"
 citekey: "{{citekey}}"
 evidence_level: 

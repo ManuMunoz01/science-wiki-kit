@@ -2,7 +2,7 @@
 tags: [paper, fixture]
 date: 2024-01-15
 status: read
-project: Investigacion
+project: fixture
 type: paper
 title: "A fake fixture paper"
 authors: [Smith J]

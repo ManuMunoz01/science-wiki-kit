@@ -1,7 +1,7 @@
 ---
 tags: [book-chapter, fixture]
 date: 2024-01-15
-project: Investigacion
+project: fixture
 type: book-chapter
 title: "Chapter three on filesystem but not declared"
 book: "[[Fixture_Book]]"

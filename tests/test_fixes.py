@@ -93,5 +93,24 @@ class IndexProposal(FixtureCopy):
         self.assertGreaterEqual(n_concept_groups + n_method_groups + n_papers + n_books, 1)
 
 
+class Check11NoCoverageSection(FixtureCopy):
+    """A fresh wiki has no `## Coverage by Field` table: subfields must not read as MISSING-ROW."""
+
+    def test_missing_row_needs_a_coverage_section(self):
+        with_table = checks_structure.check11(self.ctx()).files["wiki_check11_coverage.txt"]
+        self.assertTrue(any(r.startswith("MISSING-ROW") for r in with_table))  # positive control
+        index = self.ctx().index_path
+        lines = read_text(index).split("\n")
+        keep, skipping = [], False
+        for ln in lines:
+            if ln.startswith("## "):
+                skipping = ln.startswith("## Coverage by Field")
+            if not skipping:
+                keep.append(ln)
+        write_text(index, "\n".join(keep))
+        without = checks_structure.check11(self.ctx()).files["wiki_check11_coverage.txt"]
+        self.assertEqual([r for r in without if r.startswith("MISSING-ROW")], [])
+
+
 if __name__ == "__main__":
     unittest.main()

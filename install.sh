@@ -41,7 +41,10 @@ if [ -z "$TARGET" ]; then
   echo "    skipped (pass a folder to scaffold a wiki: ./install.sh ~/my-wiki)"
 else
   mkdir -p "$TARGET/wiki"/{papers,concepts,methods,books,fields,debates} "$TARGET/templates"
-  [ -e "$TARGET/wiki.config.json" ] || cp "$KIT/examples/minimal/wiki.config.json" "$TARGET/wiki.config.json"
+  if [ ! -e "$TARGET/wiki.config.json" ]; then
+    cp "$KIT/examples/minimal/wiki.config.json" "$TARGET/wiki.config.json"
+    python3 "$KIT/tools/set_kit_dir.py" "$TARGET/wiki.config.json" "$KIT" >/dev/null
+  fi
   [ -e "$TARGET/wiki/WIKI_SCHEMA.md" ] || cp "$KIT/docs/WIKI_SCHEMA.md" "$TARGET/wiki/WIKI_SCHEMA.md"
   for t in "$KIT"/templates/*.md; do
     [ -e "$TARGET/templates/$(basename "$t")" ] || cp "$t" "$TARGET/templates/"
