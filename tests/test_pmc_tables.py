@@ -54,6 +54,13 @@ class BodyHeadings(unittest.TestCase):
         self.assertLess(md.index("### Methods"), md.index("#### Participants"))
         self.assertNotIn("### Section without", md)
 
+    def test_abstract_is_extracted_and_printed_before_the_body(self):
+        self.assertEqual(self.doc["abstract"], ["Abstract text."])
+        md = pmc_tables.to_markdown(self.doc, {"title": "T"}, body=True)
+        self.assertLess(md.index("## Abstract"), md.index("## Body"))
+        self.assertIn("Abstract text.", md)
+        self.assertNotIn("Abstract text.", pmc_tables.to_markdown(self.doc, {"title": "T"}, body=False))
+
     def test_without_body_flag_no_headings(self):
         md = pmc_tables.to_markdown(self.doc, {"title": "T"}, body=False)
         self.assertNotIn("Introduction", md)

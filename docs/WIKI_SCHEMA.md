@@ -265,7 +265,7 @@ strength-and-conditioning: Strength and Conditioning
 ```
 
 A field slug is the kebab-case of its display title (`&` written as `and`). **New fields and subfields are added here**
-(and the field to `field_titlecase_map`) the first time a paper needs one: append, never rename or remove. The example
+(and the field to `field_titlecase_map`) the first time a paper needs one: append, never rename or remove (the `your-field-slug` placeholder in the shipped config is the one entry you replace). The example
 taxonomy lists display titles and subfield slugs; derive the field slug with the rule above.
 
 ### Research lines (ADAPT)
@@ -275,8 +275,10 @@ example `hamstring-injury`, `strength-testing`). Keep the list here, one `slug: 
 here before using it. A line is a purpose ("what I am working on"); a field is a place in the discipline ("where
 the knowledge lives"). They overlap often but are not the same axis.
 
+Registered research lines (the line below is an example: replace it with your own):
+
 ```
-strength-and-conditioning: Strength and conditioning
+your-line-slug: Your line label
 ```
 
 ## Adapting this schema

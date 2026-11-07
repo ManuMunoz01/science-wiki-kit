@@ -18,7 +18,7 @@ class WorkedExample(unittest.TestCase):
     def test_lints_clean_and_is_not_empty(self):
         root, cfg = load_config(EXAMPLE)
         ctx = Context(root, cfg)
-        self.assertEqual(len(ctx.notes), 4)  # 1 paper, 2 concepts, 1 method
+        self.assertEqual(len(ctx.notes), 8)  # 1 paper, 2 concepts, 1 method, hub, field MOC, 2 sub-MOCs
         with tempfile.TemporaryDirectory() as out:
             counters = engine.run(ctx, out_dir=out, quiet=True)
         findings = {k: v for k, v in counters.items() if v}

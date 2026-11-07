@@ -14,7 +14,7 @@ pages: "e13842"
 doi: "10.7717/peerj.13842"
 citekey: ""
 evidence_level: RCT
-source_verification: "[2026-11-07] Europe PMC JATS XML (PMC9527019, PMID 36196400): Tables 1-4 read cell by cell, body text read in full. [2026-11-07, ingest Sharma_2022, Functional_Hamstring_Quadriceps_Ratio] Checked against PDF: what the block attributes to this work holds up. [2026-11-07, ingest Sharma_2022, Training_Mode_Specificity] Checked against PDF: what the block attributes to this work holds up."
+source_verification: "[2026-11-07] Europe PMC JATS XML (PMC9527019, PMID 36196400): Tables 1-4 read cell by cell, body text read in full. [2026-11-07, ingest Sharma_2022, Functional_Hamstring_Quadriceps_Ratio] Checked against publisher XML: what the block attributes to this work holds up. [2026-11-07, ingest Sharma_2022, Training_Mode_Specificity] Checked against publisher XML: what the block attributes to this work holds up."
 research_lines: [strength-and-conditioning]
 concepts_touched: [Functional_Hamstring_Quadriceps_Ratio, Training_Mode_Specificity, Isokinetic_Dynamometry]
 ---

@@ -9,8 +9,7 @@
   "min_distinct_sources_for_final": 2,
   "wiki_title": "My Science Wiki",
   "field_titlecase_map": {
-    "field-one": "Field One",
-    "field-two": "Field Two"
+    "your-field-slug": "Your Field Title"
   },
   "synthesis": {
     "min_sources": 3,

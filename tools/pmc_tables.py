@@ -25,6 +25,7 @@ import sys
 import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
+from pathlib import Path
 
 EPMC = "https://www.ebi.ac.uk/europepmc/webservices/rest"
 NUM_RE = re.compile(r"\d(?:[\d.,]*\d)?")
@@ -91,11 +92,13 @@ def parse_jats(xml_bytes: bytes) -> dict:
                        "caption": text_of(cap) if cap is not None else "",
                        "rows": rows,
                        "foot": text_of(foot) if foot is not None else ""})
+    abstract = [text_of(p) for ab in root.iter("abstract") for p in ab.iter("p")]
+    abstract = [p for p in abstract if p]
     body = root.find("body")
     blocks = body_blocks(body) if body is not None else []
     paras = [b["text"] for b in blocks if b["type"] == "p"]
     full = text_of(root)
-    return {"tables": tables, "paragraphs": paras, "blocks": blocks,
+    return {"tables": tables, "abstract": abstract, "paragraphs": paras, "blocks": blocks,
             "numbers": sorted(set(NUM_RE.findall(full))), "chars_full": len(full)}
 
 
@@ -156,6 +159,10 @@ def to_markdown(doc: dict, meta: dict, body: bool) -> str:
             out.append(t["foot"])
         out.append("")
     if body:
+        if doc.get("abstract"):
+            out.append("## Abstract")
+            out.append("")
+            out.extend(p + "\n" for p in doc["abstract"])
         out.append("## Body")
         out.append("")
         for b in doc["blocks"]:
@@ -194,9 +201,11 @@ def main() -> int:
           f"{ncell} numeric cells, {len(doc['paragraphs'])} paragraphs", file=sys.stderr)
     md = to_markdown(doc, meta, a.body)
     if a.json:
+        Path(a.json).parent.mkdir(parents=True, exist_ok=True)
         with open(a.json, "w", encoding="utf-8") as f:
             json.dump({"meta": meta, **doc}, f, ensure_ascii=False, indent=1)
     if a.out:
+        Path(a.out).parent.mkdir(parents=True, exist_ok=True)
         with open(a.out, "w", encoding="utf-8") as f:
             f.write(md)
         print(f"[written] {a.out}", file=sys.stderr)
