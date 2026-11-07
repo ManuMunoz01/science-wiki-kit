@@ -51,6 +51,7 @@ else
   done
   [ -e "$TARGET/wiki/index.md" ] || printf '# Index\n' > "$TARGET/wiki/index.md"
   [ -e "$TARGET/wiki/log.md" ] || printf '# Log\n' > "$TARGET/wiki/log.md"
+  [ -e "$TARGET/wiki/fields/MOC_Wiki.md" ] || printf -- '---\ntags: [MOC, hub]\ndate: %s\nstatus: active\ntype: MOC\n---\n\n# Hub\n\nThe top of the map. Link every field MOC here when you create it.\n\n## Fields\n' "$(date +%F)" > "$TARGET/wiki/fields/MOC_Wiki.md"
   echo "    scaffolded $TARGET (edit wiki.config.json and the Taxonomy section of wiki/WIKI_SCHEMA.md)"
 fi
 

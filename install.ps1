@@ -70,6 +70,12 @@ if (-not $Target) {
         $p = Join-Path $Target "wiki\$($pair[0])"
         if (-not (Test-Path $p)) { Set-Content -Path $p -Value $pair[1] -Encoding utf8 }
     }
+    $hub = Join-Path $Target "wiki\fields\MOC_Wiki.md"
+    if (-not (Test-Path $hub)) {
+        $day = Get-Date -Format "yyyy-MM-dd"
+        $hubText = "---`ntags: [MOC, hub]`ndate: $day`nstatus: active`ntype: MOC`n---`n`n# Hub`n`nThe top of the map. Link every field MOC here when you create it.`n`n## Fields`n"
+        Set-Content -Path $hub -Value $hubText -Encoding utf8
+    }
     Write-Host "    scaffolded $Target (edit wiki.config.json and the Taxonomy section of wiki\WIKI_SCHEMA.md)"
 }
 

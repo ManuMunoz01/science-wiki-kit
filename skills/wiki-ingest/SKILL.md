@@ -72,13 +72,13 @@ Read `WIKI_SCHEMA.md`.
 Try in order, using whatever your environment provides:
 
 - **Reference manager** (Zotero MCP is the supported adapter): search, then metadata, then fulltext. Sequence and search gotchas in `references/INGEST-WORKFLOW.md`.
-- **Publisher XML tables** (open-access in PMC): if the DOI has a PMCID, tables can be pulled cell by cell from Europe PMC JATS, independent of the PDF text layer: `python <kit>/tools/pmc_tables.py <DOI> --out _temp/<stem>_pmc.md --body` (exit 2 means no PMCID). Check table numbers against the JATS before opening the page image; on a JATS-versus-PDF discrepancy the printed PDF wins and the discrepancy is noted. No PMCID: use the PDF.
-- **PubMed MCP** (paper not in the reference manager): search by keywords, then fetch by **PMID** (a DOI can return an empty `full_text`). Store the PMID in the paper note `notes:` field. Use only for biomedical papers and after the user confirms it is not in their library.
+- **Publisher XML tables** (open-access in PMC): if the DOI has a PMCID, tables can be pulled cell by cell from Europe PMC JATS, independent of the PDF text layer: `python <kit>/tools/pmc_tables.py <DOI> --out _temp/<stem>_pmc.md --body` (exit 2 means no PMCID). Check table numbers against the JATS before opening the page image; on a JATS-versus-PDF discrepancy the printed PDF wins and the discrepancy is noted. No PMCID: use the PDF. The header it prints also gives authors, venue, volume, issue, pages and the PMID (Europe PMC): copy bibliographic fields from there, never from memory. When there is no PDF, the publisher full text counts as the full text for quotes and numbers: say so in `source_verification` and seal with `"source": "publisher XML"` (see `docs/SEALS.md`).
+- **PubMed MCP** (paper not in the reference manager): search by keywords, then fetch by **PMID** (a DOI can return an empty `full_text`). Store the PMID in the paper note `notes:` field. Use only for biomedical papers and after the user confirms it is not in their library. In an unattended run (nobody to ask), skip PubMed: the PMID is in the `pmc_tables.py` header.
 - **DOI only**: note it; do not fabricate metadata.
 - **Web article** (open-access HTML/URL): convert to clean markdown first with a web-to-markdown tool (for example the `defuddle` skill), then treat the output as abstract and body. Use the URL as citation source when there is no DOI.
 - **Manual**: the user pastes abstract or text. Extract metadata and flag what is unknown.
 
-Where the PDF lives matters: the note must never cite a working folder (`Downloads/`, a scratch dir) that will be cleaned up. Organise the PDF in the library location your group uses **before** writing the note, and record it in `source_verification`. If the paper is not in the library, or the right collection is unclear, ask the user before moving anything.
+Where the PDF lives matters: the note must never cite a working folder (`Downloads/`, a scratch dir) that will be cleaned up. Organise the PDF in the library location your group uses **before** writing the note, and record it in `source_verification`. If the paper is not in the library, or the right collection is unclear, ask the user before moving anything. With no PDF and no library (open-access text only, or an unattended run), skip this step and record that in `source_verification`.
 
 ### 3. Determine the paper note filename
 Format: `FirstAuthor_Year_Keyword.md`
@@ -102,7 +102,7 @@ One pass over abstract, results and discussion, doing all of this at once:
 
 - **Identify** 3 to 8 domain concepts (empirical constructs, variables) and 1 to 4 primary methods. Heuristics in `references/INGEST-WORKFLOW.md`.
 - **Classify `evidence_level`**: the study design, from the controlled vocabulary in `WIKI_SCHEMA.md` (`SR-MA`, `RCT`, `cohort`, ...). This is the *design* axis that the living-synthesis layer weights. The *measurement-quality* axis stays **inline in each finding** when relevant (`(MRI)`, `(anthropometric estimate)`), never in frontmatter.
-- **Research line routing**: match the paper to the research lines in `WIKI_SCHEMA.md`. If relevant content has no matching line, add one to the schema before propagating (append a slug + label pair; never rename or remove existing lines). If borderline, use the closest line and flag it in the report.
+- **Research line routing**: match the paper to the research lines in `WIKI_SCHEMA.md`. If relevant content has no matching line, add one to the schema before propagating (append a slug + label pair; never rename or remove existing lines). The same goes for `field` and `subfield`: if none fits, add the field slug to the Taxonomy section of `WIKI_SCHEMA.md` and to `field_titlecase_map` in `wiki.config.json`, or append the subfield slug under its field, and report it. If borderline, use the closest line and flag it in the report.
 - **Concept versus method routing**: empirical findings go to `concepts/`; statistical tools, study designs and measurement protocols go to `methods/`. Decide here.
 - **Purely methodological shortcut**: if the paper makes no empirical claims, skip step 6 and go to step 7.
 
@@ -111,7 +111,7 @@ For every finding that will reach a note in `concepts/` or `methods/` (including
 
 | Target note | Finding, as it will be written | Verbatim quote from the source | Page (PDF / printed) | Section, table or figure |
 
-- **The source is the PDF** (or the JATS for table cells). Abstract-only or no PDF: mark the finding `abstract only` in its text and say so in the report.
+- **The source is the PDF**, or the publisher full text (JATS) when there is no PDF; table cells come from the JATS first. Abstract-only or no PDF: mark the finding `abstract only` in its text and say so in the report.
 - **Every specific needs its quote**: each figure, population, device, mechanism, named entity and verb of strength. Split the finding, or use several quotes, until all are covered.
 - **Read the whole paragraph or table row around the hit**, not just the matching number.
 - **Tables, figures, signs, CIs and ±: render the page** and look at it. Text extraction is a hypothesis, the image is the proof. Some PDFs lose the minus sign in the text layer (`-5.2%` extracts as `25.2%`), producing a plausible false number.
@@ -150,7 +150,7 @@ Record the verification in the paper note's `source_verification` (one line: ref
 Three edits, then the report. Use `field_titlecase_map` from `wiki.config.json` to find the correct subsection for each new concept or method; never append to a dated catch-all block at the end of a section.
 
 - **`index.md`**: if the index embeds Obsidian Bases views (`index_mode: bases` in the config), do NOT maintain per-note lists; only bump the curated `## Quick Stats` counts and the relevant `## Coverage by Field` row, then re-read the tables (a fresh wiki has neither section: skip this, nothing drifts until you add them). In `manual` mode, add the note to the right alphabetical slot. Never touch a frozen legacy index.
-- **Sub-MOC routing** (see `WIKI_SCHEMA.md`, Sub-MOC Architecture): resolve the note's `field` + `subfield`, compute `fields/{field-slug}/MOC_{Title_Case_Underscore(subfield)}.md` (kebab-case to Title_Case, deterministic, no map needed). If it does not exist, create it from `templates/submoc.md` and add a row to the field MOC's Sub-MOCs index. Add the note under the right section of the sub-MOC (Concept Notes, Method Notes, Papers, Books), never in the field MOC. Entries are **append-ordered**: add at the END of the section.
+- **Sub-MOC routing** (see `WIKI_SCHEMA.md`, Sub-MOC Architecture): resolve the note's `field` + `subfield`, compute `fields/{field-slug}/MOC_{Title_Case_Underscore(subfield)}.md` (kebab-case to Title_Case, deterministic, no map needed). If it does not exist, create it from `templates/submoc.md` and add a line to the field MOC's Sub-MOCs section; if the field MOC does not exist, create it from `templates/moc.md` (named `MOC_` plus the display title in `field_titlecase_map`, spaces as underscores) and link it from `fields/MOC_Wiki.md`. Add the note under the right section of the sub-MOC (Concept Notes, Method Notes, Papers, Books), never in the field MOC. Entries are **append-ordered**: add at the END of the section.
 - **`log.md`**: append
   ```
   ## [YYYY-MM-DD] ingest | {Paper Title}

@@ -21,6 +21,13 @@ There is **one segment per (note, work) pair**: the note is the concept or metho
 - `TEXT`: exactly `what the block attributes to this work holds up.` when the check found nothing; otherwise `Corrected (<class>): ...` (the note was wrong and was fixed) or `Qualified (<class>): ...` (the note was right but needed a caveat). `<class>` is one of `figure`, `hedge`, `inference`, `attribution`, `entity`, `omission`, `overreach`, `inversion`.
 - No double quotes inside `TEXT` (the value lives in a double-quoted YAML string).
 
+## What the check was made against
+
+The segment reads `Checked against PDF:` by default. When the check was made against something else (the publisher's
+full text because no PDF was available, a supplement), say so in the spec with a `source` label, and the segment reads
+`Checked against publisher XML:`. The label is at most 40 characters (letters, digits, spaces and `.,/()-`). It does not
+change how the seal is counted, only what it honestly says.
+
 ## Writing seals
 
 ```bash
@@ -29,7 +36,7 @@ python <kit>/tools/seal.py seals.json
 ```
 
 ```json
-{"date": "2026-11-06", "tag": "synth Example_Concept",
+{"date": "2026-11-06", "tag": "synth Example_Concept", "source": "PDF",
  "seals": [["Example_Concept", "Smith_2020_SR", "what the block attributes to this work holds up."]]}
 ```
 

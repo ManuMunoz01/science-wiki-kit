@@ -45,14 +45,27 @@ def resolve(ident: str) -> dict:
         q = f"EXT_ID:{ident} AND SRC:MED"
     else:
         q = f'DOI:"{ident}"'
-    url = f"{EPMC}/search?query={urllib.parse.quote(q)}&format=json&resultType=lite&pageSize=3"
+    url = f"{EPMC}/search?query={urllib.parse.quote(q)}&format=json&resultType=core&pageSize=3"
     data = json.loads(_get(url))
     res = data.get("resultList", {}).get("result", [])
     if not res:
         return {}
-    r = res[0]
-    return {k: r.get(k) for k in ("pmid", "pmcid", "doi", "title", "isOpenAccess", "inEPMC",
-                                  "journalTitle", "pubYear")}
+    return meta_from_core(res[0])
+
+
+def meta_from_core(r: dict) -> dict:
+    """Europe PMC `core` record -> the bibliographic fields a paper note needs.
+
+    `authors` is Europe PMC's own author string; `pages` is `pageInfo` (a page range or an article number)."""
+    out = {k: r.get(k) for k in ("pmid", "pmcid", "doi", "title", "isOpenAccess", "inEPMC",
+                                 "journalTitle", "pubYear")}
+    ji = r.get("journalInfo") or {}
+    out["journalTitle"] = out["journalTitle"] or (ji.get("journal") or {}).get("title")
+    out["authors"] = (r.get("authorString") or "").rstrip(".")
+    out["volume"] = ji.get("volume")
+    out["issue"] = ji.get("issue")
+    out["pages"] = r.get("pageInfo")
+    return out
 
 
 def norm(s: str) -> str:
@@ -121,7 +134,13 @@ def body_blocks(body) -> list:
 def to_markdown(doc: dict, meta: dict, body: bool) -> str:
     out = [f"# {meta.get('title') or ''}".rstrip(),
            f"PMCID {meta.get('pmcid')} · PMID {meta.get('pmid')} · DOI {meta.get('doi')} · "
-           f"{meta.get('journalTitle') or ''} {meta.get('pubYear') or ''} · source: Europe PMC JATS XML", ""]
+           f"{meta.get('journalTitle') or ''} {meta.get('pubYear') or ''} · source: Europe PMC JATS XML"]
+    if meta.get("authors"):
+        out.append(f"Authors: {meta['authors']}")
+    biblio = [f"{k} {meta[k]}" for k in ("volume", "issue", "pages") if meta.get(k)]
+    if biblio:
+        out.append("Bibliographic data (Europe PMC): " + ", ".join(biblio))
+    out.append("")
     for t in doc["tables"]:
         out.append(f"## {t['label']} {t['caption']}".rstrip())
         out.append("")

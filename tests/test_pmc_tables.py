@@ -59,5 +59,26 @@ class BodyHeadings(unittest.TestCase):
         self.assertNotIn("Introduction", md)
 
 
+class Metadata(unittest.TestCase):
+    CORE = {"pmid": "1", "pmcid": "PMC1", "doi": "10.1/x", "title": "T", "pubYear": "2022",
+            "authorString": "Doe J, Roe R.", "journalInfo": {"volume": "19", "issue": "15", "journal": {"title": "Journal of X"}}, "pageInfo": "9296"}
+
+    def test_core_record_gives_bibliographic_fields(self):
+        m = pmc_tables.meta_from_core(self.CORE)
+        self.assertEqual((m["authors"], m["volume"], m["issue"], m["pages"], m["journalTitle"]),
+                         ("Doe J, Roe R", "19", "15", "9296", "Journal of X"))
+
+    def test_missing_fields_do_not_crash_and_are_not_printed(self):
+        m = pmc_tables.meta_from_core({"pmcid": "PMC2", "title": "T"})
+        md = pmc_tables.to_markdown({"tables": [], "paragraphs": [], "blocks": []}, m, body=False)
+        self.assertNotIn("Bibliographic data", md)
+
+    def test_header_prints_authors_and_biblio(self):
+        md = pmc_tables.to_markdown({"tables": [], "paragraphs": [], "blocks": []},
+                                    pmc_tables.meta_from_core(self.CORE), body=False)
+        self.assertIn("Authors: Doe J, Roe R", md)
+        self.assertIn("Bibliographic data (Europe PMC): volume 19, issue 15, pages 9296", md)
+
+
 if __name__ == "__main__":
     unittest.main()

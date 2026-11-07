@@ -20,7 +20,7 @@ unverified, never written as fact.
 
 - **Status vocabulary** for `paper`, `concept`, `method`, `book`, `book-chapter` and `synthesis` notes:
   `stub | draft | read | reviewed | final`. For `MOC` and `sub-MOC`: `active | archived`. The lint reads the
-  vocabulary from `status_by_type` in `wiki.config.json`.
+  vocabulary from `lint.status_by_type` in `wiki.config.json` (the defaults are in `wikikit/lint/defaults.json`; you only write the key to change it).
 - **Frontmatter on every note**: `tags`, `date` (creation), `last_verified` (last check against a source),
   `status`, `type`.
 - **Callouts**: `> [!abstract]`, `> [!warning]`, `> [!tip]`, `> [!note]`.
@@ -238,6 +238,10 @@ When a field grows, its map of content is split by subfield, the axis every conc
   lists. Sub-MOCs are created lazily: one is born with its first note.
 - **Deterministic routing**: a note with `field: F` and `subfield: S` maps to `fields/F/MOC_<Title_Case_Underscore(S)>.md`,
   heading `# <Human Title> - Sub-Map of Content`. Template: `templates/submoc.md`.
+- **Field MOC name**: `fields/MOC_<display title>.md`, where the display title is the value in `field_titlecase_map` with
+  spaces turned into underscores and used verbatim (`Strength and Conditioning` gives `MOC_Strength_and_Conditioning.md`;
+  do not re-derive it from the slug, `and` and `And` would differ). Template: `templates/moc.md`. Every field MOC is linked
+  from the hub `fields/MOC_Wiki.md`, which the installer creates.
 - If two fields share a sub-MOC basename, disambiguate with a path-prefixed wikilink (`[[field/MOC_X]]`); the lint
   resolver strips the path prefix.
 - `fields/` is enumerated recursively (`recursive_folders`). MOCs and sub-MOCs are exempt from the orphan and
@@ -252,6 +256,17 @@ allowed in `field:` and `subfield:`, and the keys of `field_titlecase_map` in `w
 (twelve fields) is in `examples/sport-science/taxonomy.md`. Keep a short list of **routing rulings** next to it for
 near-duplicate constructs that must not be merged (route by the function measured, not by surface name; see
 `examples/sport-science/routing-disambiguations.md`).
+
+Write it as a list, a field slug with its display title and then its subfield slugs:
+
+```
+strength-and-conditioning: Strength and Conditioning
+  subfields: resistance-training, eccentric-training, periodization
+```
+
+A field slug is the kebab-case of its display title (`&` written as `and`). **New fields and subfields are added here**
+(and the field to `field_titlecase_map`) the first time a paper needs one: append, never rename or remove. The example
+taxonomy lists display titles and subfield slugs; derive the field slug with the rule above.
 
 ### Research lines (ADAPT)
 

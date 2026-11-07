@@ -2,7 +2,7 @@
 """Seal source notes: record that a note's claims about a work were checked against the PDF.
 
 Input is a JSON file:
-  {"date": "2026-11-06", "tag": "synth Example_Concept",
+  {"date": "2026-11-06", "tag": "synth Example_Concept", "source": "PDF",   (source is optional)
    "seals": [["Example_Concept", "Smith_2020_SR", "what the block attributes to this work holds up."],
              ["Example_Concept", "Jones_2019_RCT", "Corrected (figure): 14% in the block, 12% in Table 2."]]}
 
@@ -49,7 +49,7 @@ def main():
     wiki = wiki_path(root, cfg)
     try:
         done = seals.append_seals(wiki, cfg, [tuple(s) for s in spec["seals"]], spec["date"], spec["tag"],
-                                  dry_run=a.dry_run)
+                                  dry_run=a.dry_run, source=spec.get("source", "PDF"))
     except seals.SealError as exc:
         sys.exit("ABORT (nothing written): %s" % exc)
     for path, eol, n in done:

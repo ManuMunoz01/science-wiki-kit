@@ -7,7 +7,7 @@ Create a concept note ONLY when at least one of these is true:
 1. **Taxonomy concept**: the concept falls within a field or subfield of this wiki's taxonomy (see `WIKI_SCHEMA.md` → Taxonomy) AND is relevant to the user's active research, teaching or career trajectory. The taxonomy is defined per wiki; for an example of a complete one see `examples/sport-science/taxonomy.md`.
 2. **Repeated concept**: two or more papers already in the wiki (or the current paper plus one other the user can confirm) address the same concept.
 
-**Stub rule**: if a concept is foundational for a field but only one source exists, create it with `status: stub`. A stub has a Definition and at least one cited finding, but no Implications or Controversies yet.
+**Stub rule**: if a concept is foundational for a field but has no sourced finding yet, create it with `status: stub`: a Definition and the stub warning callout, no Key Findings. As soon as it has one cited finding it is a `draft` (a single-source `draft` until a second independent work corroborates it).
 
 Do NOT create a concept note for:
 - Generic terms well covered in textbooks, with no wiki-specific findings

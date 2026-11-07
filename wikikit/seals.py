@@ -29,11 +29,17 @@ class SealError(Exception):
 
 # ---------------------------------------------------------------- writing
 
-def format_segment(date, tag, note, text):
-    return "[%s, %s, %s] Checked against PDF: %s" % (date, tag, note, text.strip())
+SOURCE_LABEL = re.compile(r"^[A-Za-z0-9][A-Za-z0-9 .,/()-]{0,39}$")
 
 
-def append_seals(wiki, cfg, seals, date, tag, dry_run=False):
+def format_segment(date, tag, note, text, source="PDF"):
+    """`source` names what the check was made against; the default keeps the standard wording."""
+    if not SOURCE_LABEL.match(source):
+        raise SealError("bad seal source label %r (letters, digits, spaces and .,/()-, at most 40)" % source)
+    return "[%s, %s, %s] Checked against %s: %s" % (date, tag, note, source, text.strip())
+
+
+def append_seals(wiki, cfg, seals, date, tag, dry_run=False, source="PDF"):
     """Append seal segments to the source notes and set their `last_verified`.
 
     `seals` = [(note, work, text), ...]. Aborts without writing ANYTHING when a source note does not exist,
@@ -44,7 +50,7 @@ def append_seals(wiki, cfg, seals, date, tag, dry_run=False):
     for note, work, text in seals:
         if '"' in text:
             raise SealError("double quote in the seal of %s/%s" % (note, work))
-        segs.setdefault(work, []).append(format_segment(date, tag, note, text))
+        segs.setdefault(work, []).append(format_segment(date, tag, note, text, source))
 
     staged = {}
     for work, parts in segs.items():

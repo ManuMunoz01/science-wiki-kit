@@ -93,7 +93,7 @@ Follow `templates/paper.md`.
 - **Evidence & Key Results**: key quantitative results with effect sizes if available
 - **Strengths**: 2 to 3 methodological strengths
 - **Limitations**: 2 to 3, from the paper's own discussion where possible
-- **Relevance to My Research**: direct link to the user's research lines
+- **Relevance**: direct link to the user's research lines
 
 ## Step 4: Concept extraction heuristic
 

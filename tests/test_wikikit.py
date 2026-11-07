@@ -159,6 +159,20 @@ class SealTests(unittest.TestCase):
         with self.assertRaises(seals.SealError):
             seals.append_seals(self.wiki, self.cfg, [("N", "P_2020_A", 'has "quote"')], "2026-11-06", "t")
 
+    def test_source_label_changes_the_wording_and_is_validated(self):
+        seals.append_seals(self.wiki, self.cfg, [("N_One", "P_2020_A", seals.CLEAN_TEXT)], "2026-11-06", "t",
+                           source="publisher XML")
+        t = read_text(self.ficha)
+        self.assertIn("[2026-11-06, t, N_One] Checked against publisher XML:", t)
+        self.assertNotIn("Checked against PDF", t)
+        self.assertTrue(seals.names_note(frontmatter.get_raw(t, "source_verification"), "N_One"))  # still a seal
+        before = read_text(self.ficha)
+        for bad in ('a"b', "x]y", "", "z" * 41):
+            with self.assertRaises(seals.SealError):
+                seals.append_seals(self.wiki, self.cfg, [("N_Two", "P_2020_A", seals.CLEAN_TEXT)], "2026-11-06", "t",
+                                   source=bad)
+        self.assertEqual(read_text(self.ficha), before)
+
     def test_single_word_note_only_counts_in_header(self):
         self.assertFalse(seals.names_note("a paper about Detraining effects", "Detraining"))
         self.assertTrue(seals.names_note("[2026-01-01, tag, Detraining] Checked", "Detraining"))

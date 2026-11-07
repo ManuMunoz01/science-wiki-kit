@@ -16,6 +16,7 @@ citekey: "{{citekey}}"
 evidence_level: 
 source_verification: ""
 research_lines: []
+notes: ""
 concepts_touched: []
 ---
 
