@@ -79,11 +79,43 @@ def parse_jats(xml_bytes: bytes) -> dict:
                        "rows": rows,
                        "foot": text_of(foot) if foot is not None else ""})
     body = root.find("body")
-    paras = [text_of(p) for p in body.iter("p")] if body is not None else []
-    paras = [p for p in paras if p]
+    blocks = body_blocks(body) if body is not None else []
+    paras = [b["text"] for b in blocks if b["type"] == "p"]
     full = text_of(root)
-    return {"tables": tables, "paragraphs": paras, "numbers": sorted(set(NUM_RE.findall(full))),
-            "chars_full": len(full)}
+    return {"tables": tables, "paragraphs": paras, "blocks": blocks,
+            "numbers": sorted(set(NUM_RE.findall(full))), "chars_full": len(full)}
+
+
+def body_blocks(body) -> list:
+    """The body in document order as [{"type": "heading", "level": n, "title": s} | {"type": "p", "text": s}].
+
+    A `<sec>` contributes its `<title>` as a heading (level 1 for a top-level section, 2 for its
+    subsections, ...); paragraphs inside figures, table wrappers and the like are kept in place, so the
+    paragraph list is the same as `body.iter("p")` gave before headings were tracked."""
+    out = []
+
+    def walk(el, level):
+        for child in el:
+            if child.tag == "sec":
+                title = child.find("title")
+                t = text_of(title) if title is not None else ""
+                if t:
+                    out.append({"type": "heading", "level": level, "title": t})
+                walk(child, level + 1)
+            elif child.tag == "title":
+                continue
+            elif child.tag == "p":
+                t = text_of(child)
+                if t:
+                    out.append({"type": "p", "text": t})
+            else:
+                for p in child.iter("p"):
+                    t = text_of(p)
+                    if t:
+                        out.append({"type": "p", "text": t})
+
+    walk(body, 1)
+    return out
 
 
 def to_markdown(doc: dict, meta: dict, body: bool) -> str:
@@ -107,7 +139,11 @@ def to_markdown(doc: dict, meta: dict, body: bool) -> str:
     if body:
         out.append("## Body")
         out.append("")
-        out.extend(p + "\n" for p in doc["paragraphs"])
+        for b in doc["blocks"]:
+            if b["type"] == "heading":
+                out.append("#" * min(2 + b["level"], 6) + " " + b["title"] + "\n")
+            else:
+                out.append(b["text"] + "\n")
     return "\n".join(out)
 
 
