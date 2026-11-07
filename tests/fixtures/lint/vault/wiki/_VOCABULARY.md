@@ -7,11 +7,11 @@ type: index
 
 # Fixture Vocabulary
 
-Exercises Check 30 (vocabulary sync radar). Lists every fixture concepto/metodologia
+Exercises Check 30 (vocabulary sync radar). Lists every fixture concept/methods
 EXCEPT Fixture_Orphan (-> check30_missing = 1) plus one row whose note does not exist
 (Fixture_Ghost_Concept -> check30_ghost = 1).
 
-MAINTENANCE COUPLING: adding a new concepto/ or metodologia/ fixture requires adding its
+MAINTENANCE COUPLING: adding a new concept/ or methods/ fixture requires adding its
 row to this table, or check30_missing bumps and the self-test fails. This mirrors the
 index.md fixture coupling (Quick Stats) that every new paper fixture already maintains.
 

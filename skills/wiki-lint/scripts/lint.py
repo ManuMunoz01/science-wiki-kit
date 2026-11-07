@@ -51,7 +51,7 @@ def main():
         fx = kit_fixtures()
         if fx is None:
             sys.exit("fixtures not found (they ship in tests/fixtures/lint of the kit checkout)")
-        failures, pending = engine.self_test(fx / "TheVault", fx / "expected_counters.txt", a.out_dir, only=only)
+        failures, pending = engine.self_test(fx / "vault", fx / "expected_counters.txt", a.out_dir, only=only)
         for f in failures:
             print("FAIL " + f)
         if pending:

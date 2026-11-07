@@ -1,5 +1,5 @@
 ---
-type: concepto
+type: concept
 status: final
 ---
 # Fabricated Source Concept

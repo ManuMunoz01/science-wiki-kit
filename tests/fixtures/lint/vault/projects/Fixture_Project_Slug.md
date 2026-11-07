@@ -8,7 +8,7 @@ project: fixture
 
 # Fixture Project Note (memory-slug sweep)
 
-Exercises Check 29's VAULT-WIDE scope: this note lives outside 09_Recursos, where no other
+Exercises Check 29's VAULT-WIDE scope: this note lives outside wiki, where no other
 check looks. If the check's scope regresses to the wiki folders, the hit below disappears
 and check29 falls to 0, which fails the self-test. One real hit, two guards.
 

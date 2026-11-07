@@ -7,7 +7,7 @@ type: book-chapter
 title: "Chapter two - missing book field"
 chapter_number: 2
 citekey: "brown2024book_ch2"
-source_verification: "Verificacion PARCIAL 2026-06-01 contra el PDF (fixture, positivo del check28 en libros/: sello sin last_verified)."
+source_verification: "Verificacion PARCIAL 2026-06-01 contra el PDF (fixture, positivo del check28 en books/: sello sin last_verified)."
 ---
 
 # Brown 2024 - Ch02

@@ -1,15 +1,15 @@
 {
   "vault_root": ".",
-  "wiki_root": "09_Recursos",
+  "wiki_root": "wiki",
   "papers_folder": "papers",
-  "books_folder": "libros",
-  "concepts_folder": "conceptos",
-  "methods_folder": "metodologia",
+  "books_folder": "books",
+  "concepts_folder": "concepts",
+  "methods_folder": "methods",
   "folders": [
     "papers",
-    "conceptos",
-    "metodologia",
-    "libros",
+    "concepts",
+    "methods",
+    "books",
     "fields",
     "debates"
   ],
@@ -18,11 +18,10 @@
   ],
   "vault_ignore_dirs": [
     ".obsidian",
-    ".smart-env",
     ".trash",
     "Assets",
     "Templates",
-    "_archivo"
+    "_archive"
   ],
   "field_titlecase_map": {
     "exercise-physiology": "Exercise Physiology",
@@ -59,14 +58,14 @@
         "reviewed",
         "final"
       ],
-      "concepto": [
+      "concept": [
         "stub",
         "draft",
         "read",
         "reviewed",
         "final"
       ],
-      "metodologia": [
+      "method": [
         "stub",
         "draft",
         "read",
@@ -220,11 +219,11 @@
     ],
     "index_sections": {
       "Papers": "papers",
-      "Books": "libros"
+      "Books": "books"
     },
     "quick_stats_labels": {
-      "Concept notes": "conceptos",
-      "Methodology notes": "metodologia",
+      "Concept notes": "concepts",
+      "Methodology notes": "methods",
       "Papers": "papers"
     },
     "deprecated_frontmatter_keys": {
@@ -256,7 +255,7 @@
         "resumen",
         "hallazgos",
         "metodos",
-        "metodologia",
+        "methods",
         "conclusiones",
         "conclusion",
         "fortalezas",

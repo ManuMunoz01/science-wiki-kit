@@ -15,7 +15,7 @@ FX = ROOT / "tests" / "fixtures" / "lint"
 class FixtureCounters(unittest.TestCase):
     def test_counters_match_expected(self):
         with tempfile.TemporaryDirectory() as out:
-            failures, pending = engine.self_test(FX / "TheVault", FX / "expected_counters.txt", out, quiet=True)
+            failures, pending = engine.self_test(FX / "vault", FX / "expected_counters.txt", out, quiet=True)
         self.assertEqual(failures, [])
         ported = len(engine.load_expected(FX / "expected_counters.txt")) - len(pending)
         self.assertGreater(ported, 0)

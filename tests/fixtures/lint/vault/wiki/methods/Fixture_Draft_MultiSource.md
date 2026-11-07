@@ -3,7 +3,7 @@ tags: [methodology, fixture]
 date: 2026-06-01
 status: draft
 project: fixture
-type: metodologia
+type: method
 field: "research-methods"
 subfield: "statistical-analysis"
 aliases: []

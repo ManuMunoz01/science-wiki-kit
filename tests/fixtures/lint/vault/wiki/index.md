@@ -38,13 +38,13 @@ type: index
 - [[Fixture_Check18ExemptBad]] — C-B fixture: malformed `check18_exempt`, must NOT exempt [fixture]
 - [[Fixture_Check18OnlineFirst]] — C-B fixture: the retired prose word, must NOT exempt [fixture]
 
-## Books (`libros/`)
+## Books (`books/`)
 
 - [[Fixture_Book]] — fixture book
   - [[Fixture_Book_Ch01]] — chapter one
 - [[Smith_2024_FakePaper]] — DELIBERATELY MISPLACED: a papers/ note listed under Books (Check 7b fixture)
 
-## Concepts (`conceptos/`)
+## Concepts (`concepts/`)
 
 ### Fixture
 
@@ -54,7 +54,7 @@ type: index
 - [[Fixture_Orphan]] — orphan concept [research-methods]
 - [[Fixture_Unsourced]] — unsourced concept [fixture / fixture-sub]
 
-## Methodology (`metodologia/`)
+## Methodology (`methods/`)
 
 ### Fixture
 

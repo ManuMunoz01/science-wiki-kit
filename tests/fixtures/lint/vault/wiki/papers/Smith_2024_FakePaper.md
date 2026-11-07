@@ -13,7 +13,7 @@ citekey: "smith2024fake"
 evidence_level: SR-MA
 last_verified: 2026-07-01
 research_lines: [fixture]
-concepts_touched: [Fixture_Concept_A, Fixture_Draft_SingleSource, metodologia/Fixture_Method_A, Fixture_Missing_Concept]
+concepts_touched: [Fixture_Concept_A, Fixture_Draft_SingleSource, methods/Fixture_Method_A, Fixture_Missing_Concept]
 ---
 
 # Smith 2024 — Fake fixture paper

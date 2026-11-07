@@ -13,13 +13,13 @@ from wikikit.lint import checks_structure, fixes  # noqa: E402
 from wikikit.lint.context import Context  # noqa: E402
 from wikikit.textio import read_text, write_text  # noqa: E402
 
-FX = ROOT / "tests" / "fixtures" / "lint" / "TheVault"
+FX = ROOT / "tests" / "fixtures" / "lint" / "vault"
 
 
 class FixtureCopy(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.TemporaryDirectory()
-        self.vault = Path(self.tmp.name) / "TheVault"
+        self.vault = Path(self.tmp.name) / "vault"
         shutil.copytree(FX, self.vault)
 
     def tearDown(self):
@@ -47,11 +47,11 @@ class Check12Fix(FixtureCopy):
 
     def test_inserted_line_uses_the_configured_placeholder(self):
         fixes.fix_check12(self.ctx())
-        text = read_text(self.vault / "09_Recursos" / "metodologia" / "Fixture_Draft_SingleSource.md")
+        text = read_text(self.vault / "wiki" / "methods" / "Fixture_Draft_SingleSource.md")
         self.assertIn("- [[Smith_2024_FakePaper]] - [pendiente claim]", text)
 
     def test_line_endings_are_preserved(self):
-        target = self.vault / "09_Recursos" / "metodologia" / "Fixture_Draft_SingleSource.md"
+        target = self.vault / "wiki" / "methods" / "Fixture_Draft_SingleSource.md"
         write_text(target, read_text(target).replace("\r\n", "\n").replace("\n", "\r\n"))
         fixes.fix_check12(self.ctx())
         data = target.read_bytes()
@@ -60,10 +60,10 @@ class Check12Fix(FixtureCopy):
 
 class Promote(FixtureCopy):
     def test_flips_only_draft_status_and_keeps_crlf(self):
-        wiki = self.vault / "09_Recursos"
-        a = wiki / "metodologia" / "Fixture_Draft_MultiSource.md"
+        wiki = self.vault / "wiki"
+        a = wiki / "methods" / "Fixture_Draft_MultiSource.md"
         write_text(a, read_text(a).replace("\r\n", "\n").replace("\n", "\r\n"))
-        stub_before = read_text(wiki / "conceptos" / "Fixture_Stub.md")
+        stub_before = read_text(wiki / "concepts" / "Fixture_Stub.md")
         lst = Path(self.tmp.name) / "list.txt"
         # a path, a final note by name, a stub by name, and a name that does not exist
         write_text(lst, "# comment\n%s\nFixture_Concept_A\nFixture_Stub\nNope_Does_Not_Exist\n" % a)
@@ -73,7 +73,7 @@ class Promote(FixtureCopy):
         data = a.read_bytes()
         self.assertIn(b"status: final", data)
         self.assertEqual(data.count(b"\n"), data.count(b"\r\n"))  # the `$`-in-CRLF bug cannot happen
-        self.assertEqual(stub_before, read_text(wiki / "conceptos" / "Fixture_Stub.md"))  # reported, not touched
+        self.assertEqual(stub_before, read_text(wiki / "concepts" / "Fixture_Stub.md"))  # reported, not touched
         txt = read_text(log)
         self.assertIn("draft -> final", txt)
         self.assertIn("NOT FOUND", txt)

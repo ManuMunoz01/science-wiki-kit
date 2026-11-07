@@ -94,7 +94,7 @@ check13        = 1
 check14        = 2
 # check12 = 3, check12_missing = 1: Smith_2024 -> Fixture_Draft_SingleSource (its body links the book, not Smith)
 #   and two more papers whose concepts_touched names Fixture_Concept_A without a backlink = 3 asymmetries; the
-#   `metodologia/Fixture_Method_A` token is path-prefixed and must resolve after the prefix strip (SYMMETRIC, not
+#   `methods/Fixture_Method_A` token is path-prefixed and must resolve after the prefix strip (SYMMETRIC, not
 #   counted); `Fixture_Missing_Concept` resolves to no note -> missing = 1. The prefix strip is regression-guarded:
 #   if it breaks, the prefixed token stops resolving and check12_missing becomes 2.
 check12        = 3
@@ -141,7 +141,7 @@ check27        = 1
 #   the scope covers books). Negative guards: Fixture_GoodProvenance, Fixture_BrokenQuote and Fixture_Book_Ch01 carry
 #   both fields. With the scope reverted to papers only, check28 = 1 and the self-test fails.
 check28        = 2
-# check29 = 1: 01_Proyectos/Fixture_Project_Slug.md links [[project_fixture_memory]] in prose (vault-wide scope: with
+# check29 = 1: projects/Fixture_Project_Slug.md links [[project_fixture_memory]] in prose (vault-wide scope: with
 #   the scope reduced to the wiki the counter is 0). Three guards: a slug in backticks (code span), a slug inside a
 #   ``` fence, and the exempt basename 'log' carrying a bare slug (if the exemption breaks, 1 -> 2).
 check29        = 1
