@@ -1,0 +1,25 @@
+{
+  "_comment": "Merge this `lint` block into wiki.config.json to turn on Check 14 (language radar) for a wiki written in English that must not contain Spanish prose. It flags a note whose H2-H6 heading starts with one of `headings`, or that has at least `prose_threshold` hits of `stopwords` in prose. Copy the shape for another language: the lists are the only language-specific part.",
+  "lint": {
+    "language_radar": {
+      "enabled": true,
+      "headings": [
+        "definicion", "descripcion", "controversias", "controversia", "evidencia", "evidencias",
+        "aplicaciones", "aplicacion", "resumen", "hallazgos", "metodos", "metodologia", "conclusiones",
+        "conclusion", "fortalezas", "limitaciones", "limitacion", "procedimiento", "procedimientos",
+        "consideraciones", "interpretacion", "antecedentes", "introduccion", "discusion", "referencias",
+        "fuentes", "objetivo", "objetivos", "resultados", "ejemplo", "ejemplos", "preguntas", "calculo",
+        "relacionados", "relacionadas"
+      ],
+      "stopwords": [
+        "que", "los", "las", "con", "para", "por", "una", "como", "pero", "cuando", "desde", "entre",
+        "sobre", "aunque", "porque", "del", "este", "esta", "estos", "estas", "segun", "tambien", "hacia",
+        "mediante", "cada", "sus", "estan", "ser"
+      ],
+      "prose_threshold": 8,
+      "case_sensitive_tokens": ["con"],
+      "line_guards": {},
+      "heading_requires_accent": ["conclusion"]
+    }
+  }
+}

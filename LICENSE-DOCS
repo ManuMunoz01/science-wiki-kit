@@ -1,0 +1,23 @@
+Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+Copyright (c) 2026 Dario Martínez García
+
+The documentation, schema, templates and examples of this repository are licensed under the
+Creative Commons Attribution 4.0 International License. This covers:
+
+  docs/            (WIKI_SCHEMA.md, GOTCHAS.md, SEALS.md)
+  templates/
+  examples/
+  skills/**/SKILL.md and skills/**/references/
+  README.md
+
+You are free to share (copy and redistribute in any medium or format) and adapt (remix, transform
+and build upon) the material for any purpose, even commercially, provided you give appropriate
+credit, provide a link to the license, and indicate if changes were made. You may do so in any
+reasonable manner, but not in any way that suggests the licensor endorses you or your use.
+
+Full legal text: https://creativecommons.org/licenses/by/4.0/legalcode
+Human-readable summary: https://creativecommons.org/licenses/by/4.0/
+
+The source code (wikikit/, tools/, skills/**/scripts/, tests/) is licensed separately under the
+MIT License; see LICENSE.

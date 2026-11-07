@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+_temp/
+*.bak*
+.env
+lint_out/
+*.egg-info/
+build/

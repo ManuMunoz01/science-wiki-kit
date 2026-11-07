@@ -1,0 +1,23 @@
+{
+  "vault_root": ".",
+  "wiki_root": "wiki",
+  "papers_folder": "papers",
+  "books_folder": "books",
+  "concepts_folder": "concepts",
+  "methods_folder": "methods",
+  "note_language": "en",
+  "min_distinct_sources_for_final": 2,
+  "wiki_title": "My Science Wiki",
+  "field_titlecase_map": {
+    "field-one": "Field One",
+    "field-two": "Field Two"
+  },
+  "synthesis": {
+    "min_sources": 3,
+    "sr_levels": ["SR-MA", "SR"],
+    "prefulltext_cutoff": null
+  },
+  "lint": {
+    "index_mode": "bases"
+  }
+}

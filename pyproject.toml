@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "science-wiki-kit"
+version = "0.1.0"
+description = "Skills, scripts and templates to build and maintain a scientific knowledge wiki (Obsidian-compatible markdown) with an AI coding agent."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "MIT" }
+dependencies = []
+
+[tool.setuptools]
+packages = ["wikikit", "wikikit.lint"]
+
+[tool.setuptools.package-data]
+"wikikit.lint" = ["defaults.json"]

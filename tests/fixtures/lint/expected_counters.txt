@@ -1,0 +1,165 @@
+# Expected counters when `lint.py --self-test` runs against the fixtures/ mini-vault.
+# Drift here means a check's logic changed. Verify the change is intentional before updating a value.
+#
+# SCOPE OF THESE COMMENTS: why each FIXTURE VALUE is what it is: which branch it guards, which other
+# counters it moves, and the bisection that proves it discriminates. The incident that motivated the
+# CHECK ITSELF lives in skills/wiki-lint/references/check-origins.md (single authority); do not restate it
+# here. Only lines matching ^[a-z0-9_]+\s*=\s*-?\d+ are parsed, so comments are free.
+#
+# HOW TO CHANGE A CHECK SAFELY
+#   1. Add or edit the fixture so the new behaviour has a positive AND a guard (a case that must NOT count).
+#   2. Run the self-test and watch it FAIL with the old logic; apply the change; watch it pass.
+#   3. Update the value here together with the fixture, and write why in this file.
+#   A fixture that passes both before and after the change guards nothing.
+#
+# MAINTENANCE COUPLINGS (a new fixture note moves more than one counter):
+#   * a new concept/method note must get a row in _VOCABULARY.md (Check 30) and be listed in index.md
+#     (Checks 7, 10 and 11, which run in manual index mode under --self-test);
+#   * a new paper note must be listed in index.md '## Papers' and in the Quick Stats count (Checks 7, 10);
+#   * a paper that declares concepts_touched must be backlinked from its target (Check 12).
+#
+# The clock is frozen at 2026-07-01 under --self-test: a fixture cannot depend on the calendar.
+
+# Checks 1-4: graph connectivity and provenance of claims.
+#   check1 = 2: Fixture_Orphan and Fixture_Unsourced have no backlink. Fixture_Hub_RC and Fixture_Hub_Inline
+#     are synthesis hubs reached only by sibling concepts (through `related_concepts` and an inline link) and
+#     are rescued by the concept-to-concept leg. A regression in either path gives check1 = 4.
+#   check2 = 0, check3 = 1 (one non-stub paper with an empty concepts_touched), check4 = 1 (Fixture_Unsourced
+#     carries the claim verbs with no link in the radius).
+check1         = 2
+check2         = 0
+check3         = 1
+check4         = 1
+# check5 = 5: broken and empty-target wikilinks.
+#   Two broken links, one more that only counts because fields/ is enumerated RECURSIVELY
+#   (fields/research-methods/MOC_Fixture_Sub links a missing target), plus two EMPTY targets that the wikilink
+#   extractor cannot see: `[[]]` and `[[|just an alias]]`, placed at the END of Fixture_Concept_A so they do
+#   not shift the lines other fixtures depend on.
+#   GUARD code span: a `[[]]` between backticks is quoted text, not a link. Without the guard check5 = 6.
+#   GUARD fence: the same two forms inside a ``` block are not links. Without the guard check5 = 7.
+#   Bisection: with the empty-target block disabled the counter returns to 3 and the OLD self-test passes, so
+#   the fixture guards the logic and not its own presence.
+check5         = 5
+# check6: Fixture_Draft_SingleSource cites a book parent + two of its chapters (ONE work: must NOT promote);
+#   Fixture_Draft_MultiSource cites two independent papers (MUST promote) -> promote = 1. Under the old
+#   occurrence-counting logic SingleSource would also promote (promote = 2), so this guards the distinct-works rule.
+check6_stale   = 0
+check6_promote = 1
+# check7: index coverage in manual mode. 3 notes are missing from index.md, 2 stubs are listed separately.
+# check7_misplaced = 1: Smith_2024_FakePaper (a papers/ note) is listed under '## Books'.
+check7_missing = 3
+check7_stubs   = 2
+check7_misplaced = 1
+# check8 = 1: a book whose chapters_ingested omits a chapter that exists on disk (Fixture_Book_Ch03, whose
+#   status is blank, is NOT a stub and still counts). check9 = 1: a chapter note without a `book:` link.
+check8         = 1
+check9         = 1
+# check10 = 1: Quick Stats declares Concept notes = 5 while the folder holds 6; Methodology notes and Papers match.
+#   Fields is unmapped and not flagged.
+check10        = 1
+# check11 = 3: the field row 'Research Methods & Statistics' declares Concepts = 3 (live 2) -> 1; the subfield row
+#   '-> Fixture Sub' declares Concepts = 4 (live 5) -> 1, while its Methods = 1 matches (the single row
+#   discriminates in BOTH directions); subfield 'statistical-analysis' has live notes and NO row -> MISSING-ROW 1.
+#   The [[MOC_Fixture_Sub]] link, not the label, keys the row. Mutation-tested: with the subfield widening
+#   reverted the counter drops to 1.
+check11        = 3
+# check16 = 2: status vocabulary. MOC_Fixture_BadStatus (type MOC, status 'empty') -> 1; without the MOC entry in
+#   status_by_type the type is skipped and the counter falls to 0. Fixture_Book_Ch03 LOSES its status -> 1: a
+#   missing field is the finding (an early exit on a missing `status` used to exempt such notes).
+#   MOC_Wiki and MOC_Fixture_Sub (status active) are negative guards.
+check16        = 2
+# Checks 17-21: provenance of papers.
+#   check17 = 4: NoProvenance + the two legacy fixtures without a seal + Fixture_AbstractSeal (a value starting
+#     with `abstract` is NOT a seal; with that condition disabled the counter returns to 3).
+#   check18 = 3: VerifiedNoPages (seal, no volume/pages), ExemptBad (malformed exemption: fail closed, counted
+#     and labelled) and OnlineFirst (the old prose word no longer exempts). ExemptOk (valid recent dated field)
+#     does not count; ExemptStale (valid field dated 2024-01-15) does not count but is reported stale with the
+#     clock frozen and the 12-month threshold -> check18_exempt = 2, check18_exempt_stale = 1.
+#   check19 = 1: NoProvenance carries evidence_level 'banana'.
+#   check20 = 1: BrokenQuote has a leaked ']]' in a Useful Quote. Empty Useful Quotes sections are not flagged.
+#   check21 = 3: NoProvenance and the two legacy papers are dated before the cutoff with no seal.
+check17        = 4
+check18        = 3
+check18_exempt = 2
+check18_exempt_stale = 1
+check19        = 1
+check20        = 1
+check21        = 3
+# check13 = 1: Fixture_Concept_A documents the alias 'FCA'; Fixture_Method_A mentions FCA unlinked.
+# check14 = 2: Fixture_Method_A has a foreign-language section heading (-> 1); Jones_2023_EmptyConcepts has a
+#   '## Useful Quotes' block whose body is English and whose quote is in the other language (10 stopwords).
+#   Blockquote lines count: before that was added the counter was 1. To prove the fixture discriminates, revert the
+#   '>' marker stripping and check that it returns to 1.
+check13        = 1
+check14        = 2
+# check12 = 3, check12_missing = 1: Smith_2024 -> Fixture_Draft_SingleSource (its body links the book, not Smith)
+#   and two more papers whose concepts_touched names Fixture_Concept_A without a backlink = 3 asymmetries; the
+#   `metodologia/Fixture_Method_A` token is path-prefixed and must resolve after the prefix strip (SYMMETRIC, not
+#   counted); `Fixture_Missing_Concept` resolves to no note -> missing = 1. The prefix strip is regression-guarded:
+#   if it breaks, the prefixed token stops resolving and check12_missing becomes 2.
+check12        = 3
+check12_missing = 1
+# check15: Smith_2024 is tagged evidence_level SR-MA with last_verified 2026-07-01, so every final note citing it
+#   qualifies. missing = 1 (Fixture_Method_A qualifies and has no block); stale = 1 (Fixture_Concept_A has a block
+#   updated 2024-06-01, older than Smith's last_verified). Fixture_Hub_RC (fresh block) and Fixture_Stub are excluded.
+check15_missing = 1
+check15_stale   = 1
+
+# check22 = 3: stale pre-fulltext marker on a SEALED paper (Fixture_GoodProvenance), resolved by ADJACENCY.
+#   Counted: suffix on a sealed paper; chained prefix "[[NoProvenance]] G[[GoodProvenance]]" (the glyph is glued to
+#   the NEXT link, whose owner is sealed); and the glued-on-both-sides ambiguity "[[GoodProvenance]]G[[NoProvenance]]",
+#   resolved to the PRECEDING link (this case guards rule (1) against being applied too widely).
+#   Not counted: a prefix on an UNSEALED paper, and a loose prose caution with no owning link.
+#   Tail exemptions, all placed on a SEALED paper so that without them they would count: a prose caveat (the tail
+#   starts with a letter), a `(N src: ...)` confidence notation, and TWO dated italic annotations, one with
+#   parentheses and one without. The annotation fixture has two lines on purpose: a pattern written for one of the
+#   forms silently missed the other, and a pattern is validated by counting, not by reading.
+#   Bisection: with the glyph-tail exemptions forced off the counter is 5 and the self-test fails; with the
+#   old (left-first) ownership logic the chained prefix is lost and the counter is 2.
+check22        = 3
+# check23 = 2: two lines in Fixture_Concept_A, covering both branches of the subject resolver:
+#   "- [[Smith_2024_FakePaper]] - [pendiente claim]" (subject resolved) and a bare "[pendiente claim]" (subject '-').
+check23        = 2
+# check24 = 1: Fixture_GoodProvenance carries `journal:` next to its `venue:`. Exact key match: without the fixture
+#   line the counter is 0 and the self-test fails.
+check24        = 1
+# check25 = 1: Fixture_Concept_A '## Reliability'. "ICC = 0.91 (95% CI 0.84-0.95) on 2026-07-30" has no wikilink
+#   within the radius -> counts (one record per line even though two patterns match; the ISO date is stripped first,
+#   or the reported value would not be 'ICC = 0.91'). "Pooled effect size d = 1.24" has a wikilink in the radius ->
+#   does not count. The class label (block here) is display metadata and is NOT guarded by this baseline.
+check25        = 1
+# check26 = 2: Fixture_Concept_A '## Fixture Tables'. A short row (1 cell vs 2) = 1 'row' hit; a header of 3 cells
+#   over a 2-cell delimiter = 1 'header' hit. GUARD escape: '| escaped pipe a \| b | second cell |' is 2 cells because
+#   an escaped pipe does not delimit (else check26 = 3). GUARD fence: a table inside a ``` block is not a table (else 3).
+#   The delimiter row is the authority: the second table carries TWO 2-cell rows on purpose, so the wrong authority
+#   (header = 3) would count them both and fail.
+check26        = 2
+# check27 = 1: a heading at the end of Fixture_Concept_A with 'RÂ²' (R + U+00C2 + U+00B2), which is exactly what
+#   reading the UTF-8 bytes of 'R²' as cp1252 produces. The round trip returns 'R²', so it fires.
+check27        = 1
+# check28 = 2: a sealed work with no last_verified. Fixture_VerifiedNoPages (papers) and Fixture_Book_Ch02 (books:
+#   the scope covers books). Negative guards: Fixture_GoodProvenance, Fixture_BrokenQuote and Fixture_Book_Ch01 carry
+#   both fields. With the scope reverted to papers only, check28 = 1 and the self-test fails.
+check28        = 2
+# check29 = 1: 01_Proyectos/Fixture_Project_Slug.md links [[project_fixture_memory]] in prose (vault-wide scope: with
+#   the scope reduced to the wiki the counter is 0). Three guards: a slug in backticks (code span), a slug inside a
+#   ``` fence, and the exempt basename 'log' carrying a bare slug (if the exemption breaks, 1 -> 2).
+check29        = 1
+# check30: _VOCABULARY.md lists every concept/method note EXCEPT Fixture_Orphan (missing = 1) and adds
+#   Fixture_Ghost_Concept, which has no note (ghost = 1). If the row parser breaks, every note is missing; if the
+#   ghost direction is lost, ghost = 0.
+check30_missing = 1
+check30_ghost   = 1
+# check31 = 1: Fixture_ShortSeal (source_verification: fulltext and nothing else). Negative guards: GoodProvenance,
+#   VerifiedNoPages and BrokenQuote carry seals of 85-110 characters; AbstractSeal is not a seal at all.
+check31        = 1
+# check32: pairs (note, work cited in its State-of-Knowledge block): Fixture_Concept_A with Smith, GoodProvenance and
+#   NoProvenance, and Fixture_Hub_RC with Smith = 4 pairs. _lint/seal_debt.txt declares the Hub_RC pair as debt
+#   (debt = 1) and one more pair that no longer exists (stale = 1), leaving 3 unsealed. If the debt file does not reach
+#   the check, unsealed = 4 and debt = 0.
+check32        = 3
+check32_debt   = 1
+check32_stale  = 1
+# check33 = 2: Fixture_NoProvenance (empty title) and Fixture_ShortSeal (no venue). Guard: Fixture_StubNoVenue is a stub
+#   without a venue and is exempt by configuration (without the exemption the counter is 3).
+check33        = 2

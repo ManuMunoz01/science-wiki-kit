@@ -1,0 +1,327 @@
+{
+  "vault_root": ".",
+  "wiki_root": "09_Recursos",
+  "papers_folder": "papers",
+  "books_folder": "libros",
+  "concepts_folder": "conceptos",
+  "methods_folder": "metodologia",
+  "folders": [
+    "papers",
+    "conceptos",
+    "metodologia",
+    "libros",
+    "fields",
+    "debates"
+  ],
+  "recursive_folders": [
+    "fields"
+  ],
+  "vault_ignore_dirs": [
+    ".obsidian",
+    ".smart-env",
+    ".trash",
+    "Assets",
+    "Templates",
+    "_archivo"
+  ],
+  "field_titlecase_map": {
+    "exercise-physiology": "Exercise Physiology",
+    "biomechanics": "Biomechanics",
+    "strength-conditioning": "Strength & Conditioning",
+    "measurement-assessment": "Measurement & Assessment",
+    "sport-medicine-injury": "Sport Medicine & Injury",
+    "sport-performance": "Sport Performance",
+    "motor-control-learning": "Motor Control & Learning",
+    "sport-psychology": "Sport Psychology",
+    "recovery-adaptation": "Recovery & Adaptation",
+    "sport-nutrition": "Sport Nutrition",
+    "applied-technology": "Applied Technology & Data Science",
+    "research-methods": "Research Methods & Statistics"
+  },
+  "subfield_titlecase_map": {},
+  "vocabulary_file": "_VOCABULARY.md",
+  "min_distinct_sources_for_final": 2,
+  "synthesis": {
+    "min_sources": 3,
+    "sr_levels": [
+      "SR-MA",
+      "SR"
+    ],
+    "prefulltext_cutoff": "2026-06-01"
+  },
+  "lint": {
+    "index_mode": "bases",
+    "status_by_type": {
+      "paper": [
+        "stub",
+        "draft",
+        "read",
+        "reviewed",
+        "final"
+      ],
+      "concepto": [
+        "stub",
+        "draft",
+        "read",
+        "reviewed",
+        "final"
+      ],
+      "metodologia": [
+        "stub",
+        "draft",
+        "read",
+        "reviewed",
+        "final"
+      ],
+      "book": [
+        "stub",
+        "draft",
+        "read",
+        "reviewed",
+        "final"
+      ],
+      "book-chapter": [
+        "stub",
+        "draft",
+        "read",
+        "reviewed",
+        "final"
+      ],
+      "synthesis": [
+        "stub",
+        "draft",
+        "read",
+        "reviewed",
+        "final"
+      ],
+      "MOC": [
+        "active",
+        "archived"
+      ],
+      "sub-MOC": [
+        "active",
+        "archived"
+      ]
+    },
+    "memory_slug_prefixes": [
+      "project_",
+      "reference_",
+      "feedback_"
+    ],
+    "memory_slug_exempt_files": [
+      "log",
+      "log_archive*"
+    ],
+    "stub_exempt_checks": [
+      33,
+      1,
+      2,
+      4,
+      7,
+      8,
+      13,
+      14,
+      15,
+      17,
+      18,
+      21,
+      25
+    ],
+    "submoc": {
+      "enabled": true,
+      "subfolder_by_field_slug": true,
+      "filename_pattern": "MOC_{SubfieldTitleCase}",
+      "_note": "Sub-MOC path = fields/{field-slug}/MOC_{TitleCase_underscore(subfield)}.md. Field MOC stays at fields/MOC_{Field}.md as an index of sub-MOCs."
+    },
+    "verb_list": [
+      "shows",
+      "demonstrates",
+      "found",
+      "improves",
+      "increases",
+      "decreases",
+      "predicts",
+      "is associated with",
+      "correlates",
+      "produces"
+    ],
+    "alias_link_stoplist": [
+      "RCT",
+      "CI",
+      "OR",
+      "RR",
+      "CV",
+      "SD",
+      "SE",
+      "SEM",
+      "ICC",
+      "HR",
+      "HRV",
+      "ROM",
+      "MRI",
+      "CT",
+      "US",
+      "BMI",
+      "ML",
+      "AI",
+      "PT",
+      "MD",
+      "NS",
+      "ES",
+      "MA",
+      "SR",
+      "RM",
+      "1RM",
+      "MVC",
+      "EMG",
+      "GPS",
+      "3D",
+      "2D",
+      "TE",
+      "CMJ",
+      "PT",
+      "IQR",
+      "CIs"
+    ],
+    "check18_exempt_stale_months": 12,
+    "evidence_level_vocab": [
+      "RCT",
+      "RCT-crossover",
+      "CT",
+      "cohort",
+      "cross-sectional",
+      "narrative",
+      "SR",
+      "SR-MA",
+      "pilot",
+      "cadaveric",
+      "animal",
+      "case-series"
+    ],
+    "synthesis_block_heading": "## State of Knowledge",
+    "defaults": {
+      "stale_days": 90,
+      "unsourced_threshold": 3,
+      "unsourced_radius": 2
+    },
+    "placeholder_wikilink_patterns": [
+      "^[A-Z][a-zA-Z]*Note$",
+      "^Project_[A-Z]",
+      "\\b(et al\\.|pp\\.|;)\\b"
+    ],
+    "unfilled_claim_patterns": [
+      "\\[pendiente claim\\]"
+    ],
+    "link_target_ignore_patterns": [
+      "\\.base$"
+    ],
+    "index_exempt_patterns": [
+      "^_"
+    ],
+    "index_sections": {
+      "Papers": "papers",
+      "Books": "libros"
+    },
+    "quick_stats_labels": {
+      "Concept notes": "conceptos",
+      "Methodology notes": "metodologia",
+      "Papers": "papers"
+    },
+    "deprecated_frontmatter_keys": {
+      "journal": "venue"
+    },
+    "numeric_claim_patterns": [
+      "(?i)\\bICC\\s*[=:]\\s*-?[0-9]+(?:[.,][0-9]+)?",
+      "(?i)\\b(?:r|d|g|z|t|F|SEM|MDC|CV)\\s*=\\s*-?[0-9]*[.,][0-9]+",
+      "(?i)\\bp\\s*[<>=]+\\s*(?:0?[.,][0-9]+|[0-9]+(?:[.,][0-9]+)?e-?[0-9]+)",
+      "(?i)\\bn\\s*=\\s*[0-9]+",
+      "(?i)\\b[0-9]+(?:[.,][0-9]+)?\\s*%(?!\\s*(?:CI\\b|confidence|IC\\b))",
+      "\\u00B1\\s*[0-9]+(?:[.,][0-9]+)?"
+    ],
+    "check25_methods_fields": [
+      "research-methods"
+    ],
+    "check25_cited_pattern": "\\b[A-Z][a-zA-Z\\u00C0-\\u024F-]+(?:\\s+(?:et\\s+al\\.?|and|&|y)(?:\\s+[A-Z][a-zA-Z]+)?)?[\\s,]*\\(?(?:19|20)\\d{2}[a-z]?\\)?",
+    "language_radar": {
+      "enabled": true,
+      "headings": [
+        "definicion",
+        "descripcion",
+        "controversias",
+        "controversia",
+        "evidencia",
+        "evidencias",
+        "aplicaciones",
+        "aplicacion",
+        "resumen",
+        "hallazgos",
+        "metodos",
+        "metodologia",
+        "conclusiones",
+        "conclusion",
+        "fortalezas",
+        "limitaciones",
+        "limitacion",
+        "procedimiento",
+        "procedimientos",
+        "consideraciones",
+        "interpretacion",
+        "antecedentes",
+        "introduccion",
+        "discusion",
+        "referencias",
+        "fuentes",
+        "objetivo",
+        "objetivos",
+        "resultados",
+        "ejemplo",
+        "ejemplos",
+        "preguntas",
+        "calculo",
+        "relacionados",
+        "relacionadas"
+      ],
+      "stopwords": [
+        "que",
+        "los",
+        "las",
+        "con",
+        "para",
+        "por",
+        "una",
+        "como",
+        "pero",
+        "cuando",
+        "desde",
+        "entre",
+        "sobre",
+        "aunque",
+        "porque",
+        "del",
+        "este",
+        "esta",
+        "estos",
+        "estas",
+        "segun",
+        "tambien",
+        "hacia",
+        "mediante",
+        "cada",
+        "sus",
+        "estan",
+        "ser"
+      ],
+      "prose_threshold": 8,
+      "case_sensitive_tokens": [
+        "con"
+      ],
+      "line_guards": {
+        "con": "(?i)(?<![A-Za-z])ecc(?![A-Za-z])"
+      },
+      "heading_requires_accent": [
+        "conclusion"
+      ]
+    },
+    "claim_placeholder_text": "[pendiente claim]"
+  }
+}
