@@ -1,0 +1,1223 @@
+{
+  "review_baseline": "8bf13207a523e2972482c4ad8b5c5fc25dd1bf02",
+  "original_reference": "bb639423771a60b430819f11f62c56e29c225324",
+  "method": "Original Git blobs compared with HEAD and working-tree content, including Git normalization. No runtime execution.",
+  "skill_file_counts": {
+    "wiki-lint": 5,
+    "wiki-ingest": 5,
+    "wiki-synthesize": 5,
+    "wiki-ingest-book": 4,
+    "vocabulary-update": 2
+  },
+  "original_file_count": 134,
+  "files": [
+    {
+      "path": ".github/ISSUE_TEMPLATE/adaptation.md",
+      "git_blob": "b139c6d116bc1e2305748c72b9cfa6be7adbfceb",
+      "mode": "100644",
+      "original_sha256": "5c2bae4dd3a90187e10c5407d6ab2b4c380557d1538e26fa4638971e71eebf5e",
+      "working_tree_sha256": "5c2bae4dd3a90187e10c5407d6ab2b4c380557d1538e26fa4638971e71eebf5e",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "git_blob": "f828640df976760efa926bfccf9cbd362b3bb739",
+      "mode": "100644",
+      "original_sha256": "435ff53b0de0a29cd9e531c2383802691c2d7a89a938544fa17f19e9b27c5811",
+      "working_tree_sha256": "435ff53b0de0a29cd9e531c2383802691c2d7a89a938544fa17f19e9b27c5811",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "git_blob": "0086358db1eb971c0cfa8739c27518bbc18a5ff4",
+      "mode": "100644",
+      "original_sha256": "13064e7bea658e01e718b414fbb7b3b244f36411fe25ee2055c151f7b534547a",
+      "working_tree_sha256": "13064e7bea658e01e718b414fbb7b3b244f36411fe25ee2055c151f7b534547a",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "git_blob": "2c2487a14523b1d369b3df58684a726c26e1b3d7",
+      "mode": "100644",
+      "original_sha256": "9a5d9b67a01878d736d5fc0d6c1b46dce0a620a35fb80ac7742117db3be973b5",
+      "working_tree_sha256": "9a5d9b67a01878d736d5fc0d6c1b46dce0a620a35fb80ac7742117db3be973b5",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": ".gitignore",
+      "git_blob": "fb4cbefaf3ca41a6fdb165bd3f8d243433216805",
+      "mode": "100644",
+      "original_sha256": "a41082f7dd057e0ccff3e7bbe26f6a90128e2c33879b48d0beb1b37399b4a4b8",
+      "working_tree_sha256": "a41082f7dd057e0ccff3e7bbe26f6a90128e2c33879b48d0beb1b37399b4a4b8",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "git_blob": "8bb6641591ef4374e8350cfb0fc86197f37652fc",
+      "mode": "100644",
+      "original_sha256": "f5ae3c4dfaf62c139a02de79d8c2ce008315e98c3cff532f70954d1c3de3c372",
+      "working_tree_sha256": "f5ae3c4dfaf62c139a02de79d8c2ce008315e98c3cff532f70954d1c3de3c372",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "LICENSE",
+      "git_blob": "3b2a4d3b1a1aed20689d9340f7f27c63bc2bd7c3",
+      "mode": "100644",
+      "original_sha256": "2dce06f293514f612ae93a643eeb491398532cd2038b0beb9269cbcaf81ae7b1",
+      "working_tree_sha256": "2dce06f293514f612ae93a643eeb491398532cd2038b0beb9269cbcaf81ae7b1",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "LICENSE-DOCS",
+      "git_blob": "2ce99b34e8c03a6e6e5216fd9eab90883fd59fb4",
+      "mode": "100644",
+      "original_sha256": "9844d9c03e1b9ec9857521e4836c8e5f9822a6e340852cdc7b616a40d0455101",
+      "working_tree_sha256": "9844d9c03e1b9ec9857521e4836c8e5f9822a6e340852cdc7b616a40d0455101",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "README.md",
+      "git_blob": "e9eebf2e382b6b45a9ab6e61d85d4cbc51ef8ab9",
+      "mode": "100644",
+      "original_sha256": "44a7c602325184e976e55a76e476322eefbdf25008e6d2b9c1aef294eda31650",
+      "working_tree_sha256": "44a7c602325184e976e55a76e476322eefbdf25008e6d2b9c1aef294eda31650",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "docs/GOTCHAS.md",
+      "git_blob": "b3aa37f772ffbbd2b64825f9ef726bb4f9f4abef",
+      "mode": "100644",
+      "original_sha256": "cd0d79f0a389bb63fb886f90cfc7e616f37060efc1ebd15b3b951200a75026e2",
+      "working_tree_sha256": "cd0d79f0a389bb63fb886f90cfc7e616f37060efc1ebd15b3b951200a75026e2",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "docs/SEALS.md",
+      "git_blob": "e4bef0b39e0031891d6889081c2298b62f023072",
+      "mode": "100644",
+      "original_sha256": "41281ebdeaa01e09a0b298a3b5d3acb2d54b669cc0cfaa53b7140e44ec0f582e",
+      "working_tree_sha256": "41281ebdeaa01e09a0b298a3b5d3acb2d54b669cc0cfaa53b7140e44ec0f582e",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "docs/WIKI_SCHEMA.md",
+      "git_blob": "a8050b21d4f64ecc82f46e0964172f84e1e18350",
+      "mode": "100644",
+      "original_sha256": "e789df04c1307db3b12f4e02c8270adf9396e7c952df589885e45c3a3f5900c6",
+      "working_tree_sha256": "e789df04c1307db3b12f4e02c8270adf9396e7c952df589885e45c3a3f5900c6",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/languages/es.json",
+      "git_blob": "6767c56b8ed16a7d8e5c4bb7b8fcfa211b844ff4",
+      "mode": "100644",
+      "original_sha256": "8efa415d7d0b8130ecc848ad53f2ad22a414efc3e10fcee5867c40a70d62636a",
+      "working_tree_sha256": "8efa415d7d0b8130ecc848ad53f2ad22a414efc3e10fcee5867c40a70d62636a",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/minimal/wiki.config.json",
+      "git_blob": "ac1cf0c936c44a932184ff292e4b509a481c2907",
+      "mode": "100644",
+      "original_sha256": "eeb00329414f320ee6e9995e65934c0c092d4239cbf878273ed70e9ee6dcb767",
+      "working_tree_sha256": "eeb00329414f320ee6e9995e65934c0c092d4239cbf878273ed70e9ee6dcb767",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/sport-science/routing-disambiguations.md",
+      "git_blob": "7cc5ba2626f12a42f71fb189d861700c3db5f1fa",
+      "mode": "100644",
+      "original_sha256": "e99fc41c78ee6847fd837af08ed5378c745a0469caff43ea0bd4771e9f76ed3c",
+      "working_tree_sha256": "e99fc41c78ee6847fd837af08ed5378c745a0469caff43ea0bd4771e9f76ed3c",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/sport-science/taxonomy.md",
+      "git_blob": "fed03a55f2a89d75a5f47fe2564c86f45a82ac2f",
+      "mode": "100644",
+      "original_sha256": "c9d8166cf74429076081d085d58815a57ef621453ddec66ded0bd2ab9036a5f5",
+      "working_tree_sha256": "c9d8166cf74429076081d085d58815a57ef621453ddec66ded0bd2ab9036a5f5",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/worked-example/README.md",
+      "git_blob": "b31aac983837b3175aa1c9f08d9811a4582b1351",
+      "mode": "100644",
+      "original_sha256": "14a1b3724ff0fec5ddc21b64b84d37d08d27156a7ba6399a746ba39acb439e9f",
+      "working_tree_sha256": "14a1b3724ff0fec5ddc21b64b84d37d08d27156a7ba6399a746ba39acb439e9f",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/worked-example/wiki.config.json",
+      "git_blob": "0b18a1dd14286ba7252c09b87e3ae6d1faf253da",
+      "mode": "100644",
+      "original_sha256": "e54e9f6f2b0014141a0cd172ee52d71c4638e8315fe5c060c0f4c72dbe21b8b9",
+      "working_tree_sha256": "e54e9f6f2b0014141a0cd172ee52d71c4638e8315fe5c060c0f4c72dbe21b8b9",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/worked-example/wiki/concepts/Functional_Hamstring_Quadriceps_Ratio.md",
+      "git_blob": "263ecba81f568d1b975e91c7652da4881149ad77",
+      "mode": "100644",
+      "original_sha256": "4b4590e27e41c24d573225cb6f13f34293873a5a8ef4d206056d27d0756e4129",
+      "working_tree_sha256": "4b4590e27e41c24d573225cb6f13f34293873a5a8ef4d206056d27d0756e4129",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/worked-example/wiki/concepts/Training_Mode_Specificity.md",
+      "git_blob": "0f2f5885a3435c39a3854887fd0a1c77afb959ff",
+      "mode": "100644",
+      "original_sha256": "387f798cda2d5710351a5dabef9c6167874d80ac623f403673be48ea7a640688",
+      "working_tree_sha256": "387f798cda2d5710351a5dabef9c6167874d80ac623f403673be48ea7a640688",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/worked-example/wiki/fields/MOC_Strength_and_Conditioning.md",
+      "git_blob": "118118b43877ae05fa856852b4839dea76659c7c",
+      "mode": "100644",
+      "original_sha256": "c7e07d84e6d88b30bcb99715c248ccf05ba8141ad0452eb0e20d177ae417b03b",
+      "working_tree_sha256": "c7e07d84e6d88b30bcb99715c248ccf05ba8141ad0452eb0e20d177ae417b03b",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/worked-example/wiki/fields/MOC_Wiki.md",
+      "git_blob": "f2c05b86231c358117203f49e3ca18be6a62cab6",
+      "mode": "100644",
+      "original_sha256": "37bbf33d2f609e2bf3b201c0cb48654e59a37442d35b3c2c3c6572a0b926e90b",
+      "working_tree_sha256": "37bbf33d2f609e2bf3b201c0cb48654e59a37442d35b3c2c3c6572a0b926e90b",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/worked-example/wiki/fields/strength-and-conditioning/MOC_Knee_Function.md",
+      "git_blob": "59d9d1c0f45df77d368318aa80692364e0d27ab5",
+      "mode": "100644",
+      "original_sha256": "58eddec6d25f0eab17a57d0c2328ba4224c410daac1447e0bc425eeec970483f",
+      "working_tree_sha256": "58eddec6d25f0eab17a57d0c2328ba4224c410daac1447e0bc425eeec970483f",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/worked-example/wiki/fields/strength-and-conditioning/MOC_Training_Adaptation.md",
+      "git_blob": "8ac4077d902627389cd91e04aae4af58f17a1238",
+      "mode": "100644",
+      "original_sha256": "3dc2549dc37b1a397d37c727b69d9e4cd5b70076a9632d52cf4ded4bb1abb30e",
+      "working_tree_sha256": "3dc2549dc37b1a397d37c727b69d9e4cd5b70076a9632d52cf4ded4bb1abb30e",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/worked-example/wiki/index.md",
+      "git_blob": "8b013d6a6ba9a19573583e72de3fefaf4786bb74",
+      "mode": "100644",
+      "original_sha256": "eb9ab63dc04b9099f6a3723bf8216dcf110d9b207c3d9d96c13f915caabf61db",
+      "working_tree_sha256": "eb9ab63dc04b9099f6a3723bf8216dcf110d9b207c3d9d96c13f915caabf61db",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/worked-example/wiki/log.md",
+      "git_blob": "07056010136fdde6ec6cf0d5bf1bffade804ba55",
+      "mode": "100644",
+      "original_sha256": "9287ae80427d84f008ccacde8fa85c40ae34fe853c755973352a89b4af399723",
+      "working_tree_sha256": "9287ae80427d84f008ccacde8fa85c40ae34fe853c755973352a89b4af399723",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/worked-example/wiki/methods/Isokinetic_Dynamometry.md",
+      "git_blob": "8bafce5a11390ecc13a25c2ebc7105a1c3896002",
+      "mode": "100644",
+      "original_sha256": "6daef8561c4f8e15abe2d9d707a00bea71fea203bf1fe512a92f2afff4ad3e8b",
+      "working_tree_sha256": "6daef8561c4f8e15abe2d9d707a00bea71fea203bf1fe512a92f2afff4ad3e8b",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "examples/worked-example/wiki/papers/Sharma_2022_Hamstring_Isokinetic_Training.md",
+      "git_blob": "70013a8ced413e480d051e61f100f86ed3816599",
+      "mode": "100644",
+      "original_sha256": "13ba77c7681efb73f31dc9da26862585896bd5c5467fbd3135baf538f823af8a",
+      "working_tree_sha256": "13ba77c7681efb73f31dc9da26862585896bd5c5467fbd3135baf538f823af8a",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "install.ps1",
+      "git_blob": "a16e9e4caf06d116c5eabab750a58b1129c1592d",
+      "mode": "100644",
+      "original_sha256": "2e2b1f55686382882bfc868ea456586d617432d4592f820c4792266f3a21fd6a",
+      "working_tree_sha256": "584ec6c9662cd82c3a57900fa068f60518a2d9d8a7b382e17b07bbef1427a3db",
+      "raw_bytes_identical": false,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "install.sh",
+      "git_blob": "45500d41989519d1310b5995e42151da96a0d1dc",
+      "mode": "100644",
+      "original_sha256": "197bcd711ba6a20cc3f730e5ff8456deb5887752a89adad3c6509ab996f8ed8a",
+      "working_tree_sha256": "197bcd711ba6a20cc3f730e5ff8456deb5887752a89adad3c6509ab996f8ed8a",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "pyproject.toml",
+      "git_blob": "84b53d1ae74beb5c1f4a1db32f7139decbf79744",
+      "mode": "100644",
+      "original_sha256": "24c1b798082aff94bdedf7480c0dae2df8c94bc64da1f2824b31f9637fa9155f",
+      "working_tree_sha256": "24c1b798082aff94bdedf7480c0dae2df8c94bc64da1f2824b31f9637fa9155f",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/vocabulary-update/SKILL.md",
+      "git_blob": "803d16dc88a8aa0ebd83003d068edcc728edcf97",
+      "mode": "100644",
+      "original_sha256": "cf458866631eb4d11051a6f4fad82a668095af0190c547ddc6e3af9cafb66ee6",
+      "working_tree_sha256": "cf458866631eb4d11051a6f4fad82a668095af0190c547ddc6e3af9cafb66ee6",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/vocabulary-update/scripts/build_vocabulary.py",
+      "git_blob": "f3019cb73f769d63a1ec3dfd367705a4bc655c29",
+      "mode": "100644",
+      "original_sha256": "7255c95a3af396dc6fd9997525d625842e1890d802e342d1f9038908a97cf664",
+      "working_tree_sha256": "7255c95a3af396dc6fd9997525d625842e1890d802e342d1f9038908a97cf664",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-ingest-book/SKILL.md",
+      "git_blob": "61bdd1a0dbcd3588742269553e3ca5abd644f65b",
+      "mode": "100644",
+      "original_sha256": "39fec07df6f045a306c4b883b694b96a339c6c704199c2907ae755da6a4bc4bb",
+      "working_tree_sha256": "39fec07df6f045a306c4b883b694b96a339c6c704199c2907ae755da6a4bc4bb",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-ingest-book/references/BOOK-INGEST-WORKFLOW.md",
+      "git_blob": "6832afd3bbe38909f181ad8a3c54e7ea512f4015",
+      "mode": "100644",
+      "original_sha256": "08b2ca8af78de177d7d00768025c04503cbf1233315325ace3d190d7c0941d8c",
+      "working_tree_sha256": "08b2ca8af78de177d7d00768025c04503cbf1233315325ace3d190d7c0941d8c",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-ingest-book/scripts/create_forward_ref_stubs.py",
+      "git_blob": "91df3ffdbaea63a3e209ce4cd0a818bcf27ff065",
+      "mode": "100644",
+      "original_sha256": "d4b9ea9846b6eb0e298c826a3cce800fa40f86756de75d1e90778fe3ba76c14e",
+      "working_tree_sha256": "d4b9ea9846b6eb0e298c826a3cce800fa40f86756de75d1e90778fe3ba76c14e",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-ingest-book/scripts/report_missing_concepts.py",
+      "git_blob": "05502d1a8f1de4916524044d38cee858a784c2a1",
+      "mode": "100644",
+      "original_sha256": "0129dae0e9be4cdf8cbd83dbb06f2fd0ae148c6e5767007b2de7d8d51b9391c2",
+      "working_tree_sha256": "0129dae0e9be4cdf8cbd83dbb06f2fd0ae148c6e5767007b2de7d8d51b9391c2",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-ingest/SKILL.md",
+      "git_blob": "10ba399fb106e882ec944159f0cd345282bc5748",
+      "mode": "100644",
+      "original_sha256": "db6d9ed4fa620a6b9ddf829571c29e64c2070310fb66fbcdb03b6dc230f00052",
+      "working_tree_sha256": "db6d9ed4fa620a6b9ddf829571c29e64c2070310fb66fbcdb03b6dc230f00052",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-ingest/references/CONCEPT-PROPAGATION.md",
+      "git_blob": "858e59f858c4760af6ff8e180891ee9169f56c39",
+      "mode": "100644",
+      "original_sha256": "60d7817c6b59de51d07b1d81b4d12ddbb7b187c7343a6f422e006f3e2f06955a",
+      "working_tree_sha256": "60d7817c6b59de51d07b1d81b4d12ddbb7b187c7343a6f422e006f3e2f06955a",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-ingest/references/INGEST-PITFALLS.md",
+      "git_blob": "76613439018e05cdc30f8321dcd0df937238ec08",
+      "mode": "100644",
+      "original_sha256": "dae9967af5954c6adde1c9409e705146d2887df486d24e39f8a37c0d3997b8ee",
+      "working_tree_sha256": "dae9967af5954c6adde1c9409e705146d2887df486d24e39f8a37c0d3997b8ee",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-ingest/references/INGEST-WORKFLOW.md",
+      "git_blob": "dbb8f0324b02f5f4f2129a096df678d4b07dba52",
+      "mode": "100644",
+      "original_sha256": "4b715e4039de77f8dcd29a2b16600475fdb957760ceda12801f61aedf7dd6367",
+      "working_tree_sha256": "4b715e4039de77f8dcd29a2b16600475fdb957760ceda12801f61aedf7dd6367",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-ingest/references/VERIFY-DIFF-MODE.md",
+      "git_blob": "6c350fde7624ebb21419c736b34f345d95772e4e",
+      "mode": "100644",
+      "original_sha256": "6e7386fc71de69875eb1958b6a3ed58c7fc5ba3c7c71a83e939f6e157973cdd6",
+      "working_tree_sha256": "6e7386fc71de69875eb1958b6a3ed58c7fc5ba3c7c71a83e939f6e157973cdd6",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-lint/SKILL.md",
+      "git_blob": "890cfa5769a6457e4b0ec1983087cda43e9636e0",
+      "mode": "100644",
+      "original_sha256": "66bb283d1c7c05e75bee31d7a2b104c6331a537f398d6e966bf6da1dc80f8b6b",
+      "working_tree_sha256": "66bb283d1c7c05e75bee31d7a2b104c6331a537f398d6e966bf6da1dc80f8b6b",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-lint/references/check-origins.md",
+      "git_blob": "8da6e9f9355199e71b6beed1a2cd7b80e076f4e6",
+      "mode": "100644",
+      "original_sha256": "7e69fd91d3b7e6e3cbfc7a8dd2d3abe5088c0977de8dd167c5a0b1c4b9841c08",
+      "working_tree_sha256": "7e69fd91d3b7e6e3cbfc7a8dd2d3abe5088c0977de8dd167c5a0b1c4b9841c08",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-lint/references/cli-reference.md",
+      "git_blob": "7ebe8b4ca6a17a0b954808a9beb62e7a466b8636",
+      "mode": "100644",
+      "original_sha256": "f1584b2fb80d0ae732b9c98beda8a13bda930847e757e52619b3b05448b02f1e",
+      "working_tree_sha256": "f1584b2fb80d0ae732b9c98beda8a13bda930847e757e52619b3b05448b02f1e",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-lint/scripts/fix.py",
+      "git_blob": "ead54bafb5a31f9927aff098cde1a918c0aa9c66",
+      "mode": "100644",
+      "original_sha256": "69f2e1c383aa7132c03f1e58f39964a1bdd7410b6175055aa4b66856caa1fbc8",
+      "working_tree_sha256": "69f2e1c383aa7132c03f1e58f39964a1bdd7410b6175055aa4b66856caa1fbc8",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-lint/scripts/lint.py",
+      "git_blob": "5cc547135482d2c9a567a8e0d817b8dffab6c5c0",
+      "mode": "100644",
+      "original_sha256": "e7668b47f70a997889f6bc72bfac3c5d2d8d7b5b854dc9b05c7e2a0de11a418d",
+      "working_tree_sha256": "e7668b47f70a997889f6bc72bfac3c5d2d8d7b5b854dc9b05c7e2a0de11a418d",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-synthesize/SKILL.md",
+      "git_blob": "2b7568a2c8fa4fa94703c3911e541082e75ebef6",
+      "mode": "100644",
+      "original_sha256": "4f46ce9eacba9b90e151a42eb5b6026765e3518a86b7482d1f5717e5c5043368",
+      "working_tree_sha256": "4f46ce9eacba9b90e151a42eb5b6026765e3518a86b7482d1f5717e5c5043368",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-synthesize/references/BATCH-WORKFLOW.md",
+      "git_blob": "e47fded01e13209234af996f104b221d6257bc60",
+      "mode": "100644",
+      "original_sha256": "4ae5274ecec91d8707ebff8d87b1ea4866b09f336383c98ae2010da3051e78d3",
+      "working_tree_sha256": "4ae5274ecec91d8707ebff8d87b1ea4866b09f336383c98ae2010da3051e78d3",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-synthesize/references/SYNTHESIS-WORKFLOW.md",
+      "git_blob": "d2f0c302774c5db03e791cd3070912ab26841866",
+      "mode": "100644",
+      "original_sha256": "6c7b7f5694db49976d7bafa4f2c060f1eee56ddfe98248d35bf9ba196f022f5c",
+      "working_tree_sha256": "6c7b7f5694db49976d7bafa4f2c060f1eee56ddfe98248d35bf9ba196f022f5c",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-synthesize/scripts/synth_validate.py",
+      "git_blob": "19be68e9b0ac0fa7f1cd5ea1d9b8f0bbaa013c52",
+      "mode": "100644",
+      "original_sha256": "8121b774d7e52170b331c6834b0d32254c6ba9ae4663465fd9fb0d2ee01f6236",
+      "working_tree_sha256": "8121b774d7e52170b331c6834b0d32254c6ba9ae4663465fd9fb0d2ee01f6236",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "skills/wiki-synthesize/scripts/synth_write.py",
+      "git_blob": "ce6b4bee3f31a1af713824a28a31345ae48e74cc",
+      "mode": "100644",
+      "original_sha256": "fc5690cc0d1f61f998d73604a684b7aa174cd62b61999fc3fd5be3e55c5d7992",
+      "working_tree_sha256": "fc5690cc0d1f61f998d73604a684b7aa174cd62b61999fc3fd5be3e55c5d7992",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "templates/book.md",
+      "git_blob": "22715ae8a12763ded75f1559979dc618b50d91a2",
+      "mode": "100644",
+      "original_sha256": "fa15f07f1e9fe97264c2931bcbefe95ceab8346adaf7feb482a5b17457cd1346",
+      "working_tree_sha256": "fa15f07f1e9fe97264c2931bcbefe95ceab8346adaf7feb482a5b17457cd1346",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "templates/chapter.md",
+      "git_blob": "9d364b2468a30f198ffb930c43c5566e9349904b",
+      "mode": "100644",
+      "original_sha256": "ca77ecc429fe24f280d600d1c1fc0ac0e4fd17b9b7fdb04abee1a75d143b4be9",
+      "working_tree_sha256": "ca77ecc429fe24f280d600d1c1fc0ac0e4fd17b9b7fdb04abee1a75d143b4be9",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "templates/concept.md",
+      "git_blob": "05d8510bbee1c6905e0e5735918cda479ba40767",
+      "mode": "100644",
+      "original_sha256": "6d64d0a5f6d9ff265a26f4bbfdb2458e2ce8da49f5f265be41ed8fa852bcfbb7",
+      "working_tree_sha256": "6d64d0a5f6d9ff265a26f4bbfdb2458e2ce8da49f5f265be41ed8fa852bcfbb7",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "templates/method.md",
+      "git_blob": "3302360fba75562ec6d4c02edde1ff33fe3caa10",
+      "mode": "100644",
+      "original_sha256": "a4e5a75c14fb109fd7276b123b223d9890fac55673b6015fc8ffaf00174d907b",
+      "working_tree_sha256": "a4e5a75c14fb109fd7276b123b223d9890fac55673b6015fc8ffaf00174d907b",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "templates/moc.md",
+      "git_blob": "31627f42467b8fd68a566c0e0819d1ee2439ea55",
+      "mode": "100644",
+      "original_sha256": "cd588dedf0782e45d14832f19bdd7d0a732b28b8648fc00209e1c232716e55b7",
+      "working_tree_sha256": "cd588dedf0782e45d14832f19bdd7d0a732b28b8648fc00209e1c232716e55b7",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "templates/moc_wiki.md",
+      "git_blob": "5bba9c78786a2491966d156af935f5d568f341d0",
+      "mode": "100644",
+      "original_sha256": "cf4671e94d5cfe3b84300876fabd59e714740041cfa0932e8d4bbbad8488a4fc",
+      "working_tree_sha256": "cf4671e94d5cfe3b84300876fabd59e714740041cfa0932e8d4bbbad8488a4fc",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "templates/paper.md",
+      "git_blob": "b3a527e1cdc46700bc5862a0f02a998349d217a0",
+      "mode": "100644",
+      "original_sha256": "b9d9d99d97e2e79eb2918f029ff33cd64572d107529be9510c21a981688e690d",
+      "working_tree_sha256": "b9d9d99d97e2e79eb2918f029ff33cd64572d107529be9510c21a981688e690d",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "templates/submoc.md",
+      "git_blob": "d9a21e4b16c3243277e0cbd41b3e1a41dd098481",
+      "mode": "100644",
+      "original_sha256": "6534b7a3b2da8ae036567f84edd6aa8f64877869b249a0996d7fff55d843788f",
+      "working_tree_sha256": "6534b7a3b2da8ae036567f84edd6aa8f64877869b249a0996d7fff55d843788f",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "templates/synthesis.md",
+      "git_blob": "00f09370933720ad931dfd846bec1299b7c2545b",
+      "mode": "100644",
+      "original_sha256": "65a1741049c99fcf319e0b173a24470843b1d55e450594c3589bb2ee88dddece",
+      "working_tree_sha256": "65a1741049c99fcf319e0b173a24470843b1d55e450594c3589bb2ee88dddece",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/expected_counters.txt",
+      "git_blob": "23bfb73eae56e70c51101a17cdac922b830c8ed6",
+      "mode": "100644",
+      "original_sha256": "85dcca9dd0bcd58fb01ca9b17646c0bb03a292ac147a2eb66ed135c4da1ab012",
+      "working_tree_sha256": "85dcca9dd0bcd58fb01ca9b17646c0bb03a292ac147a2eb66ed135c4da1ab012",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/projects/Fixture_Project_Slug.md",
+      "git_blob": "4ac1466be86c62afb66d10622bf6001b17a7c38d",
+      "mode": "100644",
+      "original_sha256": "d33982d80030c4c83317efa9433ad7c5ee9cdc2972ff6aa8be5ff87890bccfab",
+      "working_tree_sha256": "d33982d80030c4c83317efa9433ad7c5ee9cdc2972ff6aa8be5ff87890bccfab",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki.config.json",
+      "git_blob": "b0acd7303823f12ba5db69fdc2e74d85538b693c",
+      "mode": "100644",
+      "original_sha256": "1e98dac47534560b717fdaccfc4b329621854301747ca9544b87b3004eb341a1",
+      "working_tree_sha256": "1e98dac47534560b717fdaccfc4b329621854301747ca9544b87b3004eb341a1",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/_VOCABULARY.md",
+      "git_blob": "b7475cf5a01caeb8d41c36ff218b6a184c909a32",
+      "mode": "100644",
+      "original_sha256": "b82047adea35eb673424ed94de3e0b9ab03a46ee1d4a66355385e253770c719a",
+      "working_tree_sha256": "b82047adea35eb673424ed94de3e0b9ab03a46ee1d4a66355385e253770c719a",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/_lint/seal_debt.txt",
+      "git_blob": "49c04d104b4c0daaacf4475873cf56d813db0792",
+      "mode": "100644",
+      "original_sha256": "74db4e0c797fa6b5814e14298fac789fe910afa0c2eb43f9ac9aa17e49f1151b",
+      "working_tree_sha256": "74db4e0c797fa6b5814e14298fac789fe910afa0c2eb43f9ac9aa17e49f1151b",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/books/Fixture_Book.md",
+      "git_blob": "f1567637008d37188d6e2b6b5c895a77adfcea2e",
+      "mode": "100644",
+      "original_sha256": "e718141f8d378d422c65ce44c264ce8da9939e9822bacec79f4caf26fef53c21",
+      "working_tree_sha256": "e718141f8d378d422c65ce44c264ce8da9939e9822bacec79f4caf26fef53c21",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/books/Fixture_Book_Ch01.md",
+      "git_blob": "65d9887576d35d09040a25a70486dcaf836c2bb0",
+      "mode": "100644",
+      "original_sha256": "a5a2537ded6eb1e8bf4a89c4aac52fc768f5994edd13a019fba950b8b5476cde",
+      "working_tree_sha256": "a5a2537ded6eb1e8bf4a89c4aac52fc768f5994edd13a019fba950b8b5476cde",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/books/Fixture_Book_Ch02.md",
+      "git_blob": "b53c124fd2f3ce31a1c6166c04bff714d53ca009",
+      "mode": "100644",
+      "original_sha256": "45018576964ef9a62a7823d8ca41c856ea2e3db3356f961186904430a0799fea",
+      "working_tree_sha256": "45018576964ef9a62a7823d8ca41c856ea2e3db3356f961186904430a0799fea",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/books/Fixture_Book_Ch03.md",
+      "git_blob": "d0c9ac133f80a49503ee59b9786409e48baa62b6",
+      "mode": "100644",
+      "original_sha256": "a7b7495d521ccbf15f72de7ab336502b354b593c9773c1342dc23948a5716554",
+      "working_tree_sha256": "a7b7495d521ccbf15f72de7ab336502b354b593c9773c1342dc23948a5716554",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/concepts/Fixture_Concept_A.md",
+      "git_blob": "8ce53c516efb9317ff767e7216c9a20f1a6a4608",
+      "mode": "100644",
+      "original_sha256": "9c4e699014e11b5c8d30e705a99c677432d2c46ee6e9d3a69b2f06d566e1c7c9",
+      "working_tree_sha256": "9c4e699014e11b5c8d30e705a99c677432d2c46ee6e9d3a69b2f06d566e1c7c9",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/concepts/Fixture_Hub_Inline.md",
+      "git_blob": "4a0b7f375b365d5d8dd7d4d5caa31e65501a2a29",
+      "mode": "100644",
+      "original_sha256": "681c108d881221629e7e8541a1f055088d09a0ccf6ed1fa4eebe9a6f9f8837d4",
+      "working_tree_sha256": "681c108d881221629e7e8541a1f055088d09a0ccf6ed1fa4eebe9a6f9f8837d4",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/concepts/Fixture_Hub_RC.md",
+      "git_blob": "3ce06c9b04c01ce7896dca882b36099654f9edfa",
+      "mode": "100644",
+      "original_sha256": "41e69cfc31d5de74d125dbcdaa697649941269b5bac0cc6395f0db7e83962914",
+      "working_tree_sha256": "41e69cfc31d5de74d125dbcdaa697649941269b5bac0cc6395f0db7e83962914",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/concepts/Fixture_Orphan.md",
+      "git_blob": "78c837a4bea3e6659cd0fe2f55d3f92cc6defc04",
+      "mode": "100644",
+      "original_sha256": "a648f57b5b2d9cfd6397528edb698aac9aa15bcd53e03950da267b44c01cc386",
+      "working_tree_sha256": "a648f57b5b2d9cfd6397528edb698aac9aa15bcd53e03950da267b44c01cc386",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/concepts/Fixture_Stub.md",
+      "git_blob": "956ab853952f9b08cab81586998bd2080e2df33f",
+      "mode": "100644",
+      "original_sha256": "c2b7844921ef9790d93b921a74ac5e2189200cad3785d48ca0d78b95381a2973",
+      "working_tree_sha256": "c2b7844921ef9790d93b921a74ac5e2189200cad3785d48ca0d78b95381a2973",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/concepts/Fixture_Unsourced.md",
+      "git_blob": "9c4868347178a0b7ceded7227eb5effe4488895b",
+      "mode": "100644",
+      "original_sha256": "d0e449624ef7803a667f3576966d301d6b438043831f5be9f71766e11c5dc215",
+      "working_tree_sha256": "d0e449624ef7803a667f3576966d301d6b438043831f5be9f71766e11c5dc215",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/fields/MOC_Fixture_BadStatus.md",
+      "git_blob": "e3a07331f26d0abbbbe8369177bb12f484cdcae5",
+      "mode": "100644",
+      "original_sha256": "198647381e14b8284ba63cf19624c231b802f8130187e0d30f7d904b6f596cac",
+      "working_tree_sha256": "198647381e14b8284ba63cf19624c231b802f8130187e0d30f7d904b6f596cac",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/fields/MOC_Wiki.md",
+      "git_blob": "6cae056fd6623f84b58b08e62791781134e4ea42",
+      "mode": "100644",
+      "original_sha256": "0445ba0d504c8d0d37101583259a6da4f112fdb6e1978678ee97136d07919dc7",
+      "working_tree_sha256": "0445ba0d504c8d0d37101583259a6da4f112fdb6e1978678ee97136d07919dc7",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/fields/research-methods/MOC_Fixture_Sub.md",
+      "git_blob": "3f110e18f597b6c272c54d05127012bf10a1ad81",
+      "mode": "100644",
+      "original_sha256": "96f4e58346ccc10aaba2bde1804e63f72901268ba91232fcc52a835d889113d8",
+      "working_tree_sha256": "96f4e58346ccc10aaba2bde1804e63f72901268ba91232fcc52a835d889113d8",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/index.md",
+      "git_blob": "c3d93ec120cb18147945968ced7f0eb8c88279c5",
+      "mode": "100644",
+      "original_sha256": "7f7031133629be492111d329fed45d011460b4b6a93b6bffa656554d5644b63d",
+      "working_tree_sha256": "7f7031133629be492111d329fed45d011460b4b6a93b6bffa656554d5644b63d",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/log.md",
+      "git_blob": "a01f9a9246e82ae2def0eb1606046a0b642dcef6",
+      "mode": "100644",
+      "original_sha256": "17b6364569a2cdb820c7ec0697415473cadfa4cb3ddad325c43a94bf97cb54b8",
+      "working_tree_sha256": "17b6364569a2cdb820c7ec0697415473cadfa4cb3ddad325c43a94bf97cb54b8",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/methods/Fixture_Draft_MultiSource.md",
+      "git_blob": "4b3c12ad841624c6b0e1097bdb98e824367bab91",
+      "mode": "100644",
+      "original_sha256": "567603e136d39c1983957b09d4da93cb4572335fe625ecae9ef65a860396a0e0",
+      "working_tree_sha256": "567603e136d39c1983957b09d4da93cb4572335fe625ecae9ef65a860396a0e0",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/methods/Fixture_Draft_SingleSource.md",
+      "git_blob": "88e416f059b739ed7dcdae3ab0aab111e06a108c",
+      "mode": "100644",
+      "original_sha256": "5d0446f879faa1f4e8315ae868360c002a1be364308abb78c8f0f44a5548bc8b",
+      "working_tree_sha256": "5d0446f879faa1f4e8315ae868360c002a1be364308abb78c8f0f44a5548bc8b",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/methods/Fixture_Method_A.md",
+      "git_blob": "47b394c2d4658f39ce71f815857cf3b544191257",
+      "mode": "100644",
+      "original_sha256": "2a076f7375d0795f5188613c2f077226f0d2e6310ca8a5da166542dd0cb0217b",
+      "working_tree_sha256": "2a076f7375d0795f5188613c2f077226f0d2e6310ca8a5da166542dd0cb0217b",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/papers/Fixture_AbstractSeal.md",
+      "git_blob": "b37be3eb7d3a931c39f122e626991e547d30eef8",
+      "mode": "100644",
+      "original_sha256": "a13696b348ffb93624f187625736ff3934222570ab1610fce4ace77edf6e1d29",
+      "working_tree_sha256": "a13696b348ffb93624f187625736ff3934222570ab1610fce4ace77edf6e1d29",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/papers/Fixture_BrokenQuote.md",
+      "git_blob": "d9ddc51bb680a111a1318cdf67c469d91d836d66",
+      "mode": "100644",
+      "original_sha256": "efc99033a31e981e82d41325b1f9fc66592cc1d6f0ab23632d894aee3d3ad12a",
+      "working_tree_sha256": "efc99033a31e981e82d41325b1f9fc66592cc1d6f0ab23632d894aee3d3ad12a",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/papers/Fixture_Check18ExemptBad.md",
+      "git_blob": "93800f5026358f78b078f51d9728ac7157324ff6",
+      "mode": "100644",
+      "original_sha256": "4efd010e2f40a4667a751bb30c12d9a870176356cea88a684d21c1b24d04479e",
+      "working_tree_sha256": "4efd010e2f40a4667a751bb30c12d9a870176356cea88a684d21c1b24d04479e",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/papers/Fixture_Check18ExemptOk.md",
+      "git_blob": "9e9fca3b7adada000377c15b9307668584f101e5",
+      "mode": "100644",
+      "original_sha256": "be65767ac5ff85dbbcce36ff005531531d5a1635143c75defb6f5de0f8b93cb4",
+      "working_tree_sha256": "be65767ac5ff85dbbcce36ff005531531d5a1635143c75defb6f5de0f8b93cb4",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/papers/Fixture_Check18ExemptStale.md",
+      "git_blob": "37a7640b2d6e1ae5fd7b139d0938c0edbdade4b1",
+      "mode": "100644",
+      "original_sha256": "fa6a39019ded3b0b9e86377358828f0d1b3c1c18158e7def594ca8bea7ec487d",
+      "working_tree_sha256": "fa6a39019ded3b0b9e86377358828f0d1b3c1c18158e7def594ca8bea7ec487d",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/papers/Fixture_Check18OnlineFirst.md",
+      "git_blob": "2fa13cf9592cd284a080b20d46958492dacc2f71",
+      "mode": "100644",
+      "original_sha256": "ecaba2eb94ad5c5b82c432d0c7b0eea452344c946afd7a57d8a1be552e5ef6d3",
+      "working_tree_sha256": "ecaba2eb94ad5c5b82c432d0c7b0eea452344c946afd7a57d8a1be552e5ef6d3",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/papers/Fixture_GoodProvenance.md",
+      "git_blob": "3a3bd631591e88af27e9a843b1800c28d2f9c1e2",
+      "mode": "100644",
+      "original_sha256": "2f4423e18a122312b650d6f6ced591f42695d87ba503cec1a0c4d20df20a0715",
+      "working_tree_sha256": "2f4423e18a122312b650d6f6ced591f42695d87ba503cec1a0c4d20df20a0715",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/papers/Fixture_NoProvenance.md",
+      "git_blob": "48e670e4ef7fa5d1424c230f60c4311fbaa444a9",
+      "mode": "100644",
+      "original_sha256": "52d0537f77effacf73180264fa6b4510556a228366dc9d2ca7cf538a6a9490db",
+      "working_tree_sha256": "52d0537f77effacf73180264fa6b4510556a228366dc9d2ca7cf538a6a9490db",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/papers/Fixture_ShortSeal.md",
+      "git_blob": "148ad75ef9c19387ded851de0cee57cf4bce8837",
+      "mode": "100644",
+      "original_sha256": "b71e3587cf6280098c895bc4b764ca901567b5edc521ebc40a4b64b00e9a2fc6",
+      "working_tree_sha256": "b71e3587cf6280098c895bc4b764ca901567b5edc521ebc40a4b64b00e9a2fc6",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/papers/Fixture_StubNoVenue.md",
+      "git_blob": "fd596fdf110aa568ddb7bc0ce49a6d6499aa2e70",
+      "mode": "100644",
+      "original_sha256": "0fbef761739fddb9909fabcc046d4588629fcd133073e9ee844adf8574ef3733",
+      "working_tree_sha256": "0fbef761739fddb9909fabcc046d4588629fcd133073e9ee844adf8574ef3733",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/papers/Fixture_VerifiedNoPages.md",
+      "git_blob": "d622cfb72f886ee77afa90661a1a71851fd26ef3",
+      "mode": "100644",
+      "original_sha256": "d4628c0f12d121eeda580f5ad6abf2f89c2e348c2917a378c7f4ad6d5fd22900",
+      "working_tree_sha256": "d4628c0f12d121eeda580f5ad6abf2f89c2e348c2917a378c7f4ad6d5fd22900",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/papers/Jones_2023_EmptyConcepts.md",
+      "git_blob": "1920968e170e51ddf18972dc2f195cc633b32c6a",
+      "mode": "100644",
+      "original_sha256": "e3304737662df8a8b42ecdc9d6a82ab8772d9f00e03c58942dd52e3d479fb5c2",
+      "working_tree_sha256": "e3304737662df8a8b42ecdc9d6a82ab8772d9f00e03c58942dd52e3d479fb5c2",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/lint/vault/wiki/papers/Smith_2024_FakePaper.md",
+      "git_blob": "376669e40c2c3cb6f0742e760feb25b4cdfe626d",
+      "mode": "100644",
+      "original_sha256": "35d8192e38ebf932b4b2cf73bf517618286d1b829bff685b2b8421ebd6bd8bdb",
+      "working_tree_sha256": "35d8192e38ebf932b4b2cf73bf517618286d1b829bff685b2b8421ebd6bd8bdb",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/synth/note_clean.md",
+      "git_blob": "63745f663d7d238ead2078eddb3eb17b7a3b35fb",
+      "mode": "100644",
+      "original_sha256": "8447ccbe2876bea823aa7f96040e9faf4ebcad3071ecd510589f3cf53f4cf35a",
+      "working_tree_sha256": "8447ccbe2876bea823aa7f96040e9faf4ebcad3071ecd510589f3cf53f4cf35a",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/synth/note_dropped_contr.md",
+      "git_blob": "029848863dcf4559bce88b347f87a9c011626076",
+      "mode": "100644",
+      "original_sha256": "6d5088e3c9448a6a0c8118260c4bc60221c8d1906c7c2339a7bc2e699f1ede47",
+      "working_tree_sha256": "6d5088e3c9448a6a0c8118260c4bc60221c8d1906c7c2339a7bc2e699f1ede47",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/synth/note_fab_number.md",
+      "git_blob": "f4384eadbc186ecdff037aa7d7f2f0a0fc5ee20e",
+      "mode": "100644",
+      "original_sha256": "9b225749477b6758aff240f919733b09f012b10ce125901f31ae8f737cb1d15e",
+      "working_tree_sha256": "9b225749477b6758aff240f919733b09f012b10ce125901f31ae8f737cb1d15e",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/synth/note_fab_source.md",
+      "git_blob": "bf35ecbf96f2489505a34cf25004f532ab1965ce",
+      "mode": "100644",
+      "original_sha256": "db163955566be8774af2521d8c67fadd89a058a811df4e028e562841cb616461",
+      "working_tree_sha256": "db163955566be8774af2521d8c67fadd89a058a811df4e028e562841cb616461",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/synth/note_missing_warn.md",
+      "git_blob": "6a09e1d43de9cc2d38baed0b817869ed61d2867b",
+      "mode": "100644",
+      "original_sha256": "51e4ef319d6b6b297b1ec2407a7f7e09b7e75caf0a393aca447ce53dc98a1310",
+      "working_tree_sha256": "51e4ef319d6b6b297b1ec2407a7f7e09b7e75caf0a393aca447ce53dc98a1310",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/synth/papers/Extra_2018_CT.md",
+      "git_blob": "8a10559d2230b2bbbb2a74919887896aefcc0918",
+      "mode": "100644",
+      "original_sha256": "8b9f9897ea90992e4f928fc7899760bf54b3e2004fba2f93be9107db7b66220e",
+      "working_tree_sha256": "8b9f9897ea90992e4f928fc7899760bf54b3e2004fba2f93be9107db7b66220e",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/synth/papers/Ghost_2021_Fake.md",
+      "git_blob": "0979f3b9c1db9f7a6d79b165779d431530ad5a99",
+      "mode": "100644",
+      "original_sha256": "119b9cbb322ef4d471b1915ac75340fbfbb469ce6dec886bac3d174147d7bf03",
+      "working_tree_sha256": "119b9cbb322ef4d471b1915ac75340fbfbb469ce6dec886bac3d174147d7bf03",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/synth/papers/Jones_2019_RCT.md",
+      "git_blob": "2086de5ad008196fc8a35286d17f594ff00f8202",
+      "mode": "100644",
+      "original_sha256": "bb06057fb5b74239abfa84808802c379ac4b2f924cbf6a451ac7e7adfed526eb",
+      "working_tree_sha256": "bb06057fb5b74239abfa84808802c379ac4b2f924cbf6a451ac7e7adfed526eb",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/synth/papers/Pre_2026_CT.md",
+      "git_blob": "cadc0143e01f3c2d9133af2729e7acb2d442959b",
+      "mode": "100644",
+      "original_sha256": "7092eb3600c7540db6a3f8820e413ce73fe8d3b0f43f12837005bc18dd81e1d1",
+      "working_tree_sha256": "7092eb3600c7540db6a3f8820e413ce73fe8d3b0f43f12837005bc18dd81e1d1",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/fixtures/synth/papers/Smith_2020_SR.md",
+      "git_blob": "467c9616b1eb9bd4d0d1843154c059e9896b6deb",
+      "mode": "100644",
+      "original_sha256": "65db6c6c50a9408fc6d0bcd3de2bc9e5ca9016e7a12eab38f0f1979a2228f523",
+      "working_tree_sha256": "65db6c6c50a9408fc6d0bcd3de2bc9e5ca9016e7a12eab38f0f1979a2228f523",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/test_example.py",
+      "git_blob": "bf0af97169e0a0bb5c435c537defa4613fc3da35",
+      "mode": "100644",
+      "original_sha256": "fdfc603075f06bc04073f6b2aba03a16a6975c981cea7a688631a220729f34c1",
+      "working_tree_sha256": "fdfc603075f06bc04073f6b2aba03a16a6975c981cea7a688631a220729f34c1",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/test_fixes.py",
+      "git_blob": "c7fadac2b2f3971284495fd5de610a37bef1efaf",
+      "mode": "100644",
+      "original_sha256": "f0247b12b606f7eae76c41829e72eabba0f88eb5fe0a54de278a7b35a43d6dc9",
+      "working_tree_sha256": "f0247b12b606f7eae76c41829e72eabba0f88eb5fe0a54de278a7b35a43d6dc9",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/test_lint.py",
+      "git_blob": "51206c66179dc776fcf2447b8c903c57a75db994",
+      "mode": "100644",
+      "original_sha256": "c2f3256ed30d8bade8951c1079642cda00b561b19a45a7b7acb08b2d144fe1cd",
+      "working_tree_sha256": "c2f3256ed30d8bade8951c1079642cda00b561b19a45a7b7acb08b2d144fe1cd",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/test_pmc_tables.py",
+      "git_blob": "3d654f9d1ec1c91ba330f67f98213a3a1dda3d6e",
+      "mode": "100644",
+      "original_sha256": "c556c9aa6c76d44bddad7bc6cf6660f656509ed8d7ddddd629a54d99a17e7f0a",
+      "working_tree_sha256": "c556c9aa6c76d44bddad7bc6cf6660f656509ed8d7ddddd629a54d99a17e7f0a",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tests/test_wikikit.py",
+      "git_blob": "2eec8437eb4a21639d453ec7be657ac1c231f311",
+      "mode": "100644",
+      "original_sha256": "51a06cb7bd476549be3c81ffb90028e3d82b126ef34e2b67ce1082c52805084c",
+      "working_tree_sha256": "51a06cb7bd476549be3c81ffb90028e3d82b126ef34e2b67ce1082c52805084c",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tools/pmc_tables.py",
+      "git_blob": "c06b8eb4d280b7577302d480fc3930bb4cb05bff",
+      "mode": "100644",
+      "original_sha256": "5cb7bcaed79ce23e8ed625ebd9d28020b5e9e32d70efe8ee2f733c02998ef001",
+      "working_tree_sha256": "5cb7bcaed79ce23e8ed625ebd9d28020b5e9e32d70efe8ee2f733c02998ef001",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tools/seal.py",
+      "git_blob": "3b1d5d101d7c7c6d7405814e681572007f95e07d",
+      "mode": "100644",
+      "original_sha256": "0bb6842bb6da60d64c121ba949d18cded6fd4bca3b1aaff4495f3502fe720aff",
+      "working_tree_sha256": "0bb6842bb6da60d64c121ba949d18cded6fd4bca3b1aaff4495f3502fe720aff",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "tools/set_kit_dir.py",
+      "git_blob": "fc2c02888bdaac237c6e352f4174786cf3aef49b",
+      "mode": "100644",
+      "original_sha256": "cbf3b0e9bba960a6161146c83a86d6acca26120e3f1195fcc8f5d9a564a42ed5",
+      "working_tree_sha256": "cbf3b0e9bba960a6161146c83a86d6acca26120e3f1195fcc8f5d9a564a42ed5",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/__init__.py",
+      "git_blob": "a2d07317accbf5af1c0a1eb4ba908c3222ac5659",
+      "mode": "100644",
+      "original_sha256": "da28bd358ced76c596a53787fdbd9db4af85c29404cc49574e8aacb7d633d67b",
+      "working_tree_sha256": "da28bd358ced76c596a53787fdbd9db4af85c29404cc49574e8aacb7d633d67b",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/config.py",
+      "git_blob": "fe05c5484b5ee634228e664dd06cf2c9c248b8f5",
+      "mode": "100644",
+      "original_sha256": "490852360ae7804b008383e53545cfcd27fff3edf57f2a35d8b741587b815fa9",
+      "working_tree_sha256": "490852360ae7804b008383e53545cfcd27fff3edf57f2a35d8b741587b815fa9",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/frontmatter.py",
+      "git_blob": "036ee054931c1b6080e7b939974c1108368c962d",
+      "mode": "100644",
+      "original_sha256": "d7fbdf7599f815ba9cad9f01a6276b3713f27354559da02752d276e56b5c66ca",
+      "working_tree_sha256": "d7fbdf7599f815ba9cad9f01a6276b3713f27354559da02752d276e56b5c66ca",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/lint/__init__.py",
+      "git_blob": "8681f7135ae00f5d9f3f22c62764daaa42bbbdc6",
+      "mode": "100644",
+      "original_sha256": "90b678947c9cee1c7d74a9c2aa6807f3c473c818945988e85ed60702263b2d00",
+      "working_tree_sha256": "90b678947c9cee1c7d74a9c2aa6807f3c473c818945988e85ed60702263b2d00",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/lint/checks_basic.py",
+      "git_blob": "bc3050efa272a3a056fa827b4b8e4f9ecc3637ab",
+      "mode": "100644",
+      "original_sha256": "fae7c0156fbacb40d56217fef236a7589db6c839448b765923f703f452371391",
+      "working_tree_sha256": "fae7c0156fbacb40d56217fef236a7589db6c839448b765923f703f452371391",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/lint/checks_content.py",
+      "git_blob": "edb4227ab491b7ab3bc53b2488f77091197ebfd2",
+      "mode": "100644",
+      "original_sha256": "efb20bfa915f9f7ef8f57a2be1135f47eb8f4975c740daa07751ab14084983a8",
+      "working_tree_sha256": "efb20bfa915f9f7ef8f57a2be1135f47eb8f4975c740daa07751ab14084983a8",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/lint/checks_integrity.py",
+      "git_blob": "8d19cf3d5b7b9b9c12a33180b77d72febbf77d86",
+      "mode": "100644",
+      "original_sha256": "bfe2e45293188d9ce101d58d158fb24d80350a4bc7f637ebbafdf67af0e8330d",
+      "working_tree_sha256": "bfe2e45293188d9ce101d58d158fb24d80350a4bc7f637ebbafdf67af0e8330d",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/lint/checks_structure.py",
+      "git_blob": "222b2b6783cc078dd770f2af7d81b6f8a9a47ef8",
+      "mode": "100644",
+      "original_sha256": "29086167235eade65cb7d9216e447eb6805360f4aed23053c8dba60221f58b62",
+      "working_tree_sha256": "29086167235eade65cb7d9216e447eb6805360f4aed23053c8dba60221f58b62",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/lint/context.py",
+      "git_blob": "55d675f087e2d7e7bf0e216ac67710e8653aab64",
+      "mode": "100644",
+      "original_sha256": "5fb41e2a9e37977ee87ec54081348dd61cbcdf802a397108a23939ccedff3bc8",
+      "working_tree_sha256": "5fb41e2a9e37977ee87ec54081348dd61cbcdf802a397108a23939ccedff3bc8",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/lint/defaults.json",
+      "git_blob": "596cb7081f52cf98780dd1df3583b0b21aed87d6",
+      "mode": "100644",
+      "original_sha256": "ea4bef22814e5a35ca9fd2ce62c20d9c0cbcc94cdf1cdac3fb936d9b8ff4e2d9",
+      "working_tree_sha256": "ea4bef22814e5a35ca9fd2ce62c20d9c0cbcc94cdf1cdac3fb936d9b8ff4e2d9",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/lint/engine.py",
+      "git_blob": "853121f32d0a055504bb7f795c13f44030953268",
+      "mode": "100644",
+      "original_sha256": "69b0f8b8111ba3c184fe5c7c38391fc9ec048230912bc15c5e7738d660805a1d",
+      "working_tree_sha256": "69b0f8b8111ba3c184fe5c7c38391fc9ec048230912bc15c5e7738d660805a1d",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/lint/fixes.py",
+      "git_blob": "d392f078061258671194817b9a061e0316c0c06d",
+      "mode": "100644",
+      "original_sha256": "1e7c266e42fdc19f3970876ac5ad2b366756c69fe6592c404a33712d6a2c6619",
+      "working_tree_sha256": "1e7c266e42fdc19f3970876ac5ad2b366756c69fe6592c404a33712d6a2c6619",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/lint/result.py",
+      "git_blob": "380826fd75bc2c8fe9320c654d66ed55b853c899",
+      "mode": "100644",
+      "original_sha256": "8dd5a0d7757b335289f24eed4ecc2ce66edf9b5a68f568540f4655f5451b264a",
+      "working_tree_sha256": "8dd5a0d7757b335289f24eed4ecc2ce66edf9b5a68f568540f4655f5451b264a",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/lint/text.py",
+      "git_blob": "166e91320e6e39973328c4be86110d77c91363d3",
+      "mode": "100644",
+      "original_sha256": "de1cecf33283958ab52431de02efed251ea1e08414c1db3df28629d94fe1a680",
+      "working_tree_sha256": "de1cecf33283958ab52431de02efed251ea1e08414c1db3df28629d94fe1a680",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/seals.py",
+      "git_blob": "14043082e283cc0d7944ffd904ea2bc188c48e91",
+      "mode": "100644",
+      "original_sha256": "269169561892d240e54c53b61e35a4909438dcead8976df48ad98e2fa2a66e0e",
+      "working_tree_sha256": "269169561892d240e54c53b61e35a4909438dcead8976df48ad98e2fa2a66e0e",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/sections.py",
+      "git_blob": "e00e13028518b166fc77f2c64db69f8b12e7664c",
+      "mode": "100644",
+      "original_sha256": "b2d76eccdf026a5ee31460f22df1aa3b7ebaeaf4c9eff86c0bfa9a70d4585eb9",
+      "working_tree_sha256": "b2d76eccdf026a5ee31460f22df1aa3b7ebaeaf4c9eff86c0bfa9a70d4585eb9",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/synthesis.py",
+      "git_blob": "b3f5a8a0d0b121daa852f18bcf4889527ab61212",
+      "mode": "100644",
+      "original_sha256": "b65557a134c2c11614e27421a874abf386855086ab64c6fc007bd4714bcc28c7",
+      "working_tree_sha256": "b65557a134c2c11614e27421a874abf386855086ab64c6fc007bd4714bcc28c7",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/textio.py",
+      "git_blob": "0021c559955f57cbe9ac86fd2ad491b0342c544d",
+      "mode": "100644",
+      "original_sha256": "c3e0d40aa0f87646481ff9dc70a7b72137dc4cb31b308d2df856c8cf63c0f8fd",
+      "working_tree_sha256": "c3e0d40aa0f87646481ff9dc70a7b72137dc4cb31b308d2df856c8cf63c0f8fd",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    },
+    {
+      "path": "wikikit/vault.py",
+      "git_blob": "dd5ac823622e0d3a5cfc7ed170339531d7f79eeb",
+      "mode": "100644",
+      "original_sha256": "ea794ecdbbe81c05c9ee380723208f1979b5a21dd28bb9e05c448bd3e5f4575d",
+      "working_tree_sha256": "ea794ecdbbe81c05c9ee380723208f1979b5a21dd28bb9e05c448bd3e5f4575d",
+      "raw_bytes_identical": true,
+      "git_content_unchanged": true
+    }
+  ],
+  "installation_or_activation_verified": false,
+  "eol_note": "Only optional install.ps1 has checkout EOL normalization; Git blob unchanged. All five Skill trees are raw-byte identical."
+}

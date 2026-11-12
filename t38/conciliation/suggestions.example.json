@@ -1,0 +1,85 @@
+{
+  "scope": "synthetic-example-only-not-an-approved-library-schema",
+  "source_documents_included": false,
+  "suggestions": [
+    {
+      "suggestion_id": "example-run:overlap-1",
+      "kind": "terminology_overlap",
+      "target": {
+        "glossary_id": "EXAMPLE:glossary-A",
+        "entry_id": "EXAMPLE:entry-Á-01",
+        "format": "concept-record"
+      },
+      "observations": [
+        {
+          "observation_id": "example-observation-1",
+          "canonical": "Término de ensayo",
+          "aliases": [
+            "synthetic term"
+          ],
+          "definition": "Invented definition A for proposal-design illustration only.",
+          "definition_kind": "synthetic-paraphrase",
+          "citekey": "ExampleSourceA2026",
+          "year": "2026",
+          "context": "Invented context A",
+          "location": "Invented section A",
+          "source_reference": "EXAMPLE:source-record-A"
+        },
+        {
+          "observation_id": "example-observation-2",
+          "canonical": "Término de ensayo",
+          "aliases": [
+            "Synthetic Term"
+          ],
+          "definition": "Invented DIFFERENT definition B, preserved separately.",
+          "definition_kind": "synthetic-paraphrase",
+          "citekey": "ExampleSourceB2026",
+          "year": "2026",
+          "context": "Invented context B",
+          "location": "Invented section B",
+          "source_reference": "EXAMPLE:source-record-B"
+        }
+      ],
+      "reason": "Shared terminology only; source identities and definitions remain distinct.",
+      "bibliographic_identity": "not-inferred",
+      "dataset_relationship": "not-inferred",
+      "synonymy": "not-established",
+      "status": "pending-review",
+      "action": "none"
+    },
+    {
+      "suggestion_id": "example-run:unresolved-2",
+      "kind": "glossary_inconsistency",
+      "target": {
+        "glossary_id": null,
+        "entry_id": null,
+        "format": "markdown-table-without-ids",
+        "locator": {
+          "document_reference": "EXAMPLE:table-glossary-document",
+          "snapshot_reference": "EXAMPLE:read-only-snapshot",
+          "section": "Invented table section",
+          "row_reference": "snapshot-row-2",
+          "scope": "snapshot-only-not-a-stable-id"
+        }
+      },
+      "observations": [
+        {
+          "observation_id": "example-observation-3",
+          "canonical": "Otra denominación de ensayo",
+          "aliases": [],
+          "definition": null,
+          "definition_kind": "not-extracted",
+          "citekey": "ExampleSourceA2026",
+          "year": "2026",
+          "context": "Invented context C",
+          "location": null,
+          "source_reference": "EXAMPLE:source-record-A"
+        }
+      ],
+      "reason": "Known synthetic table row has no ID: this is valid. Definition/location need source review; no ID, definition or page is invented.",
+      "status": "pending-review",
+      "action": "none"
+    }
+  ],
+  "format_policy": "Preserve identified concept records AND Markdown tables without IDs; no migration or new glossary identifiers."
+}
