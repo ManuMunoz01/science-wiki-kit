@@ -1,0 +1,71 @@
+{
+  "_provisional": "T-38 synthetic contract ONLY; not the actual Oficina Manu schema.",
+  "vault_root": ".",
+  "wiki_root": ".",
+  "papers_folder": "2. Papers",
+  "books_folder": "4. Temas/Libros",
+  "concepts_folder": "4. Temas/Conceptos",
+  "methods_folder": "4. Temas/Metodos",
+  "folders": [
+    "1. Mis_articulos",
+    "2. Papers",
+    "4. Temas/Conceptos",
+    "4. Temas/Metodos",
+    "4. Temas/Libros"
+  ],
+  "recursive_folders": [
+    "1. Mis_articulos",
+    "2. Papers",
+    "4. Temas/Conceptos",
+    "4. Temas/Metodos",
+    "4. Temas/Libros"
+  ],
+  "vault_ignore_dirs": [
+    ".git",
+    ".obsidian",
+    ".trash",
+    "3. Assets",
+    "5. Templates"
+  ],
+  "note_language": "es",
+  "pdf_library_dir": "3. Assets/PDFs",
+  "field_titlecase_map": {
+    "synthetic": "Synthetic trial"
+  },
+  "synthesis": {
+    "prefulltext_cutoff": null
+  },
+  "lint": {
+    "index_mode": "manual",
+    "verb_list": [
+      "mejora",
+      "demuestra",
+      "aumenta",
+      "disminuye",
+      "shows",
+      "improves"
+    ],
+    "language_radar": {
+      "enabled": true,
+      "headings": [
+        "results",
+        "discussion"
+      ],
+      "stopwords": [
+        "the",
+        "with",
+        "from"
+      ],
+      "prose_threshold": 8
+    },
+    "unfilled_claim_patterns": [
+      "\\[pendiente claim\\]",
+      "\\[pending claim\\]"
+    ],
+    "status_by_type": {
+      "project": [
+        "draft"
+      ]
+    }
+  }
+}
