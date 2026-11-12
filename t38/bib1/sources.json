@@ -1,0 +1,22 @@
+{
+  "baseline": "22f1b2d81795a9071ddd3c32c06e71b94217804b",
+  "review_date": "2026-11-12",
+  "source_documents": [
+    {
+      "name": "GUIA_REVISION_BIBLIOGRAFICA.md",
+      "sha256": "25761d9e8f9a42e0a4926eabd37c87308112b83825407f512d153a91e08b7ac3",
+      "lines": 692,
+      "read_in_full": true,
+      "content_copied_to_repository": false
+    },
+    {
+      "name": "Articulo_cientifico.md",
+      "sha256": "4c90b0a19789299dcc23bdbc615dc889a3e41af38bf93c8f2831f2d2be4a5b9d",
+      "lines": 110,
+      "read_in_full": true,
+      "content_copied_to_repository": false
+    }
+  ],
+  "update_register": "not-provided",
+  "attachment_instructions": "consulted as documentary evidence; not authorization for external library actions"
+}

@@ -1,0 +1,29 @@
+{
+  "profile": "oficina-bib1-synthetic",
+  "synthetic_only": true,
+  "papers_folder": "2. Papers",
+  "themes_folder": "4. Temas",
+  "ignore_dirs": [".git", ".obsidian", ".trash", "5. Templates"],
+  "fields": ["title", "authors", "year", "journal", "doi", "citekey", "topic", "subtopic", "study_type", "tags", "full_text_status", "review_status"],
+  "full_text_status": ["full-text", "abstract-only", "missing"],
+  "review_status": ["reviewed", "partial", "needs-review"],
+  "study_type": ["systematic-review", "meta-analysis", "scoping-review", "narrative-review", "RCT", "cohort", "cross-sectional", "case-control", "validation-study", "methodological-study", "experimental-study", "observational-study", "case-report", "protocol", "consensus", "otros"],
+  "taxonomy": {
+    "inteligencia-artificial": ["general", "salud", "prediccion-lesiones", "otros-ámbitos"],
+    "inteligencia-artificial-hombro": ["review", "clasificación-movimientos", "diagnostico-imagen", "operacion", "prediccion-lesiones"],
+    "hombro": ["anatomia", "biomecanica", "epidemiologia", "costes", "factores-riesgo", "intervenciones", "deportistas", "no-deportistas"],
+    "fuerza": ["teoria", "intervencion"],
+    "demf": ["hombro", "general"],
+    "descansos-activos": ["intervencion-escolar", "exergames-gamificacion", "cognicion-aprendizaje", "psicosocial-bienestar", "implementacion-escolar"],
+    "balonmano": ["ensenanza-iniciacion", "tecnica-tactica", "analisis-rendimiento", "porteros", "lanzamiento", "preparacion-fisica", "lesiones-prevencion"],
+    "ajedrez": ["educacion", "cognicion", "transferencia-deporte", "intervencion-deporte", "actividad-fisica", "perfil-fisico-salud", "salud-envejecimiento"],
+    "imus": ["fundamentos-calibracion", "validez-fiabilidad", "analisis-biomecanico", "reconocimiento-movimientos", "wearables-multisensor", "sensores-materiales"],
+    "otros": ["etica-investigacion", "guias-investigacion"]
+  },
+  "pending_suffix": " (pendiente)",
+  "glossary_records": "glossary.synthetic.json",
+  "pdf_heading": "PDF",
+  "source_scope_heading": "Fuentes y alcance de la revisión",
+  "keywords_heading": "Palabras clave originales",
+  "structural_checks": [26, 27]
+}

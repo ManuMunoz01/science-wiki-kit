@@ -5,6 +5,22 @@ description: Audit the T-38 synthetic Oficina Manu trial with read-only wiki-lin
 
 # T-38 wiki diagnostic
 
+## BIB-1 profile routing (after baseline 22f1b2d)
+
+For the guide-grounded synthetic Biblioteca profile, read `t38/bib1/README.md`,
+`compatibility-33.md` and `field-map.md` there. Use `t38/bib1/audit.py lint`
+with an explicit `--vault-root` carrying `.t38-synthetic` and a NEW external
+`--out-dir`. Generate a new fixture with `t38/bib1/make_trial.py` if needed.
+Do not run the historical recipe below on this profile or on real library files.
+Do not add kit type/status/seal/evidence fields, rename journal, render templates,
+infer scientific review or merge definitions. Report deferred checks and decisions.
+For vocabulary, test-only per-source glossary records are proposals, not approved
+library schema. Preserve canonicals, aliases, source citekeys and differing definitions.
+No commit, push, PR or external-library action is part of either diagnostic procedure.
+Native skill discovery remains separate and unverified in this intervention.
+
+## Historical profile only
+
 Provisional local Codex skill; not an installed ChatGPT skill. Documentation CC BY 4.0,
 derived from science-wiki-kit (MinorBaek); retain the repository licences.
 
