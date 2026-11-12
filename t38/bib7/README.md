@@ -33,7 +33,9 @@ must be separately reviewed and authorized, not enabled by marking real folders.
 
 ## Supported formats and preservation
 
-**A:** H2 concept sections; H3 entries exactly shaped `### ID · Author (year)`.
+**A:** H2 concept sections; H3 entries shaped `### H-001 · Author (year)`.
+Only H-prefixed, numeric-ending IDs are recognized (the prior synthetic H-Á-03
+variant remains supported). Other H3 headings delimit editorial sections, not entries.
 IDs are copied literally (including accents/punctuation), never normalized.
 Recognized labelled fields may be plain, bullets or bold labels: term, translation,
 alias, definition/use, context, provenance, citekey, source and location. Repeated
@@ -102,3 +104,31 @@ The original vocabulary generator is not rerun in place or reimplemented; its
 canonical-note contract is retained unchanged. This adds only format readers,
 conservative review proposals and safe external export. See report.md for actual
 results, limitations and the bounded next integration step.
+
+## Limited compatibility validation after 0777fe0
+
+See compatibility-review.md for the invented user-described format tests and
+remaining private-pilot conditions. The five known frontmatter keys (type, topic,
+task, updated, status) are retained as document metadata only; none is interpreted
+as proof of scientific review or imposed on source notes. Absence of glossary_id
+is valid. The long bold labels below now map explicitly, while originals remain
+unchanged in fields/raw_markdown:
+
+- Definición o uso — paráfrasis verificada → definitions_or_uses.
+- Contexto y criterios operativos → contexts.
+- Procedencia y atribución → source_text.
+
+The word verificada in a label does NOT establish verification. Source URLs are
+retained as source_urls tokens without connecting to Drive/any network. The new
+fixtures use drive.example.invalid (reserved non-resolving example domain), not
+private Drive IDs. Original source text remains authoritative if URL punctuation
+or Markdown syntax is outside this tokenizer's subset.
+
+extraction_status distinguishes structured-declared-unverified, declared-pending,
+declared-empty, declared-not-reported-unverified, not-structured,
+source-text-not-structured and combined-cell-unparsed. A table cell with narrative
+locations remains combined-cell-unparsed: [] in locations never proves the source
+has no location. Explicit no informado text is only a declaration of absence,
+not its verification. pending retains its prior role as a work queue;
+pending_status on review suggestions explains these distinctions. No new data is
+filled, no per-study attribution is inferred and no input/write capability is enabled.

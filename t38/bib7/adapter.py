@@ -22,7 +22,8 @@ RELATIONS = {
     'posible duplicado bibliografico': 'bibliographic_identity_candidate',
     'posible reutilizacion de datos': 'dataset_relationship_review',
 }
-PENDING = {'pendiente', 'sin verificar', 'no verificado', 'no consta', 'desconocido'}
+NOT_REPORTED = {'no informado', 'no informada', 'no consta'}
+PENDING = {'pendiente', 'sin verificar', 'no verificado', 'desconocido'} | NOT_REPORTED
 
 
 def masked_lines(text):
@@ -85,6 +86,20 @@ def nonpending_values(items):
     return [s for s in items if s and normalize(s) not in PENDING]
 
 
+def extraction_state(items):
+    """Describe extraction/declarations only, never prove absence in a source."""
+    if not items:
+        return 'not-structured'
+    nonempty = [normalize(s) for s in items if s.strip()]
+    if not nonempty:
+        return 'declared-empty'
+    if all(s in NOT_REPORTED for s in nonempty):
+        return 'declared-not-reported-unverified'
+    if all(s in PENDING for s in nonempty):
+        return 'declared-pending'
+    return 'structured-declared-unverified'
+
+
 def references(text):
     """Declared references only: preserve targets, never claim Zotero/source identity."""
     links = re.findall(r'\[\[([^\]|#]+)(?:[^\]]*)\]\]', text.replace('\\|', '|'))
@@ -95,11 +110,11 @@ def references(text):
 def make_observation(doc, start, end, section, raw, parsed, entry_id=None, heading=None, table=None):
     original_terms = nonpending_values(values(parsed, 'Término original', 'Término'))
     aliases = nonpending_values(values(parsed, 'Alias', 'Aliases terminológicos'))
-    definitions = values(parsed, 'Definición', 'Definición o uso', 'Uso')
-    context = values(parsed, 'Contexto operativo', 'Contexto')
+    definitions = values(parsed, 'Definición', 'Definición o uso', 'Uso', 'Definición o uso — paráfrasis verificada')
+    context = values(parsed, 'Contexto operativo', 'Contexto', 'Contexto y criterios operativos')
     locations = values(parsed, 'Localización')
     declared_keys = nonpending_values(values(parsed, 'Citekey', 'Citekeys'))
-    sources = values(parsed, 'Fuente', 'Fuentes', 'Procedencia')
+    sources = values(parsed, 'Fuente', 'Fuentes', 'Procedencia', 'Procedencia y atribución')
     source_refs = references('\n'.join(declared_keys + sources))
     for key in declared_keys:
         if not references(key) and not re.search(r'\s|[,;]', key):
@@ -113,11 +128,23 @@ def make_observation(doc, start, end, section, raw, parsed, entry_id=None, headi
         definitions = [table[1]]  # mixed usage/location remains ONE unbound cell
         sources = [table[2]]
         source_refs = references(table[2])
+    source_urls = list(dict.fromkeys(re.findall(r'https?://[^\s<>()]+', '\n'.join(sources))))
+    source_state = extraction_state(sources + values(parsed, 'Citekey', 'Citekeys'))
+    if sources and nonpending_values(sources) and not (source_refs or source_urls):
+        source_state = 'source-text-not-structured'
+    extraction_status = {
+        'source-reference':source_state, 'location':extraction_state(locations),
+        'definition-or-use':extraction_state(definitions), 'context':extraction_state(context),
+        'year':extraction_state(year)}
+    if table:
+        for name in ('location', 'context', 'definition-or-use'):
+            extraction_status[name] = 'combined-cell-unparsed' if table[1].strip() else 'declared-empty'
+        extraction_status['row-definition-source-binding'] = 'binding-unresolved'
     locator = {'document_reference':doc['document_reference'], 'snapshot_sha256':doc['sha256'],
                'section':section, 'line_start':start, 'line_end':end,
                'scope':'snapshot-only-not-a-stable-id'}
     pending = []
-    for label, content in [('source-reference', source_refs), ('location', nonpending_values(locations)),
+    for label, content in [('source-reference', source_refs + source_urls), ('location', nonpending_values(locations)),
                            ('definition-or-use', nonpending_values(definitions)), ('context', nonpending_values(context))]:
         if not content:
             pending.append(label)
@@ -125,6 +152,7 @@ def make_observation(doc, start, end, section, raw, parsed, entry_id=None, headi
         pending.append('year')
     if len(set(nonpending_values(year))) > 1:
         pending.append('conflicting-declared-years')
+        extraction_status['conflicting-declared-years'] = 'conflicting-declarations-unverified'
     if table:
         pending.append('row-definition-source-binding')
     return {'observation_id':doc['document_reference'] + '@' + doc['sha256'] + ':L' + str(start),
@@ -134,6 +162,7 @@ def make_observation(doc, start, end, section, raw, parsed, entry_id=None, headi
             'translations':values(parsed, 'Traducción'), 'definitions_or_uses':definitions,
             'contexts':context, 'locations':locations, 'declared_years':year,
             'declared_citekeys':declared_keys, 'source_references':list(dict.fromkeys(source_refs)),
+            'source_urls':source_urls, 'extraction_status':extraction_status,
             'source_text':sources, 'fields':parsed, 'raw_markdown':raw,
             'source_binding':'row-level-unresolved' if table else 'entry-level-not-verified',
             'verification':'declared-unverified', 'pending':pending}
@@ -154,11 +183,12 @@ def read_document(path, form, root):
     data = path.read_bytes()
     text = data.decode('utf-8')
     doc = {'document_reference':path.relative_to(root).as_posix(), 'sha256':hashlib.sha256(data).hexdigest(),
-           'format':'concept-record' if form == 'a' else 'markdown-table-without-ids', 'glossary_id':None}
+           'format':'concept-record' if form == 'a' else 'markdown-table-without-ids', 'glossary_id':None, 'frontmatter':{}}
     diagnostics = []
     if text.lstrip('\ufeff').startswith('---\n') or text.lstrip('\ufeff').startswith('---\r\n'):
         try:
             fm, _ = parse_yaml(text)
+            doc['frontmatter'] = fm
             if isinstance(fm.get('glossary_id'), str):
                 doc['glossary_id'] = fm['glossary_id']
         except ValueError:
@@ -181,10 +211,10 @@ def read_document(path, form, root):
                 if h2:
                     section = h2[1]
                 else:
-                    entry = re.fullmatch(r'([^\s·]+)[ \t]+·[ \t]+(.+)', h3[1])
+                    entry = re.fullmatch(r'(H-[^\s·]*\d+)[ \t]+·[ \t]+(.+)', h3[1])
                     if entry:
                         active = (i, entry[1], entry[2], section)
-                    else:
+                    elif h3[1].startswith('H-'):
                         diagnostics.append({'code':'unsupported-entry-heading', 'line':i + 1, 'raw_markdown':raw_lines[i]})
         finish(len(raw_lines))
     else:
@@ -226,6 +256,9 @@ def read_document(path, form, root):
 def proposals(documents, observations):
     suggestions = []
     def add(kind, group, reason, **extra):
+        if kind == 'glossary_inconsistency':
+            extra['pending_status'] = {name:group[0]['extraction_status'].get(name, 'manual-review')
+                                       for name in extra.get('pending_fields', [])}
         suggestions.append({'suggestion_id':'proposal-' + str(len(suggestions) + 1), 'kind':kind,
                             'target':group[0]['target'], 'observations':group, 'reason':reason,
                             'status':'pending-review', 'action':'none', **extra})
