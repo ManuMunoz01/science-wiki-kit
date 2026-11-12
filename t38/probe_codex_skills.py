@@ -7,7 +7,8 @@ import time
 
 ROOT = Path(__file__).resolve().parents[1]
 
-def probe():
+def probe(expected=None):
+    expected = set(expected or ["oficina-wiki-lint", "oficina-vocabulary-update"])
     with subprocess.Popen(['codex', 'app-server', '--listen', 'stdio://'], cwd=ROOT,
                           stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
                           text=True, bufsize=1) as proc:
@@ -40,12 +41,12 @@ def probe():
             errors = []
             for entry in entries:
                 for skill in entry.get('skills', []):
-                    if skill.get('name', '').startswith('oficina-'):
+                    if skill.get('name', '') in expected:
                         found.append({k:skill.get(k) for k in ['name','path','enabled','scope']})
                 errors.extend(str(e.get('path', 'unknown')) for e in entry.get('errors', []))
             print(json.dumps({'local_skills':found,'error_paths':errors,'rpc_error':result.get('error')},indent=2))
-            if len(found) != 2:
-                raise RuntimeError('Expected both local skills in native discovery')
+            if {s['name'] for s in found} != expected:
+                raise RuntimeError('Expected local skills missing from native discovery')
         finally:
             sel.close()
             proc.terminate()

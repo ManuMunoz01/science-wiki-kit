@@ -1,0 +1,5 @@
+interface:
+  display_name: "Oficina \u00b7 wiki-lint \u00b7 SYNTHETIC"
+  short_description: "Synthetic diagnostics only"
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Oficina \u00b7 wiki-ingest \u00b7 PLAN ONLY"
+  short_description: "Plan only; scientific writes disabled"
+policy:
+  allow_implicit_invocation: false

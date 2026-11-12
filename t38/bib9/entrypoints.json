@@ -1,0 +1,13 @@
+{
+  "baseline": "45da7f230d6e0407e806df899eb13ed00be37584",
+  "original_preservation_manifest": "t38/conciliation/preservation-manifest.json",
+  "shared_policy": "t38/bib9/POLICY.md",
+  "entries": [
+    {"name": "wiki-lint", "mode": "synthetic-diagnostic", "original": "skills/wiki-lint", "adapter": "t38/bib1/audit.py"},
+    {"name": "vocabulary-update", "mode": "synthetic-proposals", "original": "skills/vocabulary-update", "adapter": "t38/bib7/adapter.py"},
+    {"name": "wiki-ingest", "mode": "planning-only", "original": "skills/wiki-ingest", "adapter": null},
+    {"name": "wiki-synthesize", "mode": "planning-only", "original": "skills/wiki-synthesize", "adapter": null},
+    {"name": "wiki-ingest-book", "mode": "planning-only", "original": "skills/wiki-ingest-book", "adapter": null}
+  ],
+  "legacy_aliases": {"oficina-wiki-lint": "wiki-lint", "oficina-vocabulary-update": "vocabulary-update"}
+}

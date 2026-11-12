@@ -1,0 +1,29 @@
+{
+  "date": "2026-11-12",
+  "installed_cli": "0.167.0-alpha.4",
+  "official_documentation": {
+    "url": "https://developers.openai.com/codex/skills/",
+    "status": "403-not-read"
+  },
+  "official_source_reference": "current main, not a match assertion for installed alpha",
+  "sources": [
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/ext/skills/src/host_roots.rs",
+      "sha256": "7cae5c526a850db0f3ad8b5156a5d0c317df5b961d9f69c2a92aedb3a75291c3"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/skills/src/parser.rs",
+      "sha256": "f3532df1cc16f4da423b8e5c813269940c90317bcd211b6659cad449fd877e89"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/skills/src/metadata.rs",
+      "sha256": "094357ff0dde43e58f6899d7644a7d46896d198564cb2ac06be421c04a8e7203"
+    },
+    {
+      "url": "https://raw.githubusercontent.com/openai/codex/main/codex-rs/ext/skills/src/loader/mod.rs",
+      "sha256": "a132e8c449b79870e80de9bf596856abc4051f50981fda7e15420348647ce5be"
+    }
+  ],
+  "installed_schema": "SkillsListParams supports cwds and forceReload; generated in this Cloud runtime",
+  "native": "startup blocked before metadata response"
+}
